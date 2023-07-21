@@ -3,8 +3,8 @@
 
 	let canvas: HTMLCanvasElement;
 	let ctx: CanvasRenderingContext2D | null;
-	let CANVAS_WIDTH: number;
-	let CANVAS_HEIGHT: number;
+	let canvasWidth: number;
+	let canvasHeight: number;
 	let playerImage: HTMLImageElement;
 	const SPRITE_WIDTH = 575;
 	const SPRITE_HEIGHT = 523;
@@ -41,8 +41,8 @@
 
 	onMount(() => {
 		ctx = canvas.getContext('2d');
-		CANVAS_WIDTH = canvas.width = 600;
-		CANVAS_HEIGHT = canvas.height = 600;
+		canvasWidth = canvas.width = 600;
+		canvasHeight = canvas.height = 600;
 
 		playerImage = new Image();
 		playerImage.src = '/shadow_dog.png';
@@ -50,7 +50,7 @@
 	});
 
 	function animate() {
-		ctx?.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+		ctx?.clearRect(0, 0, canvasWidth, canvasHeight);
 
 		// Calculate the current position in the animation cycle
 		let position = Math.floor(gameFrame / staggerFrames) % spriteAnimations[playerState].loc.length;
@@ -77,25 +77,19 @@
 	}
 </script>
 
-<div class="controls">
-	<label for="animations">Choose Animation</label>
-	<select class="capitalize" bind:value={playerState} name="animations" id="animations">
+<div class="flex flex-col items-center mt-5">
+	<div class="flex gap-2 w-full justify-center">
 		{#each animationStates as { name }}
-			<option class="capitalize" value={name}>{name}</option>
+			<button
+				on:click={() => {
+					playerState = name;
+				}}
+				class="btn btn-outline btn-sm hover:btn-primary capitalize"
+				class:btn-primary={playerState === name}
+				value={name}>{name}</button
+			>
 		{/each}
-	</select>
+	</div>
+
+	<canvas class="w-[600px] h-[600px]" bind:this={canvas} />
 </div>
-
-<canvas bind:this={canvas} />
-
-<style>
-	canvas {
-		border: 5px solid black;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 600px;
-		height: 600px;
-	}
-</style>
