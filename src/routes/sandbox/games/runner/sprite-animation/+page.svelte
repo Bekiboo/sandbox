@@ -45,7 +45,7 @@
 		canvasHeight = canvas.height = 600;
 
 		playerImage = new Image();
-		playerImage.src = '/shadow_dog.png';
+		playerImage.src = '/runner/shadow_dog.png';
 		animate();
 	});
 
