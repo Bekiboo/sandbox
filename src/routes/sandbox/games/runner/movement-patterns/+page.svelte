@@ -11,9 +11,9 @@
 	const batsArray: Bat[] = [];
 	let gameFrame = 0;
 
-	let enemySliderValue = 20;
-	$: nbOfEnemies = Math.floor(Math.exp(enemySliderValue / 14.478));
-	let twitch: number = 5;
+	let enemyDial = 20;
+	$: nbOfEnemies = Math.floor(Math.exp(enemyDial / 14.478));
+	let twitchDial: number = 2;
 
 	class Bat {
 		x: number;
@@ -40,8 +40,8 @@
 		}
 		update() {
 			if (gameFrame % this.flapSpeed === 0) {
-				this.x += Math.random() * 5 - 2.5;
-				this.y += Math.random() * 5 - 2.5;
+				this.x += Math.random() * (1 * twitchDial) - 0.5 * twitchDial;
+				this.y += Math.random() * (1 * twitchDial) - 0.5 * twitchDial;
 				this.frame > 5 ? (this.frame = 0) : this.frame++;
 			}
 		}
@@ -91,16 +91,28 @@
 
 <div class="flex flex-col items-center mt-5">
 	<div class="flex gap-4">
-		<label for="enemySliderValue">Enemies</label>
+		<label for="enemyDial">Enemies</label>
 		<input
-			bind:value={enemySliderValue}
-			name="enemySliderValue"
+			bind:value={enemyDial}
+			name="enemyDial"
 			type="range"
 			min="0"
 			max="100"
 			class="range range-lg range-primary mb-4 w-96"
 		/>
 		{nbOfEnemies}
+	</div>
+	<div class="flex gap-4">
+		<label for="twitchDial">Twitching</label>
+		<input
+			bind:value={twitchDial}
+			name="twitchDial"
+			type="range"
+			min="0"
+			max="100"
+			class="range range-lg range-primary mb-4 w-96"
+		/>
+		{twitchDial}
 	</div>
 
 	<canvas class="w-[500px] h-[800px]" bind:this={canvas} />
