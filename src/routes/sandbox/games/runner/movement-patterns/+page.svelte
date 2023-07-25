@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { loadImage } from '../utils';
 
 	let canvas: HTMLCanvasElement;
@@ -11,9 +11,58 @@
 	const batsArray: Bat[] = [];
 	let gameFrame = 0;
 
+	let laser1: laser;
+	let pointerPos: { x: number; y: number } = { x: 0, y: 0 };
+	let firing = false;
+
 	let enemyDial = 20;
 	$: nbOfEnemies = Math.floor(Math.exp(enemyDial / 14.478));
 	let twitchDial: number = 2;
+
+	class laser {
+		image: HTMLImageElement;
+		spriteWidth: number;
+		spriteHeight: number;
+		width: number;
+		height: number;
+		x: number;
+		y: number;
+		frame: number;
+		animationSpeed: number;
+		constructor() {
+			this.image = loadImage('/runner/character/laser.png');
+			this.spriteWidth = 32;
+			this.spriteHeight = 32;
+			this.width = this.spriteWidth;
+			this.height = this.spriteHeight;
+			this.x = pointerPos.x - this.width / 2;
+			this.y = pointerPos.y - this.height / 2;
+			this.frame = 0;
+			this.animationSpeed = 4;
+		}
+		updatePos(event: MouseEvent) {
+			this.x = event.offsetX - this.width / 2;
+			this.y = event.offsetY - this.height / 2;
+		}
+		updateAnimation() {
+			if (gameFrame % this.animationSpeed === 0) {
+				this.frame > 2 ? (this.frame = 0) : this.frame++;
+			}
+		}
+		draw() {
+			ctx?.drawImage(
+				this.image,
+				this.frame * this.spriteWidth,
+				0,
+				this.spriteWidth,
+				this.spriteHeight,
+				this.x,
+				this.y,
+				this.width,
+				this.height
+			);
+		}
+	}
 
 	class Bat {
 		x: number;
@@ -69,9 +118,15 @@
 			batsArray.push(new Bat());
 		}
 
-		animate();
+		animate(0);
 	});
-	function animate() {
+
+	onDestroy(() => {
+		ctx = null;
+		batsArray.length = 0;
+	});
+
+	function animate(timestamp: number) {
 		if (ctx) {
 			// Fill the canvas with a background color
 			ctx.fillStyle = 'grey'; // Replace 'lightblue' with the color you want
@@ -82,10 +137,33 @@
 				batsArray[i].update();
 				batsArray[i].draw();
 			}
+
+			// Draw the laser if left click
+			if (firing) {
+				laser1.updateAnimation();
+				laser1.draw();
+			}
 		}
 
 		gameFrame++;
 		requestAnimationFrame(animate);
+	}
+
+	function onMouseMove(event: MouseEvent) {
+		if (event.buttons === 1) {
+			laser1.updatePos(event);
+		}
+	}
+	function onMouseDown(event: MouseEvent) {
+		pointerPos.x = event.offsetX;
+		pointerPos.y = event.offsetY;
+		firing = true;
+		laser1 = new laser();
+	}
+	function onMouseUp() {
+		pointerPos.x = 0;
+		pointerPos.y = 0;
+		firing = false;
 	}
 </script>
 
@@ -115,5 +193,12 @@
 		{twitchDial}
 	</div>
 
-	<canvas class="w-[500px] h-[800px]" bind:this={canvas} />
+	<canvas
+		on:mousedown={onMouseDown}
+		on:mousemove={onMouseMove}
+		class="w-[500px] h-[800px]"
+		bind:this={canvas}
+	/>
 </div>
+
+<svelte:window on:mouseup={onMouseUp} />
