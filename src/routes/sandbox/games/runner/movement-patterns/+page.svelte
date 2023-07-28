@@ -7,7 +7,7 @@
 	let canvasWidth: number;
 	let canvasHeight: number;
 
-	const numberOfBats = 1000;
+	const numberOfBats = 100000;
 	const batsArray: Bat[] = [];
 	let gameFrame = 0;
 
@@ -175,7 +175,7 @@
 			name="enemyDial"
 			type="range"
 			min="0"
-			max="100"
+			max="120"
 			class="range range-lg range-primary mb-4 w-96"
 		/>
 		{nbOfEnemies}

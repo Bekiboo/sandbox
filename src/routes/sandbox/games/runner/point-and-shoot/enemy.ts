@@ -1,47 +1,45 @@
 import { loadImage } from '../utils';
 
-export class Bat {
-	readonly spriteWidth = 15.5;
-	readonly spriteHeight = 15.5;
-	readonly depth = Math.random() * 0.5 + 0.5;
-	readonly width = this.spriteWidth * this.depth * 5;
-	readonly height = this.spriteHeight * this.depth * 5;
-	readonly image = loadImage('/runner/point-and-shoot/TerrorBatSideIdle.png');
+export abstract class Enemy {
+	width!: number;
+	height!: number;
+	depth!: number;
+	directionX!: number;
+	directionY!: number;
+	frame!: number;
+	maxFrame!: number;
+	flapInterval!: number;
+	timeSinceFlap!: number;
+	image!: HTMLImageElement;
+	spriteWidth!: number;
+	spriteHeight!: number;
 
 	public markedForDeletion = false;
-
-	private x: number;
-	private y: number;
-	private directionX: number;
-	private directionY: number;
-	private frame: number;
-	private readonly maxFrame = 3;
-	private timeSinceFlap: number;
-	private readonly flapInterval: number;
+	protected x!: number;
+	protected y!: number;
 	private canvasHeight: number;
 
-	constructor(canvasWidth: number, canvasHeight: number) {
-		this.x = canvasWidth;
-		this.y = Math.random() * (canvasHeight - this.height);
-		this.directionX = ((this.depth + 1) * (this.depth + 1) * (this.depth + 1)) / 4;
-		this.directionY = Math.random() * 3 - 1.5;
-		this.markedForDeletion = false;
-		this.frame = 1;
-		this.timeSinceFlap = 0;
-		this.flapInterval = Math.random() * 50 + 50;
-		this.canvasHeight = canvasHeight;
+	constructor(game: any) {
+		this.canvasHeight = game.height;
 	}
 
 	update(deltaTime: number) {
-		if (this.y < 0 || this.y > this.canvasHeight - this.height) this.directionY *= -1;
-		this.x -= this.directionX;
+		// mark for deletion if out of bounds
 		if (this.x < 0 - this.width) this.markedForDeletion = true;
+		// reverse directionY if out of bounds
+		if (this.y < 0 || this.y > this.canvasHeight - this.height) this.directionY *= -1;
+
+		// move
+		this.x -= this.directionX;
+
+		this.y += this.directionY;
+
+		// flap wings
 		this.timeSinceFlap += deltaTime;
 		if (this.timeSinceFlap > this.flapInterval) {
 			this.frame >= this.maxFrame ? (this.frame = 0) : this.frame++;
 			this.timeSinceFlap = 0;
 		}
-		this.y += this.directionY;
 	}
 
 	draw(ctx: CanvasRenderingContext2D) {
@@ -68,5 +66,28 @@ export class Bat {
 			return { x: this.x, y: this.y };
 		}
 		return false;
+	}
+}
+
+export class Bat extends Enemy {
+	readonly image: HTMLImageElement;
+	readonly spriteWidth = 15.5;
+	readonly spriteHeight = 15.5;
+	readonly depth = Math.random() * 0.5 + 0.5;
+	readonly width = this.spriteWidth * this.depth * 5;
+	readonly height = this.spriteHeight * this.depth * 5;
+	directionX = (this.depth + 1) ** 3 / 4;
+	directionY = Math.random() * 3 - 1.5;
+	frame = 1;
+	readonly maxFrame = 3;
+	readonly flapInterval = Math.random() * 50 + 50;
+	timeSinceFlap = 0;
+	th!: number;
+
+	constructor(game: any) {
+		super(game);
+		this.x = game.width;
+		this.y = Math.random() * (game.height - this.height);
+		this.image = loadImage('/runner/point-and-shoot/TerrorBatSideIdle.png');
 	}
 }
