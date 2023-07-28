@@ -1,4 +1,5 @@
 import { loadImage } from '../utils';
+import type { Game } from './game';
 
 export abstract class Enemy {
 	width!: number;
@@ -19,7 +20,7 @@ export abstract class Enemy {
 	protected y!: number;
 	private canvasHeight: number;
 
-	constructor(game: any) {
+	constructor(game: Game) {
 		this.canvasHeight = game.height;
 	}
 
@@ -84,7 +85,7 @@ export class Bat extends Enemy {
 	timeSinceFlap = 0;
 	th!: number;
 
-	constructor(game: any) {
+	constructor(game: Game) {
 		super(game);
 		this.x = game.width;
 		this.y = Math.random() * (game.height - this.height);

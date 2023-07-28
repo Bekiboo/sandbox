@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { preloadAudio } from '../utils';
-	import type { Enemy } from './enemy';
+	import type { Enemy } from './enemies';
 	import { Explosion, explosionSounds } from './effects';
 	import { Game } from './game';
 
@@ -43,13 +43,7 @@
 	}
 
 	function handleClick(event: MouseEvent) {
-		// enemysArray.forEach((enemy) => {
-		// 	let collision = enemy.chechIfCollided(event);
-		// 	if (collision) {
-		// 		explosions.push(new Explosion(collision.x, collision.y, enemy.width, enemy.depth));
-		// 		enemy.markedForDeletion = true;
-		// 	}
-		// });
+		game.checkForCollision(event);
 	}
 </script>
 
