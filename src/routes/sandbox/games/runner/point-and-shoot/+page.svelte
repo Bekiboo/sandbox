@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { preloadAudio } from '../utils';
-	import type { Enemy } from './enemies';
-	import { Explosion, explosionSounds } from './effects';
+	import { explosionSounds } from './effects';
 	import { Game } from './game';
 
 	let canvas: HTMLCanvasElement;
@@ -35,6 +34,7 @@
 
 			let deltaTime = timestamp - lastTime;
 			lastTime = timestamp;
+
 			game.update(deltaTime);
 			game.draw();
 

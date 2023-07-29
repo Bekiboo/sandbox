@@ -1,6 +1,6 @@
 import { loadImage } from '../utils';
 import { Explosion } from './effects';
-import { Bat, type Enemy } from './enemies';
+import { AngryBat, Bat, type Enemy } from './enemies';
 
 export class Game {
 	ctx: CanvasRenderingContext2D;
@@ -55,15 +55,21 @@ export class Game {
 	}
 
 	#addNewEnemy() {
-		this.enemies.push(new Bat(this));
+		// 20% chance of spawning an angry bat
+		if (Math.random() < 0.2) {
+			this.enemies.push(new AngryBat(this));
+		} else {
+			this.enemies.push(new Bat(this));
+		}
 	}
 
 	checkForCollision(event: MouseEvent) {
 		this.enemies.forEach((enemy) => {
 			const collision = enemy.chechIfCollided(event);
 			if (collision) {
-				this.explosions.push(new Explosion(collision.x, collision.y, enemy.width, enemy.depth));
-				enemy.markedForDeletion = true;
+				const isDead = enemy.damageEnemy();
+				if (isDead)
+					this.explosions.push(new Explosion(collision.x, collision.y, enemy.width, enemy.depth));
 			}
 		});
 	}

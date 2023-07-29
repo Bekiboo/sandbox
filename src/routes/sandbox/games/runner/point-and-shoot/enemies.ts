@@ -14,6 +14,7 @@ export abstract class Enemy {
 	image!: HTMLImageElement;
 	spriteWidth!: number;
 	spriteHeight!: number;
+	protected hp!: number;
 
 	public markedForDeletion = false;
 	protected x!: number;
@@ -68,6 +69,14 @@ export abstract class Enemy {
 		}
 		return false;
 	}
+
+	damageEnemy() {
+		this.hp--;
+		if (this.hp <= 0) {
+			this.markedForDeletion = true;
+			return true;
+		}
+	}
 }
 
 export class Bat extends Enemy {
@@ -83,12 +92,35 @@ export class Bat extends Enemy {
 	readonly maxFrame = 3;
 	readonly flapInterval = Math.random() * 50 + 50;
 	timeSinceFlap = 0;
-	th!: number;
+	protected hp = 1;
 
 	constructor(game: Game) {
 		super(game);
 		this.x = game.width;
 		this.y = Math.random() * (game.height - this.height);
-		this.image = loadImage('/runner/point-and-shoot/TerrorBatSideIdle.png');
+		this.image = loadImage('/runner/point-and-shoot/enemies/Bat.png');
+	}
+}
+
+export class AngryBat extends Enemy {
+	readonly image: HTMLImageElement;
+	readonly spriteWidth = 15.5;
+	readonly spriteHeight = 15.5;
+	readonly depth = Math.random() * 0.5 + 0.5;
+	readonly width = this.spriteWidth * this.depth * 5;
+	readonly height = this.spriteHeight * this.depth * 5;
+	directionX = (this.depth + 1) ** 3 / 4;
+	directionY = Math.random() * 3 - 1.5;
+	frame = 1;
+	readonly maxFrame = 3;
+	readonly flapInterval = Math.random() * 50 + 50;
+	timeSinceFlap = 0;
+	protected hp = 2;
+
+	constructor(game: Game) {
+		super(game);
+		this.x = game.width;
+		this.y = Math.random() * (game.height - this.height);
+		this.image = loadImage('/runner/point-and-shoot/enemies/AngryBat.png');
 	}
 }

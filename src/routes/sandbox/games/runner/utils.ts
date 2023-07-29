@@ -15,3 +15,10 @@ export function preloadAudio(arrayOfSoundPaths: string[]) {
 		audio.preload = 'auto';
 	});
 }
+
+export function preloadImages(arrayOfImagePaths: string[]) {
+	arrayOfImagePaths.forEach((imagePath) => {
+		const image = new Image();
+		image.src = imagePath;
+	});
+}
