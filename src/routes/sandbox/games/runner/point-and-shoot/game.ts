@@ -11,6 +11,7 @@ export class Game {
 	enemies: Enemy[];
 	enemyInterval: number;
 	enemyTimer: number;
+	// timer: number;
 	constructor(
 		ctx: CanvasRenderingContext2D,
 		bgCtx: CanvasRenderingContext2D,
@@ -26,6 +27,7 @@ export class Game {
 		this.#addNewEnemy();
 		this.enemyInterval = 500;
 		this.enemyTimer = 0;
+		// this.timer = 0;
 	}
 
 	update(deltaTime: number) {
@@ -40,6 +42,8 @@ export class Game {
 
 		this.enemies.forEach((enemy) => enemy.update(deltaTime));
 		this.explosions.forEach((explosion) => explosion.update(deltaTime));
+
+		// this.enemyInterval -= deltaTime * 0.01;
 	}
 
 	draw() {

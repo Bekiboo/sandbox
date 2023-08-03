@@ -109,7 +109,7 @@ export class AngryBat extends Enemy {
 	readonly depth = Math.random() * 0.5 + 0.5;
 	readonly width = this.spriteWidth * this.depth * 5;
 	readonly height = this.spriteHeight * this.depth * 5;
-	directionX = (this.depth + 1) ** 3 / 4;
+	directionX = (this.depth + 1) ** 3;
 	directionY = Math.random() * 3 - 1.5;
 	frame = 1;
 	readonly maxFrame = 3;
