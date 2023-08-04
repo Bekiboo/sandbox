@@ -55,6 +55,5 @@
 </svelte:head>
 
 <div class="flex flex-col items-center mt-5">
-	<!-- <div class="text-xl font-bold text-white">{enemysArray.length}</div> -->
 	<canvas on:click={handleClick} class="w-[600px] h-[800px]" bind:this={canvas} />
 </div>
