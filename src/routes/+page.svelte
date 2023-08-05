@@ -6,7 +6,7 @@
 	let balls: { element: HTMLDivElement; velocityY: number; velocityX: number }[] = [];
 	const NUM_BALLS = 5; // Number of balls to generate
 
-	const GRAVITY = 0.2;
+	const GRAVITY = 0.3;
 	const bounceFactor = -0.6;
 
 	const dropBall = (ball: { element: HTMLDivElement; velocityY: number; velocityX: number }) => {
@@ -24,6 +24,7 @@
 
 	const resetBall = (ball: { element: HTMLDivElement; velocityY: number; velocityX: number }) => {
 		ball.element.style.top = '0px';
+		ball.element.style.left = '0px';
 		ball.velocityY = 0;
 	};
 
