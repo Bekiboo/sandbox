@@ -8,16 +8,16 @@
 	<div class="body-wrapper">
 		<nav class="flex justify-center my-6">
 			<ul class="steps">
-				<a href="/sandbox/fkit/login" class="step step-primary">Sign In</a>
+				<a href="/projects/fkit/login" class="step step-primary">Sign In</a>
 				<a
-					href="/sandbox/fkit/login/username"
+					href="/projects/fkit/login/username"
 					class="step"
 					class:step-primary={$page.route.id?.match(/username|photo/g)}
 				>
 					Choose Username
 				</a>
 				<a
-					href="/sandbox/fkit/login/photo"
+					href="/projects/fkit/login/photo"
 					class="step"
 					class:step-primary={$page.route.id?.includes('photo')}
 				>
