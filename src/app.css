@@ -3,73 +3,72 @@
 @tailwind utilities;
 
 :root {
-    --space-cadet: #24295cff;
-    --delft-blue: #38456eff;
-    --persian-red: #d23324ff;
-    --azure-web: #e1f5f7ff;
-    --white: #f9fcfdff;
-  }
-
-[data-theme="light"] {
-  --primary: var(--space-cadet);
-  --secondary: var(--delft-blue);
-  --accent: var(--persian-red);
-  --bg: var(--white);
-  --text: var(--space-cadet);
-  --neutral: var(--azure-web);
+	--space-cadet: #24295cff;
+	--delft-blue: #38456eff;
+	--persian-red: #d23324ff;
+	--azure-web: #e1f5f7ff;
+	--white: #f9fcfdff;
 }
 
-[data-theme="dark"] {
-  --primary: var(--white);
-  --secondary: var(--azure-web);
-  --accent: var(--persian-red);
-  --bg: var(--space-cadet);
-  --text: var(--white);
-  --neutral: var(--delft-blue);
+[data-theme='light'] {
+	--primary: var(--space-cadet);
+	--secondary: var(--delft-blue);
+	--accent: var(--persian-red);
+	--bg: var(--white);
+	--text: var(--space-cadet);
+	--neutral: var(--azure-web);
+}
+
+[data-theme='dark'] {
+	--primary: var(--white);
+	--secondary: var(--azure-web);
+	--accent: var(--persian-red);
+	--bg: var(--space-cadet);
+	--text: var(--white);
+	--neutral: var(--delft-blue);
 }
 
 /* Define variables */
 :root {
-    --primary: #4caf50;
-    --button-active-background: #136016;
-    --button-shift: 0.25rem;
-  }
-  
-  /* Button styles */
-  button {
-    position: relative;
-    background-color: var(--primary);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-  }
-  
-  /* Active state styles */
-  button:active {
-    top: var(--button-shift);
-    left: var(--button-shift);
-    transition: all 0.2s ease-in-out;
-  }
-  
-  /* Button shadow effect */
-  button::after {
-    content: '';
-    z-index: -1;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0.5rem;
-    left: 0.5rem;
-    background-color: var(--button-active-background);
-  }
-  
-  /* Active state for shadow effect */
-  button:active::after {
-    top: calc(0.5rem - var(--button-shift));
-    left: calc(0.5rem - var(--button-shift));
-  }
-  
+	--primary: #4caf50;
+	--button-active-background: #136016;
+	--button-shift: 0.25rem;
+}
+
+/* Button styles */
+button {
+	position: relative;
+	background-color: var(--primary);
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+/* Active state styles */
+button:active {
+	top: var(--button-shift);
+	left: var(--button-shift);
+	transition: all 0.2s ease-in-out;
+}
+
+/* Button shadow effect */
+button::after {
+	content: '';
+	z-index: -1;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0.5rem;
+	left: 0.5rem;
+	background-color: var(--button-active-background);
+}
+
+/* Active state for shadow effect */
+button:active::after {
+	top: calc(0.5rem - var(--button-shift));
+	left: calc(0.5rem - var(--button-shift));
+}
