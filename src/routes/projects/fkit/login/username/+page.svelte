@@ -63,7 +63,7 @@
 			Your username is <span class="">@{$userData.username}</span>
 		</p>
 		<p class="">(Usernames cannot be changed)</p>
-		<a class="" href="/login/photo">Upload Profile Image</a>
+		<a class="" href="/projects/fkit/login/photo">Upload Profile Image</a>
 	{:else}
 		<form class="w-2/5" on:submit|preventDefault={confirmUsername}>
 			<input
