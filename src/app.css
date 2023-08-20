@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: 'Lemon-Milk';
+	src: local('Lemon-Milk-Bold'), local('lemon milk bold'),
+		url('/fonts/lemon-milk/Lemon Milk Pro Bold.otf');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Lemon-Milk';
+	src: local('Lemon-Milk-Medium'), local('lemon milk medium'),
+		url('/fonts/lemon-milk/Lemon Milk Pro Medium.otf');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Lemon-Milk';
+	src: local('Lemon-Milk'), local('lemon milk'), url('/fonts/lemon-milk/Lemon Milk Pro Regular.otf');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Lemon-Milk';
+	src: local('Lemon-Milk-Light'), local('lemon milk light'),
+		url('/fonts/lemon-milk/Lemon Milk Pro Ultra Light.otf');
+	font-weight: 100 600;
+	font-display: swap;
+}
+
 :root {
 	--space-cadet: #24295cff;
 	--delft-blue: #38456eff;

@@ -2,10 +2,14 @@
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {}
+		extend: {
+			fontFamily: {
+				lemonMilk: ['Lemon-Milk', 'sans-serif']
+			}
+		}
 	},
 	plugins: [require('daisyui')],
 	daisyui: {
 		themes: ['light', 'dark', 'coffee']
 	}
-};
+}
