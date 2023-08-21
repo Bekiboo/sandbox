@@ -2,6 +2,27 @@ import { loadImage } from '../utils';
 import { Explosion } from './effects';
 import { AngryBat, Bat, type Enemy } from './enemies';
 
+// export class renderer {
+// 	ctx: CanvasRenderingContext2D;
+// 	width: number;
+// 	height: number;
+// 	constructor(ctx: CanvasRenderingContext2D, width: number, height: number) {
+// 		this.ctx = ctx;
+// 		this.width = width;
+// 		this.height = height;
+// 	}
+
+// 	draw() {
+// 		this.ctx?.drawImage(
+// 			loadImage('/runner/point-and-shoot/cave_brownsmall.png'),
+// 			0,
+// 			0,
+// 			this.width,
+// 			this.height
+// 		);
+// 	}
+// }
+
 export class Game {
 	ctx: CanvasRenderingContext2D;
 	bgCtx: CanvasRenderingContext2D;
