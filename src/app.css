@@ -67,7 +67,7 @@
 }
 
 /* Button styles */
-button {
+/* button {
 	position: relative;
 	background-color: var(--primary);
 	border: none;
@@ -77,17 +77,17 @@ button {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-}
+} */
 
 /* Active state styles */
-button:active {
+/* button:active {
 	top: var(--button-shift);
 	left: var(--button-shift);
 	transition: all 0.2s ease-in-out;
-}
+} */
 
 /* Button shadow effect */
-button::after {
+/* button::after {
 	content: '';
 	z-index: -1;
 	position: absolute;
@@ -96,10 +96,10 @@ button::after {
 	top: 0.5rem;
 	left: 0.5rem;
 	background-color: var(--button-active-background);
-}
+} */
 
 /* Active state for shadow effect */
-button:active::after {
+/* button:active::after {
 	top: calc(0.5rem - var(--button-shift));
 	left: calc(0.5rem - var(--button-shift));
-}
+} */
