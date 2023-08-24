@@ -4,7 +4,8 @@
 
 	let canvas: HTMLCanvasElement
 	let ctx: CanvasRenderingContext2D
-	let content: HTMLDivElement
+	let controlPanel: HTMLDivElement
+	let wrapper: HTMLDivElement
 
 	// Controls
 	let text = 'TEXT'
@@ -14,6 +15,7 @@
 	let connectingLineWidth = 2
 	let particleSize = 1
 	let fontWeight = 300
+	let particleShape = 'circle'
 
 	const mouse: Mouse = {
 		x: 0,
@@ -42,8 +44,11 @@
 		draw() {
 			ctx.fillStyle = `rgb(255, ${this.greenAndBlue}, ${this.greenAndBlue}, 1)`
 			ctx.beginPath()
-			ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+
+			if (particleShape === 'circle') ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+			if (particleShape === 'square') ctx.rect(this.x, this.y, this.size, this.size)
 			ctx.closePath()
+
 			ctx.fill()
 		}
 
@@ -88,8 +93,8 @@
 	}
 
 	const animate = () => {
-		canvas.width = content.clientWidth
-		canvas.height = content.clientHeight
+		canvas.width = wrapper.clientWidth
+		canvas.height = wrapper.clientHeight - controlPanel.clientHeight
 
 		ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -175,10 +180,8 @@
 	}
 </script>
 
-<div class="wrapper">
-	<canvas on:mousemove={mouseMove} on:click={mouseClick} bind:this={canvas} />
-
-	<div class="control-panel" bind:this={content}>
+<div class="wrapper" bind:this={wrapper}>
+	<div class="control-panel" bind:this={controlPanel}>
 		<div class="flex gap-8">
 			<div class="form-control gap-5">
 				<input bind:value={text} on:input={init} type="text" />
@@ -187,8 +190,7 @@
 					bind:value={fontWeight}
 					on:change={init}
 				>
-					<option disabled selected>Font Weight</option>
-					<option>300</option>
+					<option selected>300</option>
 					<option>400</option>
 					<option>500</option>
 					<option>700</option>
@@ -222,35 +224,55 @@
 				<input
 					type="range"
 					min=".5"
-					max="10"
+					max="20"
 					class="range range-primary"
 					bind:value={particleSize}
 					on:change={init}
 				/>
+				<div class="form-control">
+					<label class="label cursor-pointer">
+						<span class="label-text">Circles</span>
+						<input
+							bind:group={particleShape}
+							value="circle"
+							type="radio"
+							name="radio-10"
+							class="radio radio-primary"
+						/>
+					</label>
+				</div>
+				<div class="form-control">
+					<label class="label cursor-pointer">
+						<span class="label-text">Squares</span>
+						<input
+							bind:group={particleShape}
+							value="square"
+							type="radio"
+							name="radio-10"
+							class="radio radio-primary"
+							checked
+						/>
+					</label>
+				</div>
 			</div>
 		</div>
 	</div>
+
+	<canvas on:mousemove={mouseMove} on:click={mouseClick} bind:this={canvas} />
 </div>
 
 <style>
 	.wrapper {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
+		display: flex;
+		flex-direction: column;
 		min-height: 100vh;
 	}
 	canvas {
-		grid-column: 1;
-		grid-row: 1;
 		width: 100%;
 		height: 100%;
 	}
 
 	.control-panel {
-		grid-column: 1;
-		grid-row: 1;
-		top: 0;
-		left: 0;
 		width: 100%;
 		height: 100%;
 	}
