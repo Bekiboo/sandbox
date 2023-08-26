@@ -1,23 +1,23 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import AnimatedRoutes from '$lib/components/AnimatedRoutes.svelte';
+	import { page } from '$app/stores'
+	import AnimatedRoutes from '$lib/components/AnimatedRoutes.svelte'
 </script>
 
 <div class="grid-wrapper">
-	<canvas class="border border-white w-full h-full" />
+	<canvas class="w-full h-full border border-white" />
 	<div class="body-wrapper">
 		<nav class="flex justify-center my-6">
 			<ul class="steps">
-				<a href="/projects/fkit/login" class="step step-primary">Sign In</a>
+				<a href="/experiments/fkit/login" class="step step-primary">Sign In</a>
 				<a
-					href="/projects/fkit/login/username"
+					href="/experiments/fkit/login/username"
 					class="step"
 					class:step-primary={$page.route.id?.match(/username|photo/g)}
 				>
 					Choose Username
 				</a>
 				<a
-					href="/projects/fkit/login/photo"
+					href="/experiments/fkit/login/photo"
 					class="step"
 					class:step-primary={$page.route.id?.includes('photo')}
 				>
@@ -27,8 +27,8 @@
 		</nav>
 
 		<AnimatedRoutes>
-			<main class="card w-4/6 bg-neutral text-neutral-content mx-auto">
-				<div class="card-body items-center text-center">
+			<main class="w-4/6 mx-auto card bg-neutral text-neutral-content">
+				<div class="items-center text-center card-body">
 					<slot />
 				</div>
 			</main>

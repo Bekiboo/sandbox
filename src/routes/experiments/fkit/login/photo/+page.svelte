@@ -6,7 +6,7 @@
 
 	let previewURL: string
 	let uploading = false
-	$: href = `/projects/fkit/${$userData?.username}/edit`
+	$: href = `/experiments/fkit/${$userData?.username}/edit`
 
 	async function upload(e: any) {
 		uploading = true
@@ -24,8 +24,8 @@
 <AuthCheck>
 	<h2 class="card-title">Upload a Profile Photo</h2>
 
-	<form class="max-w-screen-md w-full">
-		<div class="form-control w-full max-w-xs my-10 mx-auto text-center">
+	<form class="w-full max-w-screen-md">
+		<div class="w-full max-w-xs mx-auto my-10 text-center form-control">
 			<img
 				src={previewURL ?? $userData?.photoURL ?? '/user.png'}
 				alt="photoURL"
@@ -40,12 +40,12 @@
 				on:change={upload}
 				name="photoURL"
 				type="file"
-				class="file-input file-input-bordered w-full max-w-xs"
+				class="w-full max-w-xs file-input file-input-bordered"
 				accept="image/png, image/jpeg, image/gif, image/webp"
 			/>
 			{#if uploading}
 				<p>Uploading...</p>
-				<progress class="progress progress-info w-56 mt-6" />
+				<progress class="w-56 mt-6 progress progress-info" />
 			{/if}
 		</div>
 	</form>

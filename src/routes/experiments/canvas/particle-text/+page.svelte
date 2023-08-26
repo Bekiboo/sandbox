@@ -21,6 +21,7 @@
 	let fontFamily: string
 	let particleShape: string
 
+	// TODO: add color picker to the control panel
 	const colors = {
 		butterScotch: { r: 220, g: 148, b: 76, a: 1 },
 		aquamarine: { r: 76, g: 224, b: 179, a: 1 },
@@ -78,7 +79,8 @@
 		ctx.fillStyle = 'white'
 		ctx.font = `${fontWeight} 16pt ${fontFamily}`
 		const textWidth = ctx.measureText(text).width
-		console.log(parseFloat(ctx.font))
+
+		// TODO: fix the space between letters and text vertical alignment
 
 		let spaceBetweenLetters = 0
 
