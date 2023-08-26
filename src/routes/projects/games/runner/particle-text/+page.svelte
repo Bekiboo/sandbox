@@ -12,14 +12,14 @@
 	const textPos = { x: 1, y: 20 }
 
 	// Controls
-	let text = 'Text'
-	let connectParticles = false
-	let connectDistance = 32
-	let connectingLineWidth = 2
-	let particleSize = 10
-	let fontWeight = 'normal'
-	let fontFamily = 'sans-serif'
-	let particleShape = 'square'
+	let text: string
+	let connectParticles: boolean
+	let connectDistance: number
+	let connectingLineWidth: number
+	let particleSize: number
+	let fontWeight: string
+	let fontFamily: string
+	let particleShape: string
 
 	const colors = {
 		butterScotch: { r: 220, g: 148, b: 76, a: 1 },
@@ -41,7 +41,10 @@
 
 	const animate = () => {
 		canvas.width = wrapper.clientWidth
-		// canvas.height = wrapper.clientHeight - controlPanel.clientHeight
+
+		if (window.innerWidth > 768) {
+			canvas.height = wrapper.clientHeight - controlPanel.clientHeight
+		}
 		ctx.clearRect(0, 0, canvas.width, canvas.height)
 
 		for (let i = 0; i < particles.length; i++) {
@@ -60,7 +63,11 @@
 		}
 
 		canvas.width = wrapper.clientWidth
-		canvas.height = wrapper.clientHeight - controlPanel.clientHeight
+		if (window.innerWidth > 768) {
+			canvas.height = wrapper.clientHeight - controlPanel.clientHeight
+		} else {
+			canvas.height = wrapper.clientHeight
+		}
 
 		init()
 		animate()
@@ -71,6 +78,15 @@
 		ctx.fillStyle = 'white'
 		ctx.font = `${fontWeight} 16pt ${fontFamily}`
 		const textWidth = ctx.measureText(text).width
+		console.log(parseFloat(ctx.font))
+
+		let spaceBetweenLetters = 0
+
+		if (window.innerWidth > 768) {
+			spaceBetweenLetters = 15
+		} else {
+			spaceBetweenLetters = 8
+		}
 
 		ctx.fillText(text, canvas.clientWidth / 2, textPos.y)
 
@@ -85,11 +101,13 @@
 					let positionY = y
 					particles.push(
 						new Particle(
-							positionX * 15 + canvas.clientWidth / 2 - (textWidth * 15) / 2,
-							positionY * 15,
+							positionX * spaceBetweenLetters +
+								canvas.clientWidth / 2 -
+								(textWidth * spaceBetweenLetters) / 2,
+							positionY * spaceBetweenLetters,
 							particleShape,
-							colors.aquamarine as Color,
 							colors.butterScotch as Color,
+							colors.aquamarine as Color,
 							particleSize
 						)
 					)
@@ -129,6 +147,11 @@
 		mouse.y = event.offsetY
 	}
 
+	function touchMove(event: TouchEvent) {
+		mouse.x = event.touches[0].clientX
+		mouse.y = event.touches[0].clientY
+	}
+
 	function mouseClick() {
 		const timeoutLength = 2000
 		mouse.radius += 50
@@ -139,7 +162,7 @@
 	}
 </script>
 
-<div class="wrapper relative" bind:this={wrapper}>
+<div class="relative overflow-hidden wrapper" bind:this={wrapper}>
 	<ControlPanel
 		bind:controlPanel
 		bind:text
@@ -152,8 +175,15 @@
 		bind:particleShape
 		{init}
 	/>
-	<canvas on:mousemove={mouseMove} on:click={mouseClick} bind:this={canvas} />
+	<canvas
+		on:mousemove={mouseMove}
+		on:touchmove|preventDefault={touchMove}
+		on:click={mouseClick}
+		bind:this={canvas}
+	/>
 </div>
+
+<svelte:window on:resize={init} />
 
 <style>
 	.wrapper {
