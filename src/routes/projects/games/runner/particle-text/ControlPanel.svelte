@@ -141,6 +141,7 @@
 					type="radio"
 					name="radio-10"
 					class="radio radio-primary"
+					on:change={init}
 					checked
 				/>
 			</label>
@@ -154,6 +155,7 @@
 					type="radio"
 					name="radio-10"
 					class="radio radio-primary"
+					on:change={init}
 					checked
 				/>
 			</label>
