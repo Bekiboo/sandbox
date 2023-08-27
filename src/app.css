@@ -1,5 +1,6 @@
+@import '@fontsource/poppins';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import '@fontsource/poppins';
