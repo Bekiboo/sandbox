@@ -2,4 +2,6 @@
 	<title>Matching Game</title>
 </svelte:head>
 
-<slot />
+<div class="select-none">
+	<slot />
+</div>

@@ -4,13 +4,13 @@
 	type State = 'start' | 'playing' | 'won' | 'lost'
 
 	let state: State = 'start'
-	let size = 12
+	let size = 20
 	let grid = createGrid()
 	let maxMatches = grid.length / 2
 	let selected: number[] = []
 	let matches: string[] = []
 	let timerId: NodeJS.Timer | null = null
-	let time = 2000
+	let time = 60
 
 	function startGameTimer() {
 		timerId = setInterval(() => {
@@ -19,18 +19,14 @@
 	}
 
 	function createGrid() {
-		// only want unique cards
 		let cards = new Set<string>()
-		// half because we duplicate the cards
 		let maxSize = size / 2
 
 		while (cards.size < maxSize) {
-			// pick random emoji
 			const randomIndex = Math.floor(Math.random() * emoji.length)
 			cards.add(emoji[randomIndex])
 		}
 
-		// duplicate and shuffle cards
 		return shuffle([...cards, ...cards])
 	}
 
@@ -51,7 +47,7 @@
 
 		setTimeout(() => {
 			selected = []
-		}, 300)
+		}, 500)
 	}
 
 	function resetGame() {
@@ -61,7 +57,7 @@
 		selected = []
 		matches = []
 		timerId = null
-		time = 20
+		time = 60
 	}
 
 	function gameWon() {
@@ -82,7 +78,7 @@
 	$: maxMatches == matches.length && gameWon()
 	$: time == 0 && gameLost()
 
-	$: console.log({ state, selected, matches })
+	// $: console.log({ state, selected, matches })
 </script>
 
 {#if state === 'start'}
@@ -92,11 +88,6 @@
 
 {#if state == 'playing'}
 	<h1 class="timer" class:pulse={time <= 10}>{time}</h1>
-	<div class="matches">
-		{#each matches as card}
-			<div class="match">{card}</div>
-		{/each}
-	</div>
 	<div class="grid grid-cols-5 gap-2 m-auto w-fit">
 		{#each grid as card, cardIndex}
 			{@const isSelected = selected.includes(cardIndex)}
