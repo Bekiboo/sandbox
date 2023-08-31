@@ -25,10 +25,15 @@
 		{#if form?.missing}
 			<p class="text-error">No URL provided</p>
 		{/if}
-		<input type="text" name="imgUrl" placeholder="Type here" class="w-full input input-bordered" />
-		<p>
-			{form?.imgUrl ?? ''}
-		</p>
+		{#if form?.badUrl}
+			<p class="text-error">URL not valid</p>
+		{/if}
+		<input
+			type="text"
+			name="imgUrl"
+			placeholder="Enter image URL here"
+			class="w-full input input-bordered"
+		/>
 		<button type="submit" class="w-full btn btn-primary">
 			{#if !isLoading}
 				Get Caption
@@ -37,6 +42,10 @@
 			{/if}
 		</button>
 	</form>
+
+	{#if form?.serverError}
+		<p class="m-4 text-xl font-bold text-error">Something went wrong</p>
+	{/if}
 
 	<p>
 		{#if form?.results && !isLoading}

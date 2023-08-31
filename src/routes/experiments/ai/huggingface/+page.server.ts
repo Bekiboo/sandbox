@@ -20,19 +20,35 @@ export const actions = {
 
 		const inference = new HfInference(HUGGINGFACE_KEY)
 
-		const response = await fetch(imgUrl as string)
+		let response
+
+		try {
+			response = await fetch(imgUrl as string)
+		} catch (error) {
+			console.log('error', error)
+
+			return fail(400, { imgUrl, badUrl: true })
+		}
+
 		const imageBlob = await response.blob()
 
-		const inferencePromises = models.map(async (model) => {
-			const result = await inference.imageToText({
-				data: imageBlob,
-				model: model // Use the current model's name
+		let results
+		try {
+			const inferencePromises = models.map(async (model) => {
+				const result = await inference.imageToText({
+					data: imageBlob,
+					model: model // Use the current model's name
+				})
+				return { model, caption: result }
 			})
-			return { model, caption: result }
-		})
 
-		// Wait for all inference promises to complete
-		const results = await Promise.all(inferencePromises)
+			// Wait for all inference promises to complete
+			results = await Promise.all(inferencePromises)
+		} catch (error) {
+			console.log('error', error)
+
+			return fail(400, { serverError: true })
+		}
 
 		return { results }
 	}
