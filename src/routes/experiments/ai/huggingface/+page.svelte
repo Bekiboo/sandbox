@@ -49,13 +49,18 @@
 
 	<p>
 		{#if form?.results && !isLoading}
-			{#each form?.results as result}<div class="mt-4">
+			{#each form?.results as result}
+				{@const {
+					model,
+					caption: { generated_text }
+				} = result}
+				<div class="mt-4">
 					<a
 						target="_blank"
-						href="https://huggingface.co/{result?.model}"
-						class="text-xl link link-secondary">{result?.model}</a
+						href="https://huggingface.co/{model}"
+						class="text-xl link link-secondary">{model}</a
 					>
-					<p>{result?.caption.generated_text}</p>
+					<p>{generated_text}</p>
 				</div>
 			{/each}
 		{/if}
