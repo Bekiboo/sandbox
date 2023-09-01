@@ -52,15 +52,19 @@
 			{#each form?.results as result}
 				{@const {
 					model,
-					caption: { generated_text }
+					caption: { generated_text },
+					elapsedTime
 				} = result}
-				<div class="mt-4">
+				<div class="flex flex-col mt-4 md:items-end md:flex-row md:flex-wrap">
 					<a
 						target="_blank"
 						href="https://huggingface.co/{model}"
-						class="text-xl link link-secondary">{model}</a
+						class="md:text-xl link link-secondary">{model}</a
 					>
-					<p>{generated_text}</p>
+					<span class="text-accent md:ml-4">
+						{(elapsedTime / 1000).toFixed(3)}s
+					</span>
+					<p class="md:mt-1">{generated_text}</p>
 				</div>
 			{/each}
 		{/if}

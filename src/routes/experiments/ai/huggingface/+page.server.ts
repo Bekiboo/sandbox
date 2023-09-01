@@ -20,6 +20,8 @@ export const actions = {
 
 		const inference = new HfInference(HUGGINGFACE_KEY)
 
+		console.log(inference)
+
 		let response
 
 		try {
@@ -35,14 +37,17 @@ export const actions = {
 		let results
 		try {
 			const inferencePromises = models.map(async (model) => {
+				const startTime = performance.now()
 				const result = await inference.imageToText({
 					data: imageBlob,
-					model: model // Use the current model's name
+					model: model
 				})
-				return { model, caption: result }
+				const endTime = performance.now()
+				const elapsedTime = endTime - startTime
+
+				return { model, caption: result, elapsedTime }
 			})
 
-			// Wait for all inference promises to complete
 			results = await Promise.all(inferencePromises)
 		} catch (error) {
 			console.log('error', error)
