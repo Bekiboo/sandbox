@@ -95,7 +95,7 @@
 			{@const isMatched = matches.includes(card)}
 
 			<button
-				class="flex items-center justify-center w-32 h-32 text-6xl bg-accent card"
+				class="flex items-center justify-center w-32 h-32 text-6xl bg-primary card"
 				class:isSelected
 				class:flip={isSelectedOrMatched}
 				class:disabled={isSelectedOrMatched}
@@ -142,9 +142,9 @@
 		@apply opacity-40 transition-opacity ease-in-out duration-300;
 	}
 
-	.matches {
+	/* .matches {
 		@apply flex flex-row flex-wrap justify-center gap-4 text-2xl;
-	}
+	} */
 
 	.timer {
 		@apply text-6xl text-center;

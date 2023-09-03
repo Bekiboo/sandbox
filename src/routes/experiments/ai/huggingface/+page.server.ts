@@ -20,8 +20,6 @@ export const actions = {
 
 		const inference = new HfInference(HUGGINGFACE_KEY)
 
-		console.log(inference)
-
 		let response
 
 		try {

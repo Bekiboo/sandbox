@@ -1,12 +1,12 @@
 <script lang="ts">
-	import AuthCheck from '$lib/components/AuthCheck.svelte'
+	import AuthCheck from '../../components/AuthCheck.svelte'
 	import { user, userData, storage, db } from '$lib/firebase'
 	import { doc, updateDoc } from 'firebase/firestore'
 	import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 
 	let previewURL: string
 	let uploading = false
-	$: href = `/experiments/fkit/${$userData?.username}/edit`
+	$: href = `/projects/fkit/${$userData?.username}/edit`
 
 	async function upload(e: any) {
 		uploading = true
