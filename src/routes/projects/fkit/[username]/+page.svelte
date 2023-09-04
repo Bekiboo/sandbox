@@ -1,5 +1,5 @@
 <script lang="ts">
-	import UserLink from '$lib/components/UserLink.svelte'
+	import UserLink from '../components/UserLink.svelte'
 	import type { PageData } from './$types'
 
 	export let data: PageData

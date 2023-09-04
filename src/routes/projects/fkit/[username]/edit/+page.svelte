@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores'
-	import UserLink from '$lib/components/UserLink.svelte'
+	import UserLink from '../../components/UserLink.svelte'
 	import { db, userData, user } from '$lib/firebase'
 	import { arrayRemove, arrayUnion, doc, setDoc, updateDoc } from 'firebase/firestore'
 	import { writable } from 'svelte/store'
-	import SortableList from '$lib/components/SortableList.svelte'
+	import SortableList from '../../components/SortableList.svelte'
 
 	const icons = ['Twitter', 'YouTube', 'TikTok', 'LinkedIn', 'GitHub', 'Custom']
 
