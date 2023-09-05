@@ -11,10 +11,11 @@
 	<h1 class="text-2xl font-bold md:text-4xl">Image to Caption</h1>
 	<h2 class="mt-1 md:text-xl text-secondary">A HuggingFace model comparator</h2>
 	<form
+		enctype="multipart/form-data"
 		method="POST"
 		use:enhance={() => {
 			isLoading = true
-			return async ({ result, update }) => {
+			return async ({ update }) => {
 				update()
 				isLoading = false
 			}
@@ -23,7 +24,7 @@
 		class:isLoading
 	>
 		{#if form?.missing}
-			<p class="text-error">No URL provided</p>
+			<p class="text-error">No URL or file provided</p>
 		{/if}
 		{#if form?.badUrl}
 			<p class="text-error">URL not valid</p>
@@ -32,8 +33,18 @@
 			type="text"
 			name="imgUrl"
 			placeholder="Enter image URL here"
-			class="w-full input input-bordered"
+			class="w-full input input-bordered input-primary"
 		/>
+		<span>or</span>
+		<div class="flex">
+			<input
+				type="file"
+				class="file-input file-input-bordered file-input-primary w-full max-w-xs"
+				name="imgFile"
+				accept="image/*"
+			/>
+		</div>
+
 		<button type="submit" class="w-full btn btn-primary">
 			{#if !isLoading}
 				Get Caption

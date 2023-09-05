@@ -13,8 +13,12 @@ export const actions = {
 	default: async ({ request }) => {
 		const data = await request.formData()
 		const imgUrl = data.get('imgUrl')
+		const imgFile = data.get('imgFile') as File
 
-		if (!imgUrl) {
+		console.log('imgUrl', imgUrl)
+		console.log('imgFile', imgFile)
+
+		if (!imgUrl && imgFile.size === 0) {
 			return fail(400, { imgUrl, missing: true })
 		}
 
@@ -22,22 +26,29 @@ export const actions = {
 
 		let response
 
-		try {
-			response = await fetch(imgUrl as string)
-		} catch (error) {
-			console.log('error', error)
+		let image: File | Blob
+		const max_size = 1000 * 1024
 
-			return fail(400, { imgUrl, badUrl: true })
+		if (imgFile) {
+			image = imgFile as File
+			if (image.size > max_size) return fail(400, { imgUrl, tooBig: true })
+		} else {
+			try {
+				response = await fetch(imgUrl as string)
+			} catch (error) {
+				console.log('error', error)
+
+				return fail(400, { imgUrl, badUrl: true })
+			}
+			image = await response.blob()
 		}
-
-		const imageBlob = await response.blob()
 
 		let results
 		try {
 			const inferencePromises = models.map(async (model) => {
 				const startTime = performance.now()
 				const result = await inference.imageToText({
-					data: imageBlob,
+					data: image,
 					model: model
 				})
 				const endTime = performance.now()
