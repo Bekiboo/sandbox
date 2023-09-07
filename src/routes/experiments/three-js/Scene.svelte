@@ -1,53 +1,168 @@
 <script lang="ts">
-	import { T, useFrame } from '@threlte/core'
-	import { interactivity } from '@threlte/extras'
-	import { spring } from 'svelte/motion'
+	import { T } from '@threlte/core'
+	import { interactivity, OrbitControls } from '@threlte/extras'
+	import { DEG2RAD } from 'three/src/math/MathUtils'
+
+	import Pawn from './models/Pawn.svelte'
+	import Queen from './models/Queen.svelte'
+	import Bishop from './models/Bishop.svelte'
+	import King from './models/King.svelte'
+	import Rook from './models/Rook.svelte'
+	import Knight from './models/Knight.svelte'
+	import Board from './models/Board.svelte'
 
 	interactivity()
-	const scale = spring(1)
 
-	let rotation = 0
-	useFrame((state, delta) => {
-		rotation += delta
-	})
-
-	const rectangles = [
-		{ x: 0, y: 1, z: 0, width: 1, height: 2, color: [1, 0.8, 0], rotationSpeed: 1 },
-		{ x: 2, y: 1, z: 0, width: 1, height: 2, color: [0, 0.8, 1], rotationSpeed: 2 },
-		{ x: 2, y: 1, z: 2, width: 1, height: 2, color: [1, 0, 0], rotationSpeed: 0.5 },
-		{ x: 0, y: 1, z: 2, width: 1, height: 2, color: [0, 0, 1], rotationSpeed: 0.1 },
-		{ x: 2, y: 3.2, z: 0, width: 1, height: 2, color: [0.5, 0.5, 0], rotationSpeed: 3 }
+	const INITIAL_BOARD = [
+		{ piece: 'pawn', side: 'white', color: [0.8, 0.8, 0.8], position: [-16, 0, -12] },
+		{ piece: 'pawn', side: 'white', color: [0.8, 0.8, 0.8], position: [-12, 0, -12] },
+		{ piece: 'pawn', side: 'white', color: [0.8, 0.8, 0.8], position: [-8, 0, -12] },
+		{ piece: 'pawn', side: 'white', color: [0.8, 0.8, 0.8], position: [-4, 0, -12] },
+		{ piece: 'pawn', side: 'white', color: [0.8, 0.8, 0.8], position: [0, 0, -12] },
+		{ piece: 'pawn', side: 'white', color: [0.8, 0.8, 0.8], position: [4, 0, -12] },
+		{ piece: 'pawn', side: 'white', color: [0.8, 0.8, 0.8], position: [8, 0, -12] },
+		{ piece: 'pawn', side: 'white', color: [0.8, 0.8, 0.8], position: [12, 0, -12] },
+		{ piece: 'pawn', side: 'black', color: [0.2, 0.2, 0.2], position: [-16, 0, 8] },
+		{ piece: 'pawn', side: 'black', color: [0.2, 0.2, 0.2], position: [-12, 0, 8] },
+		{ piece: 'pawn', side: 'black', color: [0.2, 0.2, 0.2], position: [-8, 0, 8] },
+		{ piece: 'pawn', side: 'black', color: [0.2, 0.2, 0.2], position: [-4, 0, 8] },
+		{ piece: 'pawn', side: 'black', color: [0.2, 0.2, 0.2], position: [0, 0, 8] },
+		{ piece: 'pawn', side: 'black', color: [0.2, 0.2, 0.2], position: [4, 0, 8] },
+		{ piece: 'pawn', side: 'black', color: [0.2, 0.2, 0.2], position: [8, 0, 8] },
+		{ piece: 'pawn', side: 'black', color: [0.2, 0.2, 0.2], position: [12, 0, 8] },
+		{ piece: 'rook', side: 'white', color: [0.8, 0.8, 0.8], position: [-16, 0, -16] },
+		{ piece: 'rook', side: 'white', color: [0.8, 0.8, 0.8], position: [12, 0, -16] },
+		{ piece: 'rook', side: 'black', color: [0.2, 0.2, 0.2], position: [-16, 0, 12] },
+		{ piece: 'rook', side: 'black', color: [0.2, 0.2, 0.2], position: [12, 0, 12] },
+		{ piece: 'knight', side: 'white', color: [0.8, 0.8, 0.8], position: [-12, 0, -16] },
+		{ piece: 'knight', side: 'white', color: [0.8, 0.8, 0.8], position: [8, 0, -16] },
+		{ piece: 'knight', side: 'black', color: [0.2, 0.2, 0.2], position: [-12, 0, 12] },
+		{ piece: 'knight', side: 'black', color: [0.2, 0.2, 0.2], position: [8, 0, 12] },
+		{ piece: 'bishop', side: 'white', color: [0.8, 0.8, 0.8], position: [-8, 0, -16] },
+		{ piece: 'bishop', side: 'white', color: [0.8, 0.8, 0.8], position: [4, 0, -16] },
+		{ piece: 'bishop', side: 'black', color: [0.2, 0.2, 0.2], position: [-8, 0, 12] },
+		{ piece: 'bishop', side: 'black', color: [0.2, 0.2, 0.2], position: [4, 0, 12] },
+		{ piece: 'queen', side: 'white', color: [0.8, 0.8, 0.8], position: [-4, 0, -16] },
+		{ piece: 'queen', side: 'black', color: [0.2, 0.2, 0.2], position: [-4, 0, 12] },
+		{ piece: 'king', side: 'white', color: [0.8, 0.8, 0.8], position: [0, 0, -16] },
+		{ piece: 'king', side: 'black', color: [0.2, 0.2, 0.2], position: [0, 0, 12] }
 	]
+
+	let currentBoard = INITIAL_BOARD
+
+	let currentPiece = null
+
+	const pointerenter = (e: CustomEvent, i: number) => {
+		// console.log(e)
+		e.stopPropagation()
+		currentPiece = currentBoard[i]
+		if (currentBoard[i].side === 'white') {
+			currentBoard[i].color = [1, 1, 1]
+		} else {
+			currentBoard[i].color = [0.3, 0.3, 0.3]
+		}
+	}
+
+	const pointerleave = (e: CustomEvent, i: number) => {
+		e.stopPropagation()
+		currentPiece = null
+		if (currentBoard[i].side === 'white') {
+			currentBoard[i].color = [0.8, 0.8, 0.8]
+		} else {
+			currentBoard[i].color = [0.2, 0.2, 0.2]
+		}
+	}
+
+	const click = (e: CustomEvent, i: number) => {
+		console.log(e)
+
+		e.stopPropagation()
+	}
 </script>
 
-<T.PerspectiveCamera
-	makeDefault
-	position={[10, 5, 10]}
-	on:create={({ ref }) => {
-		ref.lookAt(0, 1, 0)
-	}}
+<T.PerspectiveCamera position={[10, 50, 50]} makeDefault fov={75}>
+	<OrbitControls maxPolarAngle={85 * DEG2RAD} minPolarAngle={20 * DEG2RAD} />
+</T.PerspectiveCamera>
+
+<T.AmbientLight intensity={0.5} />
+
+<T.DirectionalLight
+	position={[10, 10, 10]}
+	castShadow
+	shadow.camera.left={-20}
+	shadow.camera.right={20}
+	shadow.camera.top={20}
+	shadow.camera.bottom={-20}
 />
 
-<T.DirectionalLight color={[0.5, 0.8, 0.5]} position={[0, 10, 10]} castShadow />
-
-{#each rectangles as { x, y, z, width, height, color, rotationSpeed }, i}
-	<T.Mesh
-		rotation.y={rotation * rotationSpeed}
-		position.y={y * $scale}
-		position.x={x}
-		position.z={z}
-		scale={$scale}
-		castShadow
-	>
-		<T.BoxGeometry args={[width, height, 1]} />
-		<T.MeshStandardMaterial {color} />
-	</T.Mesh>
+{#each currentBoard as piece, i}
+	{#if piece.piece === 'pawn'}
+		<Pawn
+			position={piece.position}
+			scale={0.1}
+			rotation={[-Math.PI / 2, 0, 0]}
+			color={piece.color}
+			on:pointerenter={(e) => pointerenter(e, i)}
+			on:pointerleave={(e) => pointerleave(e, i)}
+		/>
+	{:else if piece.piece === 'queen'}
+		<Queen
+			position={piece.position}
+			scale={0.1}
+			rotation={[-Math.PI / 2, 0, 0]}
+			color={piece.color}
+			on:pointerenter={(e) => pointerenter(e, i)}
+			on:pointerleave={(e) => pointerleave(e, i)}
+		/>
+	{:else if piece.piece === 'bishop'}
+		<Bishop
+			position={piece.position}
+			scale={0.1}
+			rotation={[-Math.PI / 2, 0, 0]}
+			color={piece.color}
+			on:pointerenter={(e) => pointerenter(e, i)}
+			on:pointerleave={(e) => pointerleave(e, i)}
+		/>
+	{:else if piece.piece === 'king'}
+		<King
+			position={piece.position}
+			scale={0.1}
+			rotation={[-Math.PI / 2, 0, 0]}
+			color={piece.color}
+			on:pointerenter={(e) => pointerenter(e, i)}
+			on:pointerleave={(e) => pointerleave(e, i)}
+		/>
+	{:else if piece.piece === 'rook'}
+		<Rook
+			position={piece.position}
+			scale={0.1}
+			rotation={[-Math.PI / 2, 0, 0]}
+			color={piece.color}
+			on:pointerenter={(e) => pointerenter(e, i)}
+			on:pointerleave={(e) => pointerleave(e, i)}
+		/>
+	{:else if piece.piece === 'knight'}
+		<Knight
+			position={piece.position}
+			scale={0.1}
+			rotation={[-Math.PI / 2, 0, (Math.PI / 2) * (piece.side === 'white' ? 1 : -1)]}
+			color={piece.color}
+			on:pointerenter={(e) => pointerenter(e, i)}
+			on:pointerleave={(e) => pointerleave(e, i)}
+		/>
+	{/if}
 {/each}
 
-<T.Mesh rotation.x={-Math.PI / 2} receiveShadow>
-	<T.CircleGeometry args={[4, 40]} />
-	<T.MeshStandardMaterial color={[1, 1, 1]} />
-</T.Mesh>
+<Board />
 
-<!-- on:pointerenter={() => scale.set(2)}
-on:pointerleave={() => scale.set(1)} -->
+<!-- <T.Mesh
+	rotation.y={rotation}
+	position.y={1}
+	scale={$scale}
+	on:pointerenter={() => scale.set(1.5)}
+	on:pointerleave={() => scale.set(1)}
+	castShadow
+>
+	<T.BoxGeometry args={[1, 2, 1]} />
+	<T.MeshStandardMaterial color="hotpink" />
+</T.Mesh> -->
