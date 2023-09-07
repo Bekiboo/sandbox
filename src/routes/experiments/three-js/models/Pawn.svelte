@@ -17,7 +17,7 @@
 	{#await gltf}
 		<slot name="fallback" />
 	{:then gltf}
-		<T.Mesh geometry={gltf.nodes.mesh_0.geometry}>
+		<T.Mesh geometry={gltf.nodes.mesh_0.geometry} castShadow>
 			<T.MeshStandardMaterial {color} />
 		</T.Mesh>
 	{:catch error}
