@@ -15,6 +15,7 @@
 		method="POST"
 		use:enhance={() => {
 			isLoading = true
+
 			return async ({ update }) => {
 				update()
 				isLoading = false
@@ -39,7 +40,7 @@
 		<div class="flex">
 			<input
 				type="file"
-				class="file-input file-input-bordered file-input-primary w-full max-w-xs"
+				class="w-full max-w-xs file-input file-input-bordered file-input-primary"
 				name="imgFile"
 				accept="image/*"
 			/>

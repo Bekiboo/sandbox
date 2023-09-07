@@ -15,9 +15,6 @@ export const actions = {
 		const imgUrl = data.get('imgUrl')
 		const imgFile = data.get('imgFile') as File
 
-		console.log('imgUrl', imgUrl)
-		console.log('imgFile', imgFile)
-
 		if (!imgUrl && imgFile.size === 0) {
 			return fail(400, { imgUrl, missing: true })
 		}
