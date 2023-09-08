@@ -8,7 +8,7 @@
 	export const ref = new Group()
 	export let color = [0.8, 0.8, 0.8]
 
-	const gltf = useGltf('../models/Rook.gltf')
+	const gltf = useGltf('../../models/Knight.gltf')
 
 	const component = forwardEventHandlers()
 </script>

@@ -53,7 +53,6 @@
 	let currentPiece = null
 
 	const pointerenter = (e: CustomEvent, i: number) => {
-		// console.log(e)
 		e.stopPropagation()
 		currentPiece = currentBoard[i]
 		if (currentBoard[i].side === 'white') {
@@ -80,14 +79,29 @@
 	}
 </script>
 
-<T.PerspectiveCamera position={[10, 50, 50]} makeDefault fov={75}>
+<T.PerspectiveCamera
+	position={[0, 50, -50]}
+	makeDefault
+	fov={75}
+	near={0.1}
+	far={1000}
+	on:create={({ ref }) => {
+		ref.lookAt(0, 0, 0)
+	}}
+>
 	<OrbitControls maxPolarAngle={85 * DEG2RAD} minPolarAngle={20 * DEG2RAD} />
 </T.PerspectiveCamera>
 
-<T.AmbientLight intensity={0.5} />
+<!-- <T.RectAreaLight
+	intensity={1}
+	width={4}
+	height={4}
+	position={[4, 0.1, -12]}
+	rotation={[-Math.PI / 2, 0, 0]}
+/> -->
 
 <T.DirectionalLight
-	position={[10, 10, 10]}
+	position={[5, 10, 5]}
 	castShadow
 	shadow.camera.left={-20}
 	shadow.camera.right={20}
