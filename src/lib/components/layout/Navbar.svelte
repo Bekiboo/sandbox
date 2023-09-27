@@ -5,7 +5,7 @@
 </script>
 
 <!-- {#if breadcrumb.length > 0} -->
-<nav class="flex justify-center text-sm breadcrumbs text-secondary">
+<nav class="absolute flex justify-center w-screen text-sm breadcrumbs text-secondary">
 	<ul>
 		<li><a href="/">Home</a></li>
 		{#each breadcrumb as beadcrumb, i}
