@@ -1,10 +1,15 @@
-<script>
+<script lang="ts">
 	import { Stage, Layer, Star } from 'svelte-konva'
 
 	let width = window.innerWidth
 	let height = window.innerHeight
-	// @ts-ignore
-	let list = []
+
+	let onWindowResize = () => {
+		width = window.innerWidth
+		height = window.innerHeight
+	}
+
+	let list: any[] = []
 	for (let n = 0; n < 30; n++) {
 		list.push({
 			id: n.toString(),
@@ -14,21 +19,16 @@
 			scale: Math.random()
 		})
 	}
-	// @ts-ignore
-	let dragItemId = null
+	let dragItemId: string | null = null
 
-	// @ts-ignore
-	let handleDragStart = (e) => {
+	let handleDragStart = (e: CustomEvent) => {
 		// save drag element:
 		dragItemId = e.detail.target.id()
 		// move current element to the top:
-		// @ts-ignore
 		const item = list.find((i) => i.id === dragItemId)
 		item.handle.moveToTop()
 	}
-	// @ts-ignore
-	let handleDragEnd = (e) => {
-		// @ts-ignore
+	let handleDragEnd = (e: CustomEvent) => {
 		const item = list.find((i) => i.id === dragItemId)
 		if (!item) {
 			return
@@ -69,3 +69,5 @@
 		{/each}
 	</Layer>
 </Stage>
+
+<svelte:window on:resize={onWindowResize} />
