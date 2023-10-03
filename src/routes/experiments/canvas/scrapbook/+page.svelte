@@ -1,12 +1,10 @@
 <script lang="ts">
 	import { Stage, Layer, Star } from 'svelte-konva'
 
-	let width = window.innerWidth
-	let height = window.innerHeight
+	let [width, height] = [window.innerWidth, window.innerHeight]
 
-	let onWindowResize = () => {
-		width = window.innerWidth
-		height = window.innerHeight
+	const onWindowResize = () => {
+		;[width, height] = [window.innerWidth, window.innerHeight]
 	}
 
 	let list: any[] = []
@@ -65,6 +63,7 @@
 				bind:handle={item.handle}
 				on:dragstart={handleDragStart}
 				on:dragend={handleDragEnd}
+				on:click={() => console.log(item.id)}
 			/>
 		{/each}
 	</Layer>

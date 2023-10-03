@@ -4,7 +4,6 @@
 	$: breadcrumb = $page.route.id?.split('/').slice(1) ?? []
 </script>
 
-<!-- {#if breadcrumb.length > 0} -->
 <nav class="absolute flex justify-center w-screen text-sm breadcrumbs text-secondary">
 	<ul>
 		<li><a href="/">Home</a></li>
@@ -14,4 +13,3 @@
 		{/each}
 	</ul>
 </nav>
-<!-- {/if} -->
