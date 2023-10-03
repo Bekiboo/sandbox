@@ -100,7 +100,23 @@ export const projects = [
 		title: 'Scrapbook',
 		description: 'An experiment with SvelteKit and Konva.js',
 		path: '/experiments/canvas/scrapbook',
-		image: null,
+		image: 'images/minis/matching-game.png',
+		tags: ['typescript', 'svelte', 'sveltekit', 'konva', 'canvas'],
+		status: 'in-progress'
+	},
+	{
+		title: 'Shoot the Bats',
+		description: 'A simple point & shoot with vanilla TS and Canvas',
+		path: '/experiments/canvas/point-and-shoot',
+		image: 'images/minis/point-and-shoot.png',
+		tags: ['typescript', 'svelte', 'sveltekit', 'konva', 'canvas'],
+		status: 'in-progress'
+	},
+	{
+		title: 'Particle Text',
+		description: 'Write text and see it turn into particles',
+		path: '/experiments/canvas/particle-text',
+		image: 'images/minis/particle-text.png',
 		tags: ['typescript', 'svelte', 'sveltekit', 'konva', 'canvas'],
 		status: 'in-progress'
 	}
