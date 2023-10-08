@@ -76,7 +76,7 @@ export const projects = [
 		title: 'Matching Game',
 		description: 'A simple matching game based on Joy of Code tutorial',
 		path: '/projects/matching-game',
-		image: null,
+		image: 'images/minis/matching-game.png',
 		tags: [
 			'three.js',
 			'typescript',
@@ -100,7 +100,7 @@ export const projects = [
 		title: 'Scrapbook',
 		description: 'An experiment with SvelteKit and Konva.js',
 		path: '/experiments/canvas/scrapbook',
-		image: 'images/minis/matching-game.png',
+		image: null,
 		tags: ['typescript', 'svelte', 'sveltekit', 'konva', 'canvas'],
 		status: 'in-progress'
 	},
