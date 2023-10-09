@@ -14,17 +14,24 @@
 
 	const TILE_SIZE = 4
 	const BOARD_SIZE = 8
-	const ROW_NAMES = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+	const COL_NAMES = ['h', 'g', 'f', 'e', 'd', 'c', 'b', 'a']
 
-	const BLACK: [r: number, g: number, b: number] = [0.2, 0.2, 0.2]
-	const WHITE: [r: number, g: number, b: number] = [0.8, 0.8, 0.8]
-	const WHITE_HIGHLIGHT: [r: number, g: number, b: number] = [1, 1, 1]
-	const BLACK_HIGHLIGHT: [r: number, g: number, b: number] = [0.3, 0.3, 0.3]
+	type RGB = [r: number, g: number, b: number]
 
-	function generateChessboard(rows: number, cols: number, color1: number[], color2: number[]) {
+	const BLACK: RGB = [0.2, 0.2, 0.2]
+	const WHITE: RGB = [0.8, 0.8, 0.8]
+	const WHITE_HIGHLIGHT: RGB = [1, 1, 1]
+	const BLACK_HIGHLIGHT: RGB = [0.3, 0.3, 0.3]
+	const BLACK_TILE: RGB = [0.4549, 0.5412, 0.7216]
+	const WHITE_TILE: RGB = [0.9, 0.9, 0.9]
+	const BLACK_TILE_HIGHLIGHT: RGB = [0.5549, 0.6412, 0.8216]
+	const WHITE_TILE_HIGHLIGHT: RGB = [1, 1, 1]
+	const FRAME_COLOR: RGB = [0.1882, 0.1882, 0.2118]
+
+	function generateChessboard(rows: number, cols: number) {
 		const chessboard: {
 			name: string
-			color: [r: number, g: number, b: number]
+			color: RGB
 			side: 'white' | 'black'
 			pos: [x: number, y: number, z: number]
 		}[] = []
@@ -33,9 +40,9 @@
 				const x = i * TILE_SIZE - (BOARD_SIZE * TILE_SIZE) / 2 + TILE_SIZE / 2
 				const z = j * TILE_SIZE - (BOARD_SIZE * TILE_SIZE) / 2 + TILE_SIZE / 2
 				const tileValue = {
-					name: `${ROW_NAMES[i]}${j + 1}`,
-					color: (i + j) % 2 === 0 ? color1 : color2,
-					side: (i + j) % 2 === 0 ? 'white' : 'black',
+					name: `${COL_NAMES[i]}${j + 1}`,
+					color: (i + j) % 2 === 0 ? WHITE_TILE : BLACK_TILE,
+					side: (i + j) % 2 === 0 ? 'black' : 'white',
 					pos: [x, 0, z]
 				}
 				chessboard.push(tileValue as any)
@@ -44,64 +51,64 @@
 		return chessboard
 	}
 
-	const chessboard = generateChessboard(BOARD_SIZE, BOARD_SIZE, BLACK, WHITE)
+	const chessboard = generateChessboard(BOARD_SIZE, BOARD_SIZE)
 
-	const INITIAL_BOARD = [
-		{ piece: 'pawn', side: 'white', color: WHITE, position: 'a2' },
-		{ piece: 'pawn', side: 'white', color: WHITE, position: 'b2' },
-		{ piece: 'pawn', side: 'white', color: WHITE, position: 'c2' },
-		{ piece: 'pawn', side: 'white', color: WHITE, position: 'd2' },
-		{ piece: 'pawn', side: 'white', color: WHITE, position: 'e2' },
-		{ piece: 'pawn', side: 'white', color: WHITE, position: 'f2' },
-		{ piece: 'pawn', side: 'white', color: WHITE, position: 'g2' },
-		{ piece: 'pawn', side: 'white', color: WHITE, position: 'h2' },
-		{ piece: 'pawn', side: 'black', color: BLACK, position: 'a7' },
-		{ piece: 'pawn', side: 'black', color: BLACK, position: 'b7' },
-		{ piece: 'pawn', side: 'black', color: BLACK, position: 'c7' },
-		{ piece: 'pawn', side: 'black', color: BLACK, position: 'd7' },
-		{ piece: 'pawn', side: 'black', color: BLACK, position: 'e7' },
-		{ piece: 'pawn', side: 'black', color: BLACK, position: 'f7' },
-		{ piece: 'pawn', side: 'black', color: BLACK, position: 'g7' },
-		{ piece: 'pawn', side: 'black', color: BLACK, position: 'h7' },
-		{ piece: 'rook', side: 'white', color: WHITE, position: 'a1' },
-		{ piece: 'rook', side: 'white', color: WHITE, position: 'h1' },
-		{ piece: 'rook', side: 'black', color: BLACK, position: 'a8' },
-		{ piece: 'rook', side: 'black', color: BLACK, position: 'h8' },
-		{ piece: 'knight', side: 'white', color: WHITE, position: 'b1' },
-		{ piece: 'knight', side: 'white', color: WHITE, position: 'g1' },
-		{ piece: 'knight', side: 'black', color: BLACK, position: 'b8' },
-		{ piece: 'knight', side: 'black', color: BLACK, position: 'g8' },
-		{ piece: 'bishop', side: 'white', color: WHITE, position: 'c1' },
-		{ piece: 'bishop', side: 'white', color: WHITE, position: 'f1' },
-		{ piece: 'bishop', side: 'black', color: BLACK, position: 'c8' },
-		{ piece: 'bishop', side: 'black', color: BLACK, position: 'f8' },
-		{ piece: 'queen', side: 'white', color: WHITE, position: 'd1' },
-		{ piece: 'queen', side: 'black', color: BLACK, position: 'd8' },
-		{ piece: 'king', side: 'white', color: WHITE, position: 'e1' },
-		{ piece: 'king', side: 'black', color: BLACK, position: 'e8' }
+	const INITIAL_POSITIONS = [
+		{ piece: 'pawn', side: 'white', color: WHITE, pos: 'a2' },
+		{ piece: 'pawn', side: 'white', color: WHITE, pos: 'b2' },
+		{ piece: 'pawn', side: 'white', color: WHITE, pos: 'c2' },
+		{ piece: 'pawn', side: 'white', color: WHITE, pos: 'd2' },
+		{ piece: 'pawn', side: 'white', color: WHITE, pos: 'e2' },
+		{ piece: 'pawn', side: 'white', color: WHITE, pos: 'f2' },
+		{ piece: 'pawn', side: 'white', color: WHITE, pos: 'g2' },
+		{ piece: 'pawn', side: 'white', color: WHITE, pos: 'h2' },
+		{ piece: 'pawn', side: 'black', color: BLACK, pos: 'a7' },
+		{ piece: 'pawn', side: 'black', color: BLACK, pos: 'b7' },
+		{ piece: 'pawn', side: 'black', color: BLACK, pos: 'c7' },
+		{ piece: 'pawn', side: 'black', color: BLACK, pos: 'd7' },
+		{ piece: 'pawn', side: 'black', color: BLACK, pos: 'e7' },
+		{ piece: 'pawn', side: 'black', color: BLACK, pos: 'f7' },
+		{ piece: 'pawn', side: 'black', color: BLACK, pos: 'g7' },
+		{ piece: 'pawn', side: 'black', color: BLACK, pos: 'h7' },
+		{ piece: 'rook', side: 'white', color: WHITE, pos: 'a1' },
+		{ piece: 'rook', side: 'white', color: WHITE, pos: 'h1' },
+		{ piece: 'rook', side: 'black', color: BLACK, pos: 'a8' },
+		{ piece: 'rook', side: 'black', color: BLACK, pos: 'h8' },
+		{ piece: 'knight', side: 'white', color: WHITE, pos: 'b1' },
+		{ piece: 'knight', side: 'white', color: WHITE, pos: 'g1' },
+		{ piece: 'knight', side: 'black', color: BLACK, pos: 'b8' },
+		{ piece: 'knight', side: 'black', color: BLACK, pos: 'g8' },
+		{ piece: 'bishop', side: 'white', color: WHITE, pos: 'c1' },
+		{ piece: 'bishop', side: 'white', color: WHITE, pos: 'f1' },
+		{ piece: 'bishop', side: 'black', color: BLACK, pos: 'c8' },
+		{ piece: 'bishop', side: 'black', color: BLACK, pos: 'f8' },
+		{ piece: 'queen', side: 'white', color: WHITE, pos: 'd1' },
+		{ piece: 'queen', side: 'black', color: BLACK, pos: 'd8' },
+		{ piece: 'king', side: 'white', color: WHITE, pos: 'e1' },
+		{ piece: 'king', side: 'black', color: BLACK, pos: 'e8' }
 	]
 
-	let currentBoard = INITIAL_BOARD
+	let currentPositions = INITIAL_POSITIONS
 
 	let hoveredPiece = null
 
 	const startHoverPiece = (e: CustomEvent, i: number) => {
 		e.stopPropagation()
-		hoveredPiece = currentBoard[i]
-		if (currentBoard[i].side === 'white') {
-			currentBoard[i].color = WHITE_HIGHLIGHT
+		hoveredPiece = currentPositions[i]
+		if (currentPositions[i].side === 'white') {
+			currentPositions[i].color = WHITE_HIGHLIGHT
 		} else {
-			currentBoard[i].color = BLACK_HIGHLIGHT
+			currentPositions[i].color = BLACK_HIGHLIGHT
 		}
 	}
 
 	const stopHoverPiece = (e: CustomEvent, i: number) => {
 		e.stopPropagation()
 		hoveredPiece = null
-		if (currentBoard[i].side === 'white') {
-			currentBoard[i].color = WHITE
+		if (currentPositions[i].side === 'white') {
+			currentPositions[i].color = WHITE
 		} else {
-			currentBoard[i].color = BLACK
+			currentPositions[i].color = BLACK
 		}
 	}
 
@@ -120,9 +127,9 @@
 		e.stopPropagation()
 		hoveredTile = chessboard[i]
 		if (hoveredTile.side === 'white') {
-			chessboard[i].color = BLACK_HIGHLIGHT
+			chessboard[i].color = BLACK_TILE_HIGHLIGHT
 		} else {
-			chessboard[i].color = WHITE_HIGHLIGHT
+			chessboard[i].color = WHITE_TILE_HIGHLIGHT
 		}
 	}
 
@@ -130,9 +137,9 @@
 		e.stopPropagation()
 		hoveredTile = null
 		if (chessboard[i].side === 'white') {
-			chessboard[i].color = BLACK
+			chessboard[i].color = BLACK_TILE
 		} else {
-			chessboard[i].color = WHITE
+			chessboard[i].color = WHITE_TILE
 		}
 	}
 </script>
@@ -153,17 +160,17 @@
 <T.AmbientLight intensity={0.1} />
 
 <T.DirectionalLight
-	position={[5, 10, 5]}
+	position={[50, 100, 50]}
 	castShadow
-	shadow.camera.left={-20}
-	shadow.camera.right={20}
-	shadow.camera.top={20}
-	shadow.camera.bottom={-20}
+	shadow.camera.left={-25}
+	shadow.camera.right={25}
+	shadow.camera.top={25}
+	shadow.camera.bottom={-25}
 />
 
 <!-- Pieces -->
-{#each currentBoard as piece, i}
-	{@const tile = chessboard.find((tile) => tile.name === piece.position)}
+{#each currentPositions as piece, i}
+	{@const tile = chessboard.find((tile) => tile.name === piece.pos)}
 	{#if piece.piece === 'pawn'}
 		<Pawn
 			position={tile?.pos}
@@ -240,5 +247,5 @@
 <!-- Frame -->
 <T.Mesh position={[0, -0.6, 0]} rotation.x={-Math.PI / 2} receiveShadow>
 	<T.BoxGeometry args={[TILE_SIZE * BOARD_SIZE * 1.2, TILE_SIZE * BOARD_SIZE * 1.2]} />
-	<T.MeshStandardMaterial color={[0.4, 0.4, 0.4]} />
+	<T.MeshStandardMaterial color={FRAME_COLOR} />
 </T.Mesh>
