@@ -78,10 +78,30 @@
 	const selectTile = (e: CustomEvent, tile: any) => {
 		e.stopPropagation()
 		if (!selectedPiece) return
+
+		// check if tile is occupied
+		const pieceOnTile = pieces.find((piece) => piece.pos === tile.name)
+
+		if (pieceOnTile) {
+			// check if piece on tile is same side
+			if (pieceOnTile.side === selectedPiece.side) {
+				selectedPiece.setStatus('idle')
+				selectedPiece = pieceOnTile
+				selectedPiece.setStatus('selected')
+				return
+			} else {
+				// remove piece on tile
+				pieces = pieces.filter((piece) => piece !== pieceOnTile)
+			}
+		}
+
 		selectedPiece.move(tile.name)
 		selectedPiece.setStatus('idle')
 		selectedPiece = null
+
 		pieces = pieces
+		console.log(pieces)
+		console.log(tile)
 	}
 </script>
 
