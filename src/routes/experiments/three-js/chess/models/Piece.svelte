@@ -1,14 +1,13 @@
-<script>
-	// @ts-nocheck
-
+<script lang="ts">
 	import { Group } from 'three'
 	import { T, forwardEventHandlers } from '@threlte/core'
 	import { useGltf } from '@threlte/extras'
 
 	export const ref = new Group()
-	export let color = [0.8, 0.8, 0.8]
+	export let color: [r: number, g: number, b: number] = [0.8, 0.8, 0.8]
+	export let type: string = 'Pawn'
 
-	const gltf = useGltf('../../models/Bishop.gltf')
+	const gltf = useGltf(`../../models/${type}.gltf`)
 
 	const component = forwardEventHandlers()
 </script>
