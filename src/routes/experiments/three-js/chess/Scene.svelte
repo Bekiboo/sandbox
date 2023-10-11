@@ -35,6 +35,7 @@
 
 	const startHoverPiece = (e: CustomEvent, piece: ChessPiece) => {
 		e.stopPropagation()
+		if (piece.status === 'selected') return
 		piece.setStatus('hovered')
 		pieces = pieces
 	}
@@ -88,13 +89,9 @@
 		if (pieceOnTile) {
 			// check if piece on tile is same side
 			if (pieceOnTile.side === selectedPiece.side) {
-				selectedPiece.setStatus('idle')
-				selectedPiece = pieceOnTile
-				selectedPiece.setStatus('selected')
 				return
 			} else {
-				// remove piece on tile
-				pieces = pieces.filter((piece) => piece !== pieceOnTile)
+				pieceOnTile.pos = 'graveyard'
 			}
 		}
 
@@ -118,7 +115,7 @@
 		ref.lookAt(0, 0, 0)
 	}}
 >
-	<OrbitControls maxPolarAngle={85 * DEG2RAD} minPolarAngle={20 * DEG2RAD} />
+	<OrbitControls maxPolarAngle={85 * DEG2RAD} />
 </T.PerspectiveCamera>
 
 <T.AmbientLight intensity={0.3} />

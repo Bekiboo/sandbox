@@ -27,9 +27,9 @@ export class ChessPiece {
 
 	setStatus(status: 'idle' | 'hovered' | 'selected') {
 		this.status = status
-		if (status === 'hovered') {
+		if (this.status === 'hovered') {
 			this.color = this.highlightColor
-		} else if (status === 'selected') {
+		} else if (this.status === 'selected') {
 			this.color = this.highlightColor
 		} else {
 			this.color = this.side === 'white' ? WHITE : BLACK
