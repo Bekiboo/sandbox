@@ -16,6 +16,9 @@
 		INITIAL_POSITIONS
 	} from './gameSettings'
 
+	export let FOV: number = 75
+	export let castShadow: boolean = true
+
 	interactivity()
 
 	let chessboard = generateChessboard(BOARD_SIZE, BOARD_SIZE)
@@ -108,7 +111,7 @@
 <T.PerspectiveCamera
 	position={[0, 50, -50]}
 	makeDefault
-	fov={75}
+	fov={FOV}
 	near={0.1}
 	far={1000}
 	on:create={({ ref }) => {
@@ -122,7 +125,7 @@
 
 <T.DirectionalLight
 	position={[25, 80, 25]}
-	castShadow
+	{castShadow}
 	shadow.camera.left={-25}
 	shadow.camera.right={25}
 	shadow.camera.top={25}
