@@ -43,7 +43,7 @@
 		}
 	}
 
-	let size = 2
+	let size = 20
 	let grid = createGrid()
 	let maxMatches = grid.length / 2
 	let selected: number[] = []
