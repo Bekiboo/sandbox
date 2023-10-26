@@ -1,15 +1,54 @@
 <script lang="ts">
 	import { emoji } from './emoji'
+	import { useMachine } from './useMachine'
 
-	type State = 'start' | 'playing' | 'won' | 'lost'
+	type State = 'start' | 'playing' | 'won' | 'paused' | 'gameover'
 
-	let state: State = 'start'
-	let size = 20
+	const { state, send } = useMachine(gameMachine, 'start')
+
+	function gameMachine(state: State, event: { type: string; data?: any }) {
+		switch (state) {
+			case 'start':
+				if (event.type === 'CLICK') {
+					return 'playing'
+				}
+			case 'playing':
+				if (event.type === 'ESCAPE') {
+					console.log('paused')
+
+					return 'paused'
+				}
+				if (event.type === 'CLICK') {
+					selectCard(event.data)
+					selected.length == 2 && matchCards()
+
+					if (matches.length == emoji.length) {
+						return 'gameover'
+					}
+
+					return 'playing'
+				}
+			case 'paused':
+				if (event.type === 'ESCAPE') {
+					return 'playing'
+				}
+			case 'gameover':
+				if (event.type === 'CLICK') {
+					resetGame()
+					return 'playing'
+				}
+
+			default:
+				return state
+		}
+	}
+
+	let size = 2
 	let grid = createGrid()
 	let maxMatches = grid.length / 2
 	let selected: number[] = []
 	let matches: string[] = []
-	let timerId: NodeJS.Timer | null = null
+	let timerId: any | null = null
 	let time = 60
 
 	function startGameTimer() {
@@ -61,32 +100,29 @@
 	}
 
 	function gameWon() {
-		state = 'won'
+		$state = 'won'
 		resetGame()
 	}
 
 	function gameLost() {
-		state = 'lost'
+		$state = 'gameover'
 		resetGame()
 	}
 
-	$: if (state === 'playing') {
+	function handleKeyDown(e: KeyboardEvent) {
+		e.key === 'Escape' && send({ type: 'ESCAPE' })
+	}
+
+	$: if ($state === 'playing') {
 		!timerId && startGameTimer()
 	}
 
 	$: selected.length == 2 && matchCards()
 	$: maxMatches == matches.length && gameWon()
 	$: time == 0 && gameLost()
-
-	// $: console.log({ state, selected, matches })
 </script>
 
-{#if state === 'start'}
-	<h1>Matching Game</h1>
-	<button on:click={() => (state = 'playing')}>Play</button>
-{/if}
-
-{#if state == 'playing'}
+{#if $state == 'playing'}
 	<h1 class="timer" class:pulse={time <= 10}>{time}</h1>
 	<div class="grid grid-cols-5 gap-2 m-auto w-fit">
 		{#each grid as card, cardIndex}
@@ -107,15 +143,36 @@
 	</div>
 {/if}
 
-{#if state == 'lost'}
-	<h1>You lost 💩</h1>
-	<button on:click={() => (state = 'playing')}>Play again</button>
+{#if $state === 'start'}
+	<div class="flex flex-col justify-center items-center w-screen h-screen">
+		<h1 class="text-2xl">Matching Game</h1>
+		<button
+			on:click={() => send({ type: 'CLICK' })}
+			class="btn btn-primary mt-4 uppercase btn-lg btn-wide">Play</button
+		>
+	</div>
+{/if}
+{#if $state == 'gameover'}
+	<div class="flex flex-col justify-center items-center w-screen h-screen">
+		<h1 class="text-2xl">You lost 💩</h1>
+		<button
+			on:click={() => ($state = 'playing')}
+			class="btn btn-primary mt-4 uppercase btn-lg btn-wide">Play again</button
+		>
+	</div>
 {/if}
 
-{#if state == 'won'}
-	<h1>You won</h1>
-	<button on:click={() => (state = 'playing')}>Play again</button>
+{#if $state == 'won'}
+	<div class="flex flex-col justify-center items-center w-screen h-screen">
+		<h1 class="text-2xl">You won!</h1>
+		<button
+			on:click={() => ($state = 'playing')}
+			class="btn btn-primary mt-4 uppercase btn-lg btn-wide">Play again</button
+		>
+	</div>
 {/if}
+
+<svelte:window on:keydown={handleKeyDown} />
 
 <style>
 	.card {
