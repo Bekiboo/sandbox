@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { projects } from './projects'
+	import { DateTime } from 'luxon'
 </script>
 
 <main class="max-w-screen-xl px-8 mx-auto lg:px-16">
@@ -32,21 +33,10 @@
 					<h2 class="card-title">{project.title}</h2>
 					<p>{project.description}</p>
 					<div class="justify-end card-actions">
-						<a class="btn btn-primary" target="_blank" href={project.path}>View</a>
+						<a class="btn btn-primary" href={project.path}>View</a>
 					</div>
 				</div>
 			</div>
 		{/each}
 	</div>
 </main>
-
-<!-- <div class="shadow-xl card w-96 bg-base-100 image-full">
-			<figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-			<div class="card-body">
-				<h2 class="card-title">Shoes!</h2>
-				<p>If a dog chews shoes, whose shoes does he chooses?</p>
-				<div class="justify-end card-actions">
-					<button class="btn btn-primary">Buy Now</button>
-				</div>
-			</div>
-		</div> -->
