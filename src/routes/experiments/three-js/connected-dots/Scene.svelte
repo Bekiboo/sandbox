@@ -13,10 +13,10 @@
 
 	interactivity()
 
-	let cameraPosition: [x: number, y: number, z: number] = [20, 30, 50]
+	let cameraPosition: [x: number, y: number, z: number] = [2, 3, 5]
 	let lightPosition: [x: number, y: number, z: number] = [5, 10, 5]
 
-	const count = 100
+	const count = 1000
 	const distance = 2
 
 	const points = new Float32Array(count * 3)
@@ -41,9 +41,9 @@
 			const y = positions[i + 1]
 			const z = positions[i + 2]
 
-			positions[i] = x + Math.sin(x) * 0.01
-			positions[i + 1] = y + Math.sin(y) * 0.01
-			positions[i + 2] = z + Math.sin(z) * 0.01
+			positions[i] = x + Math.sin(x) * 0.05
+			// positions[i + 1] = y + Math.sin(y) * 0.01
+			// positions[i + 2] = z + Math.sin(z) * 0.01
 		}
 
 		geometry.attributes.position.needsUpdate = true
