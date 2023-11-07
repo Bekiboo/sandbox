@@ -29,14 +29,14 @@
 	})
 </script>
 
-<div class="w-screen h-screen overflow-x-hidden bg-gray-200">
-	<div class="flex flex-col items-center max-w-2xl mx-auto">
+<div class="w-screen h-screen p-4 overflow-x-hidden bg-gray-200">
+	<div class="max-w-2xl">
 		<div class="h-full text-black">
 			<div class="mt-4 editor-wrapper">
 				<div bind:this={editor} />
 			</div>
 			{#if content}
-				<pre class="mt-4">{JSON.stringify(content, null, 2)}</pre>
+				<pre class="mt-4 wrap">{JSON.stringify(content, null, 2)}</pre>
 			{/if}
 		</div>
 	</div>
