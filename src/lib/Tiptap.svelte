@@ -50,19 +50,19 @@
 			  </blockquote>
 			`,
 			onTransaction: () => {
+				json = editor.getJSON()
+
 				// force re-render so `editor.isActive` works as expected
 				editor = editor
 			}
 		})
-
-		json = editor.getJSON()
 	})
 </script>
 
 <div class="w-screen h-screen p-4 overflow-x-hidden text-black bg-gray-200">
-	<div class="max-w-4xl mx-auto mt-4">
+	<div class="max-w-4xl mx-auto">
 		{#if editor}
-			<div class="p-4">
+			<div class="my-4">
 				<div>
 					<button
 						on:click={() => editor.chain().focus().toggleBold().run()}
@@ -85,17 +85,17 @@
 					>
 						strike
 					</button>
-					<button
+					<!-- <button
 						on:click={() => editor.chain().focus().toggleCode().run()}
 						disabled={!editor.can().chain().focus().toggleCode().run()}
 						class={editor.isActive('code') ? 'is-active' : ''}
 					>
 						code
-					</button>
-					<button on:click={() => editor.chain().focus().unsetAllMarks().run()}>
+					</button> -->
+					<!-- <button on:click={() => editor.chain().focus().unsetAllMarks().run()}>
 						clear marks
-					</button>
-					<button on:click={() => editor.chain().focus().clearNodes().run()}> clear nodes </button>
+					</button> -->
+					<!-- <button on:click={() => editor.chain().focus().clearNodes().run()}> clear nodes </button> -->
 					<button
 						on:click={() => editor.chain().focus().setParagraph().run()}
 						class={editor.isActive('paragraph') ? 'is-active' : ''}
