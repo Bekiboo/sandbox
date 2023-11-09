@@ -8,10 +8,17 @@
 	let element: HTMLDivElement
 	let editor: Editor
 
+	let json: any
+
 	onMount(() => {
 		editor = new Editor({
 			element: element,
 			extensions: [StarterKit],
+			editorProps: {
+				attributes: {
+					class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none'
+				}
+			},
 			content: `
 			  <h2>
 				Hi there,
@@ -47,125 +54,149 @@
 				editor = editor
 			}
 		})
+
+		json = editor.getJSON()
 	})
 </script>
 
-{#if editor}
-	<div>
-		<div>
-			<button
-				on:click={() => editor.chain().focus().toggleBold().run()}
-				disabled={!editor.can().chain().focus().toggleBold().run()}
-				class={editor.isActive('bold') ? 'is-active' : ''}
-			>
-				bold
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleItalic().run()}
-				disabled={!editor.can().chain().focus().toggleItalic().run()}
-				class={editor.isActive('italic') ? 'is-active' : ''}
-			>
-				italic
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleStrike().run()}
-				disabled={!editor.can().chain().focus().toggleStrike().run()}
-				class={editor.isActive('strike') ? 'is-active' : ''}
-			>
-				strike
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleCode().run()}
-				disabled={!editor.can().chain().focus().toggleCode().run()}
-				class={editor.isActive('code') ? 'is-active' : ''}
-			>
-				code
-			</button>
-			<button on:click={() => editor.chain().focus().unsetAllMarks().run()}> clear marks </button>
-			<button on:click={() => editor.chain().focus().clearNodes().run()}> clear nodes </button>
-			<button
-				on:click={() => editor.chain().focus().setParagraph().run()}
-				class={editor.isActive('paragraph') ? 'is-active' : ''}
-			>
-				paragraph
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-				class={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
-			>
-				h1
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-				class={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
-			>
-				h2
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-				class={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}
-			>
-				h3
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-				class={editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}
-			>
-				h4
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-				class={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
-			>
-				h5
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
-				class={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
-			>
-				h6
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleBulletList().run()}
-				class={editor.isActive('bulletList') ? 'is-active' : ''}
-			>
-				bullet list
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleOrderedList().run()}
-				class={editor.isActive('orderedList') ? 'is-active' : ''}
-			>
-				ordered list
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleCodeBlock().run()}
-				class={editor.isActive('codeBlock') ? 'is-active' : ''}
-			>
-				code block
-			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleBlockquote().run()}
-				class={editor.isActive('blockquote') ? 'is-active' : ''}
-			>
-				blockquote
-			</button>
-			<button on:click={() => editor.chain().focus().setHorizontalRule().run()}>
-				horizontal rule
-			</button>
-			<button on:click={() => editor.chain().focus().setHardBreak().run()}> hard break </button>
-			<button
-				on:click={() => editor.chain().focus().undo().run()}
-				disabled={!editor.can().chain().focus().undo().run()}
-			>
-				undo
-			</button>
-			<button
-				on:click={() => editor.chain().focus().redo().run()}
-				disabled={!editor.can().chain().focus().redo().run()}
-			>
-				redo
-			</button>
-		</div>
+<div class="w-screen h-screen p-4 overflow-x-hidden text-black bg-gray-200">
+	<div class="max-w-4xl mx-auto mt-4">
+		{#if editor}
+			<div class="p-4">
+				<div>
+					<button
+						on:click={() => editor.chain().focus().toggleBold().run()}
+						disabled={!editor.can().chain().focus().toggleBold().run()}
+						class={editor.isActive('bold') ? 'is-active' : ''}
+					>
+						bold
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleItalic().run()}
+						disabled={!editor.can().chain().focus().toggleItalic().run()}
+						class={editor.isActive('italic') ? 'is-active' : ''}
+					>
+						italic
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleStrike().run()}
+						disabled={!editor.can().chain().focus().toggleStrike().run()}
+						class={editor.isActive('strike') ? 'is-active' : ''}
+					>
+						strike
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleCode().run()}
+						disabled={!editor.can().chain().focus().toggleCode().run()}
+						class={editor.isActive('code') ? 'is-active' : ''}
+					>
+						code
+					</button>
+					<button on:click={() => editor.chain().focus().unsetAllMarks().run()}>
+						clear marks
+					</button>
+					<button on:click={() => editor.chain().focus().clearNodes().run()}> clear nodes </button>
+					<button
+						on:click={() => editor.chain().focus().setParagraph().run()}
+						class={editor.isActive('paragraph') ? 'is-active' : ''}
+					>
+						paragraph
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+						class={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
+					>
+						h1
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+						class={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
+					>
+						h2
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+						class={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}
+					>
+						h3
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
+						class={editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}
+					>
+						h4
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
+						class={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
+					>
+						h5
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
+						class={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
+					>
+						h6
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleBulletList().run()}
+						class={editor.isActive('bulletList') ? 'is-active' : ''}
+					>
+						bullet list
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleOrderedList().run()}
+						class={editor.isActive('orderedList') ? 'is-active' : ''}
+					>
+						ordered list
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleCodeBlock().run()}
+						class={editor.isActive('codeBlock') ? 'is-active' : ''}
+					>
+						code block
+					</button>
+					<button
+						on:click={() => editor.chain().focus().toggleBlockquote().run()}
+						class={editor.isActive('blockquote') ? 'is-active' : ''}
+					>
+						blockquote
+					</button>
+					<button on:click={() => editor.chain().focus().setHorizontalRule().run()}>
+						horizontal rule
+					</button>
+					<button on:click={() => editor.chain().focus().setHardBreak().run()}> hard break </button>
+					<button
+						on:click={() => editor.chain().focus().undo().run()}
+						disabled={!editor.can().chain().focus().undo().run()}
+					>
+						undo
+					</button>
+					<button
+						on:click={() => editor.chain().focus().redo().run()}
+						disabled={!editor.can().chain().focus().redo().run()}
+					>
+						redo
+					</button>
+				</div>
+			</div>
+		{/if}
+
+		<div class="p-4 bg-white" bind:this={element} />
+
+		{#if editor}
+			<div class="m-4 overflow-x-hidden">
+				<pre class="p-4">{JSON.stringify(json, null, 2)}</pre>
+			</div>
+		{/if}
 	</div>
-{/if}
-<div bind:this={element} />
+</div>
+
+<style>
+	button {
+		@apply px-2 py-1 border rounded-md bg-slate-200 border-slate-300;
+	}
+	.is-active {
+		@apply bg-slate-500 border-slate-800 text-white;
+	}
+</style>
