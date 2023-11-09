@@ -5,4 +5,3 @@
 <main>
 	<Tiptap />
 </main>
-<div class="font-bold">hello</div>
