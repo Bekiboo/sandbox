@@ -4,6 +4,7 @@
 	import { onMount, onDestroy } from 'svelte'
 	import { Editor } from '@tiptap/core'
 	import StarterKit from '@tiptap/starter-kit'
+	import { IconArrowBackUp, IconArrowForwardUp } from '@tabler/icons-svelte'
 
 	let element: HTMLDivElement
 	let editor: Editor
@@ -63,7 +64,7 @@
 	<div class="max-w-4xl mx-auto">
 		{#if editor}
 			<div class="my-4">
-				<div>
+				<div class="flex flex-wrap gap-1">
 					<button
 						on:click={() => editor.chain().focus().toggleBold().run()}
 						disabled={!editor.can().chain().focus().toggleBold().run()}
@@ -165,18 +166,18 @@
 					<button on:click={() => editor.chain().focus().setHorizontalRule().run()}>
 						horizontal rule
 					</button>
-					<button on:click={() => editor.chain().focus().setHardBreak().run()}> hard break </button>
+					<!-- <button on:click={() => editor.chain().focus().setHardBreak().run()}> hard break </button> -->
 					<button
 						on:click={() => editor.chain().focus().undo().run()}
 						disabled={!editor.can().chain().focus().undo().run()}
 					>
-						undo
+						<IconArrowBackUp />
 					</button>
 					<button
 						on:click={() => editor.chain().focus().redo().run()}
 						disabled={!editor.can().chain().focus().redo().run()}
 					>
-						redo
+						<IconArrowForwardUp />
 					</button>
 				</div>
 			</div>
