@@ -70,21 +70,21 @@
 						disabled={!editor.can().chain().focus().toggleBold().run()}
 						class={editor.isActive('bold') ? 'is-active' : ''}
 					>
-						bold
+						<div class="font-bold">B</div>
 					</button>
 					<button
 						on:click={() => editor.chain().focus().toggleItalic().run()}
 						disabled={!editor.can().chain().focus().toggleItalic().run()}
 						class={editor.isActive('italic') ? 'is-active' : ''}
 					>
-						italic
+						<i>I</i>
 					</button>
 					<button
 						on:click={() => editor.chain().focus().toggleStrike().run()}
 						disabled={!editor.can().chain().focus().toggleStrike().run()}
 						class={editor.isActive('strike') ? 'is-active' : ''}
 					>
-						strike
+						<s>S</s>
 					</button>
 					<!-- <button
 						on:click={() => editor.chain().focus().toggleCode().run()}
@@ -195,9 +195,9 @@
 
 <style>
 	button {
-		@apply px-2 py-1 border rounded-md bg-slate-200 border-slate-300;
+		@apply px-2 py-1 text-2xl;
 	}
 	.is-active {
-		@apply bg-slate-500 border-slate-800 text-white;
+		@apply bg-blue-300 rounded-full;
 	}
 </style>
