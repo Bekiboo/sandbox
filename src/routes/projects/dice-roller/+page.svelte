@@ -30,26 +30,7 @@
 		}
 	}
 
-	let dice: die[] = [
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6'),
-		new die(6, 'd6')
-	]
+	let dice: die[] = [new die(6, 'd6'), new die(6, 'd6'), new die(6, 'd6'), new die(6, 'd6')]
 
 	function roll() {
 		for (let die of dice) {
@@ -64,9 +45,21 @@
 	}
 </script>
 
-<div class="flex flex-col w-48 gap-8 select-none">
+<div class="flex flex-col w-48 gap-8 mx-auto mt-8 select-none">
 	<div>
-		<h2>Dice Pool</h2>
+		<div class="flex gap-2 mb-2">
+			<h2>Dice Pool</h2>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
+			<div
+				class="h-6 w-6 rounded text-slate-500 text-2xl border-slate-500
+				border flex items-center justify-center cursor-pointer hover:border-slate-300
+				hover:text-slate-300 duration-100 pb-[.13rem]"
+				on:click={() => (dice = [...dice, new die(6, 'd6')])}
+			>
+				&#10010;
+			</div>
+		</div>
 		<div class="flex flex-wrap gap-2">
 			{#each dice as die}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -78,16 +71,6 @@
 					{die.name}
 				</div>
 			{/each}
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<!-- svelte-ignore a11y-no-static-element-interactions -->
-			<div
-				class="h-6 w-6 rounded text-slate-500 text-2xl border-slate-500
-                border flex items-center justify-center cursor-pointer hover:border-slate-300
-                hover:text-slate-300 duration-100 pb-[.13rem]"
-				on:click={() => (dice = [...dice, new die(6, 'd6')])}
-			>
-				&#10010;
-			</div>
 		</div>
 	</div>
 
@@ -113,7 +96,9 @@
 				{/if}
 			{/each}
 		</div>
-		<button on:click={roll}>Roll</button>
-		<button on:click={reset}>Reset</button>
+		<div class="flex justify-center gap-2 mt-4">
+			<button class="btn btn-primary" on:click={roll}>Roll</button>
+			<button class="btn btn-error" on:click={reset}>Reset</button>
+		</div>
 	</div>
 </div>
