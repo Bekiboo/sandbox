@@ -30,7 +30,26 @@
 		}
 	}
 
-	let dice: die[] = [new die(6, 'd6'), new die(6, 'd6'), new die(6, 'd6')]
+	let dice: die[] = [
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6'),
+		new die(6, 'd6')
+	]
 
 	function roll() {
 		for (let die of dice) {
@@ -75,12 +94,12 @@
 	<div>
 		<h2>Rolls</h2>
 		<div class="flex flex-wrap gap-2 min-h-[4rem]">
-			{#each dice as die}
+			{#each dice as die, i}
 				{#if die.result != 0}
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<!-- svelte-ignore a11y-no-static-element-interactions -->
 					<div
-						in:fly={{ y: 20, duration: Math.random() * 1000 }}
+						in:fly={{ y: 20, duration: Math.random() * 500, delay: 20 * i }}
 						class="flex items-center justify-center w-6 h-6 font-bold text-black rounded cursor-pointer"
 						style="background: {die.color}"
 						on:dblclick={() => die.roll()}
