@@ -2,7 +2,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition'
 
-	class die {
+	class Die {
 		color: string
 		result: number
 		constructor(
@@ -14,28 +14,25 @@
 		}
 
 		roll() {
-			this.reset()
-			dice = dice
-
-			// wait for the dice to reset
-			setTimeout(() => {
-				this.result = Math.floor(Math.random() * this.sides) + 1
-				dice = dice
-			}, 100)
+			this.result = Math.floor(Math.random() * this.sides) + 1
 		}
 
 		reset() {
 			this.result = 0
-			dice = dice
 		}
 	}
 
-	let dice: die[] = [new die(6, 'd6'), new die(6, 'd6'), new die(6, 'd6'), new die(6, 'd6')]
+	let dice: Die[] = [new Die(6, 'd6'), new Die(6, 'd6'), new Die(6, 'd6'), new Die(6, 'd6')]
 
 	function roll() {
-		for (let die of dice) {
-			die.roll()
-		}
+		reset()
+		dice = dice
+		setTimeout(() => {
+			for (let die of dice) {
+				die.roll()
+			}
+			dice = dice
+		}, 100)
 	}
 
 	function reset() {
@@ -43,27 +40,32 @@
 			die.reset()
 		}
 	}
+
+	function reroll(die: Die) {
+		die.reset()
+		dice = dice
+		setTimeout(() => {
+			die.roll()
+			dice = dice
+		}, 100)
+	}
 </script>
 
 <div class="flex flex-col w-48 gap-8 mx-auto mt-8 select-none">
 	<div>
 		<div class="flex gap-2 mb-2">
 			<h2>Dice Pool</h2>
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<!-- svelte-ignore a11y-no-static-element-interactions -->
-			<div
+			<button
 				class="h-6 w-6 rounded text-slate-500 text-2xl border-slate-500
 				border flex items-center justify-center cursor-pointer hover:border-slate-300
 				hover:text-slate-300 duration-100 pb-[.13rem]"
-				on:click={() => (dice = [...dice, new die(6, 'd6')])}
+				on:click={() => (dice = [...dice, new Die(6, 'd6')])}
 			>
 				&#10010;
-			</div>
+			</button>
 		</div>
 		<div class="flex flex-wrap gap-2">
 			{#each dice as die}
-				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<div
 					class="flex items-center justify-center w-6 h-6 font-bold text-black rounded cursor-pointer"
 					style="background: {die.color}"
@@ -85,7 +87,7 @@
 						in:fly={{ y: 20, duration: Math.random() * 500, delay: 20 * i }}
 						class="flex items-center justify-center w-6 h-6 font-bold text-black rounded cursor-pointer"
 						style="background: {die.color}"
-						on:dblclick={() => die.roll()}
+						on:dblclick={() => reroll(die)}
 					>
 						{die.result}
 					</div>
