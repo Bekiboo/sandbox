@@ -1,10 +1,10 @@
 <script lang="ts">
 	import './styles.css'
 
-	import { onMount, onDestroy } from 'svelte'
+	import { onMount } from 'svelte'
 	import { Editor } from '@tiptap/core'
 	import StarterKit from '@tiptap/starter-kit'
-	import { IconArrowBackUp, IconArrowForwardUp } from '@tabler/icons-svelte'
+	import { Undo, Redo } from 'lucide-svelte'
 
 	let element: HTMLDivElement
 	let editor: Editor
@@ -86,17 +86,6 @@
 					>
 						<s>S</s>
 					</button>
-					<!-- <button
-						on:click={() => editor.chain().focus().toggleCode().run()}
-						disabled={!editor.can().chain().focus().toggleCode().run()}
-						class={editor.isActive('code') ? 'is-active' : ''}
-					>
-						code
-					</button> -->
-					<!-- <button on:click={() => editor.chain().focus().unsetAllMarks().run()}>
-						clear marks
-					</button> -->
-					<!-- <button on:click={() => editor.chain().focus().clearNodes().run()}> clear nodes </button> -->
 					<button
 						on:click={() => editor.chain().focus().setParagraph().run()}
 						class={editor.isActive('paragraph') ? 'is-active' : ''}
@@ -151,12 +140,24 @@
 					>
 						ordered list
 					</button>
-					<button
+					<!-- <button
+						on:click={() => editor.chain().focus().toggleCode().run()}
+						disabled={!editor.can().chain().focus().toggleCode().run()}
+						class={editor.isActive('code') ? 'is-active' : ''}
+					>
+						code
+					</button> -->
+					<!-- <button on:click={() => editor.chain().focus().unsetAllMarks().run()}>
+						clear marks
+					</button> -->
+					<!-- <button on:click={() => editor.chain().focus().clearNodes().run()}> clear nodes </button> -->
+					<!-- <button
 						on:click={() => editor.chain().focus().toggleCodeBlock().run()}
 						class={editor.isActive('codeBlock') ? 'is-active' : ''}
 					>
 						code block
-					</button>
+					</button> -->
+					<!-- <button on:click={() => editor.chain().focus().setHardBreak().run()}> hard break </button> -->
 					<button
 						on:click={() => editor.chain().focus().toggleBlockquote().run()}
 						class={editor.isActive('blockquote') ? 'is-active' : ''}
@@ -166,18 +167,17 @@
 					<button on:click={() => editor.chain().focus().setHorizontalRule().run()}>
 						horizontal rule
 					</button>
-					<!-- <button on:click={() => editor.chain().focus().setHardBreak().run()}> hard break </button> -->
 					<button
 						on:click={() => editor.chain().focus().undo().run()}
 						disabled={!editor.can().chain().focus().undo().run()}
 					>
-						<IconArrowBackUp />
+						<Undo />
 					</button>
 					<button
 						on:click={() => editor.chain().focus().redo().run()}
 						disabled={!editor.can().chain().focus().redo().run()}
 					>
-						<IconArrowForwardUp />
+						<Redo />
 					</button>
 				</div>
 			</div>
