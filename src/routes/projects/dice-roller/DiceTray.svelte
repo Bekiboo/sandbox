@@ -27,30 +27,30 @@
 	}
 </script>
 
-<div class="rolls-container">
+<div class="flex flex-wrap gap-1 min-h-[4rem]">
 	{#each $dice as die}
 		{#if die.result != 0}
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<!-- svelte-ignore a11y-no-static-element-interactions -->
-			<div
-				in:fly={{ y: 20, duration: Math.random() * 500 }}
-				class=""
+			<button
+				in:fly={{ y: 20, duration: Math.random() * 1000 }}
+				class="flex items-center justify-center w-6 h-6 font-bold text-black rounded cursor-pointer"
 				style="background: {die.color}"
 				on:dblclick={() => reroll(die)}
 			>
 				{die.result}
-			</div>
+			</button>
 		{:else}
-			<div class="">&nbsp;</div>
+			<div class="flex items-center w-6 h-6 justify-center font-bold text-black rounded">
+				&nbsp;
+			</div>
 		{/if}
 	{/each}
 </div>
-<div class="roll-buttons">
-	<button class="roll-button" on:click={roll}>Roll</button>
-	<button class="reset-button" on:click={reset}>Reset</button>
+<div class="flex justify-center gap-2 mt-4">
+	<button class="btn btn-primary" on:click={roll}>Roll</button>
+	<button class="btn btn-error" on:click={reset}>Reset</button>
 </div>
 
-<style>
+<!-- <style>
 	.rolls-container {
 		display: flex;
 		flex-wrap: wrap;
@@ -58,7 +58,7 @@
 		min-height: 4rem;
 	}
 
-	.rolls-container > div {
+	.rolls-container > button {
 		position: relative;
 		font-weight: bold;
 		color: black;
@@ -105,4 +105,4 @@
 	.reset-button:hover {
 		background-color: #d32f2f;
 	}
-</style>
+</style> -->
