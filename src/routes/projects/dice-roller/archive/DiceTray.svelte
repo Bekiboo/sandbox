@@ -1,6 +1,19 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition'
 	import type { Die } from './Die'
+	import {
+		backIn,
+		bounceIn,
+		circIn,
+		cubicOut,
+		elasticIn,
+		expoIn,
+		quadIn,
+		quartIn,
+		quintIn,
+		quintOut,
+		sineIn
+	} from 'svelte/easing'
 
 	export let dicePool: any
 
@@ -23,7 +36,7 @@
 	{#each $dicePool.dice as die, i}
 		{#if die.result != 0}
 			<button
-				in:fly={{ y: 20, duration: Math.random() * 1000 }}
+				in:fly={{ y: 20, duration: Math.random() * 500, easing: backIn }}
 				class="flex items-center justify-center w-6 h-6 font-bold text-black rounded cursor-pointer"
 				style="background: {die.color}"
 				on:dblclick={() => rollOne(die)}
