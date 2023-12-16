@@ -32,8 +32,8 @@ export class DicePool {
 	dice: Die[] = []
 	constructor(public name: string) {}
 
-	addDie(die: Die) {
-		this.dice.push(die)
+	addDie(sides: number, name: string, color?: string) {
+		this.dice.push(new Die(sides, name, color))
 	}
 
 	roll(die: Die) {

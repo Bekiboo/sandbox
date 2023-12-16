@@ -7,8 +7,8 @@ export function createDicePool(name: string) {
 
 	return {
 		subscribe,
-		addDie: (die: Die) => {
-			dicePool.addDie(die)
+		addDie: (sides: number, name: string) => {
+			dicePool.addDie(sides, name)
 			set(dicePool)
 		},
 		roll: (die: Die) => {

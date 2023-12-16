@@ -1,19 +1,7 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition'
 	import type { Die } from './Die'
-	import {
-		backIn,
-		bounceIn,
-		circIn,
-		cubicOut,
-		elasticIn,
-		expoIn,
-		quadIn,
-		quartIn,
-		quintIn,
-		quintOut,
-		sineIn
-	} from 'svelte/easing'
+	import { backIn } from 'svelte/easing'
 
 	export let dicePool: any
 

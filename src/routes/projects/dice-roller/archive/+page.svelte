@@ -6,11 +6,11 @@
 
 	let dicePool = createDicePool('pool1')
 
-	dicePool.addDie(new Die(6, 'd6'))
-	dicePool.addDie(new Die(6, 'd6'))
-	dicePool.addDie(new Die(6, 'd6'))
-	dicePool.addDie(new Die(6, 'd6'))
-	dicePool.addDie(new Die(6, 'd6'))
+	dicePool.addDie(6, 'd6')
+	dicePool.addDie(6, 'd6')
+	dicePool.addDie(6, 'd6')
+	dicePool.addDie(6, 'd6')
+	dicePool.addDie(6, 'd6')
 </script>
 
 <div class="flex flex-col w-48 gap-8 mx-auto mt-8 select-none">
@@ -21,7 +21,7 @@
 				class="h-6 w-6 rounded text-slate-500 text-2xl border-slate-500
 				border flex items-center justify-center cursor-pointer hover:border-slate-300
 				hover:text-slate-300 duration-100 pb-[.13rem]"
-				on:click={() => dicePool.addDie(new Die(6, 'd6'))}
+				on:click={() => dicePool.addDie(6, 'd6')}
 			>
 				&#10010;
 			</button>
