@@ -1,17 +1,10 @@
-type Subscriber = (die: Die) => void
+type Subscriber = (dicePool: DicePool) => void
 
-export class Die {
-	color: string
-	result: number
+export class DicePool {
+	dice: Die[] = []
 	subscribers: Subscriber[] = []
 
-	constructor(
-		public sides: number,
-		public name: string
-	) {
-		this.color = 'white'
-		this.result = 0
-	}
+	constructor(public name: string) {}
 
 	subscribe(runner: Subscriber): () => void {
 		this.subscribers.push(runner)
@@ -25,13 +18,58 @@ export class Die {
 		this.subscribers.forEach((runner) => runner(this))
 	}
 
-	roll(): void {
-		this.result = Math.floor(Math.random() * this.sides) + 1
+	addDie(sides: number, name: string, color?: string): void {
+		this.dice.push(new Die(sides, name, color))
 		this.notify()
 	}
 
-	reset(): void {
-		this.result = 0
+	roll(die: Die): void {
+		die.roll()
 		this.notify()
+	}
+
+	rollAll(): void {
+		this.dice.forEach((die) => die.roll())
+		this.notify()
+	}
+
+	reset(die: Die): void {
+		die.reset()
+		this.notify()
+	}
+
+	resetAll(): void {
+		this.dice.forEach((die) => die.reset())
+		this.notify()
+	}
+}
+
+export class Die {
+	private _color: string
+	private _result: number
+
+	constructor(
+		public sides: number,
+		public name: string,
+		color: string = 'white'
+	) {
+		this._color = color
+		this._result = 0
+	}
+
+	get color(): string {
+		return this._color
+	}
+
+	get result(): number {
+		return this._result
+	}
+
+	roll(): void {
+		this._result = Math.floor(Math.random() * this.sides) + 1
+	}
+
+	reset(): void {
+		this._result = 0
 	}
 }
