@@ -42,6 +42,10 @@ export class DicePool {
 		this.dice.forEach((die) => die.reset())
 		this.notify()
 	}
+
+	getDie(name: string): Die | undefined {
+		return this.dice.find((die) => die.name === name)
+	}
 }
 
 export class Die {
