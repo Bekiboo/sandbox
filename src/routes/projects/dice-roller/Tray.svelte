@@ -8,12 +8,12 @@
 		dicePool.resetAll()
 		setTimeout(() => {
 			dicePool.rollAll()
-		}, 100)
+		}, 1)
 	}
 </script>
 
 <div class="flex flex-wrap gap-2 min-h-[4rem]">
-	{#each $dicePool.dice as die, i}
+	{#each $dicePool.dice as die}
 		<Die {die} {dicePool} />
 	{/each}
 </div>
