@@ -2,15 +2,26 @@
 	import { fly } from 'svelte/transition'
 	import type { DicePool, Die } from './Die'
 	import { backIn } from 'svelte/easing'
+	import { createEventDispatcher } from 'svelte'
 
 	export let die: Die
-	export let dicePool: DicePool
+	// export let dicePool: DicePool
+
+	// function rollOne(die: Die) {
+	// 	dicePool.reset(die)
+	// 	setTimeout(() => {
+	// 		dicePool.roll(die)
+	// 	}, 100)
+	// }
+
+	const dispatch = createEventDispatcher()
 
 	function rollOne(die: Die) {
-		dicePool.reset(die)
+		die.reset()
 		setTimeout(() => {
-			dicePool.roll(die)
+			die.roll()
 		}, 100)
+		dispatch('roll')
 	}
 </script>
 

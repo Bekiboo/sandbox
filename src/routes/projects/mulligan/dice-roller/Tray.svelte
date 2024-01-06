@@ -14,7 +14,7 @@
 
 <div class="flex flex-wrap gap-2 min-h-[4rem]">
 	{#each $dicePool.dice as die}
-		<Die {die} {dicePool} />
+		<Die {die} on:roll={() => dicePool.reset(die)} />
 	{/each}
 </div>
 <div class="flex justify-center gap-2 mt-4">

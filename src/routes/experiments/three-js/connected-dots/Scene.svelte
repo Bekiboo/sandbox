@@ -32,8 +32,15 @@
 	// 	size: 0.1
 	// })
 
+	let direction = 1
+
 	useFrame((state, delta) => {
-		// const time = state.clock.getElapsedTime()
+		const time = state.clock.getElapsedTime()
+
+		if (time > 2) {
+			direction *= -1
+			state.clock.elapsedTime = 0
+		}
 
 		const positions = geometry.attributes.position.array as Float32Array
 		for (let i = 0; i < positions.length; i += 3) {
@@ -41,9 +48,9 @@
 			const y = positions[i + 1]
 			const z = positions[i + 2]
 
-			positions[i] = x + Math.sin(x) * 0.05
-			// positions[i + 1] = y + Math.sin(y) * 0.01
-			// positions[i + 2] = z + Math.sin(z) * 0.01
+			positions[i] = x + Math.sin(x) * 0.05 * direction
+			positions[i + 1] = y + Math.sin(y) * 0.01 * direction
+			positions[i + 2] = z + Math.sin(z) * 0.01 * direction
 		}
 
 		geometry.attributes.position.needsUpdate = true
@@ -57,8 +64,6 @@
 <T.DirectionalLight position={lightPosition} />
 
 <T.AmbientLight intensity={0.5} />
-
-<!-- <T.AxesHelper args={[1]} /> -->
 
 <T.Points position.y={0} position.x={0}>
 	<T is={geometry} />
