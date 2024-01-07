@@ -2,26 +2,15 @@
 	import { fly } from 'svelte/transition'
 	import type { DicePool, Die } from './Die'
 	import { backIn } from 'svelte/easing'
-	import { createEventDispatcher } from 'svelte'
 
 	export let die: Die
-	// export let dicePool: DicePool
+	export let dicePool: DicePool
 
-	// function rollOne(die: Die) {
-	// 	dicePool.reset(die)
-	// 	setTimeout(() => {
-	// 		dicePool.roll(die)
-	// 	}, 100)
-	// }
-
-	const dispatch = createEventDispatcher()
-
-	function rollOne(die: Die) {
-		die.reset()
+	function roll(die: Die) {
+		dicePool.reset(die)
 		setTimeout(() => {
-			die.roll()
+			dicePool.roll(die)
 		}, 100)
-		dispatch('roll')
 	}
 </script>
 
@@ -31,7 +20,7 @@
 		in:fly={{ y: 20, duration: Math.random() * 500, easing: backIn }}
 		class="flex items-center justify-center w-6 h-6 font-bold text-black rounded cursor-pointer"
 		style="background: {die.color}"
-		on:dblclick={() => rollOne(die)}
+		on:dblclick={() => roll(die)}
 	>
 		{die.result}
 	</button>
