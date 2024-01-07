@@ -1,10 +1,15 @@
+import { generateUUID } from '$lib/utils'
+
 type Subscriber = (dicePool: DicePool) => void
 
 export class DicePool {
 	dice: Die[] = []
+	id: string = ''
 	subscribers: Subscriber[] = []
 
-	constructor(public name: string) {}
+	constructor(public name: string) {
+		this.id = generateUUID()
+	}
 
 	subscribe(runner: Subscriber): () => void {
 		this.subscribers.push(runner)
