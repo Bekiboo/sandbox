@@ -2,29 +2,36 @@
 	import RadialGradientBorder from './RadialGradientBorder.svelte'
 </script>
 
-<RadialGradientBorder intensity={1.25}>
-	<form action="POST">
-		<label for="name">Email d'entreprise</label>
-		<input type="text" name="name" id="name" />
+<main>
+	<RadialGradientBorder intensity={1.25}>
+		<form>
+			<label for="name">Email d'entreprise</label>
+			<input type="text" name="name" id="name" />
 
-		<label for="name">Comment pouvons-nous vous aider?</label>
-		<textarea name="message" id="message" cols="30" rows="4"></textarea>
+			<label for="name">Comment pouvons-nous vous aider?</label>
+			<textarea name="message" id="message" cols="30" rows="4"></textarea>
 
-		<button type="submit">Envoyer</button>
-	</form>
-</RadialGradientBorder>
+			<RadialGradientBorder intensity={1.25} borderRadius={'1rem'}>
+				<button type="button">Envoyer</button>
+			</RadialGradientBorder>
+		</form>
+	</RadialGradientBorder>
+</main>
 
 <style>
-	:root {
-		--wrapper-border-width: 0.1rem;
-		--wrapper-radius: 2rem;
+	main {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
 	}
-
 	form {
-		position: relative;
 		display: flex;
 		padding: 2rem;
 		flex-direction: column;
+		width: 40rem;
+		border-radius: 2rem;
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.75);
 	}
 
 	input,
@@ -48,14 +55,19 @@
 	button {
 		padding: 1rem 2rem;
 		border-radius: 1rem;
-		border: 1px solid white;
 		font-weight: 700;
 		cursor: pointer;
 		width: 10rem;
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.75);
 	}
 
 	button:hover {
-		border: 1px solid red;
-		transition: all 100ms ease-in-out;
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.95);
+		transition: box-shadow 0.2s ease-in-out;
+	}
+
+	button:active {
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.75);
+		transition: box-shadow 0.1s ease-in-out;
 	}
 </style>

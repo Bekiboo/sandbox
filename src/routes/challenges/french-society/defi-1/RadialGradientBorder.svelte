@@ -4,6 +4,8 @@
 	export let borderColor = '255,0,0'
 	export let bgColor = '#212121'
 	export let intensity = 1
+	export let borderWidth = '0.1rem'
+	export let borderRadius = '2rem'
 
 	let wrapper: HTMLDivElement
 	let wrapperCenter: { x: number; y: number } = { x: 0, y: 0 }
@@ -71,9 +73,17 @@
 	bind:this={wrapper}
 	style={`
         background: radial-gradient(circle at  ${-dx}px ${-dy}px, rgba(${borderColor}, ${correctedIntensity}), ${bgColor});
+		padding: ${borderWidth};
+		border-radius: ${borderRadius};
         `}
 >
-	<div class="content">
+	<div
+		class="content"
+		style={`
+			border-radius: ${borderRadius};
+			background-color: ${bgColor};
+	`}
+	>
 		<slot />
 	</div>
 </div>
@@ -81,22 +91,11 @@
 <svelte:window on:resize={handleResize} on:mousemove={throttle(handleMouseMove, 50)} />
 
 <style>
-	:root {
-		--wrapper-border-width: 0.1rem;
-		--wrapper-radius: 2rem;
-	}
-
 	.wrapper {
-		margin: 8rem auto;
-		width: 40rem;
-		padding: var(--wrapper-border-width);
-		border-radius: var(--wrapper-radius);
-		box-shadow: -1px 7px 16px 0px rgba(0, 0, 0, 0.75);
+		width: min-content;
 	}
 
 	.content {
-		background-color: #212121;
-		border-radius: var(--wrapper-radius);
 		background-clip: padding-box;
 	}
 </style>
