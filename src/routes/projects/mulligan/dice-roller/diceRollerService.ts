@@ -1,4 +1,23 @@
+import type { Writable } from 'svelte/store'
 import type { DicePool } from './Die'
+
+export const dicePoolsStore: Writable<DicePool[]> = {
+	subscribe: (run) => {
+		const dicePools = getDicePools()
+		const unsubscribe = dicePoolsStore.subscribe(run)
+		run(dicePools)
+		return unsubscribe
+	},
+	update: (updater) => {
+		const dicePools = getDicePools()
+		const result = updater(dicePools)
+		saveDicePools(dicePools)
+		return result
+	},
+	set: (dicePools) => {
+		saveDicePools(dicePools)
+	}
+}
 
 export function getDicePools(): DicePool[] {
 	let dicePools: DicePool[] = []
