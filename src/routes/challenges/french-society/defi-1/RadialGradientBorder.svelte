@@ -47,7 +47,7 @@
 		const distance = Math.sqrt(Math.pow(center.x - cursor.x, 2) + Math.pow(center.y - cursor.y, 2))
 		if (distance > radius) return 0
 
-		// return a value between 0 and 1.25
+		// return a value between 0 and intensity
 		return intensity - distance / radius
 	}
 
