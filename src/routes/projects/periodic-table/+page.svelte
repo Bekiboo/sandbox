@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { elements, categories } from './elements'
 
-	let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' = 'groups'
+	let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups'
 </script>
 
 <main class="flex flex-col items-center mx-auto">
@@ -17,13 +17,15 @@
 	<section class="grid items-center w-min">
 		<!-- Titles -->
 		<!-- X-axis -->
-		<h3 class="col-start-2 col-end-[18] row-start-1 text-center text-2xl mb-4">
+		<h3 class="col-start-2 col-end-[18] row-start-1 text-center text-2xl mb-4 h-8">
 			{#if labels === 'ionizationEnergy'}
 				Ionization Energy Increasing -&gt;
 			{:else if labels === 'groups'}
 				Groups
 			{:else if labels === 'atomicSize'}
 				Atomic Size Decreasing -&gt;
+			{:else if labels === 'valenceElectrons'}
+				Valence Electrons
 			{/if}
 		</h3>
 
@@ -100,13 +102,37 @@
 			{:else if labels === 'groups'}
 				<!-- X-axis Groups -->
 				{#each Array(18) as _, i}
-					<span class="row-start-1 h-8" style="grid-column: {i + 2}">{i + 1}</span>
+					<span class="row-start-1 h-8 text-center font-bold" style="grid-column: {i + 2}"
+						>{i + 1}</span
+					>
 				{/each}
 
 				<!-- Y-axis Periods -->
 				{#each Array(7) as _, i}
-					<span class="col-start-1 w-8" style="grid-row: {i + 2}">{i + 1}</span>
+					<span class="col-start-1 w-8 my-auto font-bold" style="grid-row: {i + 2}">{i + 1}</span>
 				{/each}
+			{:else if labels === 'valenceElectrons'}
+				<!-- X-axis -->
+				{#each Array(18) as _, i}
+					{#if i == 0 || i == 1}
+						<span class="row-start-1 h-8 text-center font-bold" style="grid-column: {i + 2}"
+							>{i + 1}</span
+						>
+					{:else if i > 11}
+						<span class="row-start-1 h-8 text-center font-bold" style="grid-column: {i + 2}"
+							>{i - 11}</span
+						>
+					{/if}
+				{/each}
+
+				<!-- Y-axis -->
+				<div class="col-start-1 w-8"></div>
+			{:else}
+				<!-- X-axis -->
+				<div class="row-start-1 h-8"></div>
+
+				<!-- Y-axis -->
+				<div class="col-start-1 w-8"></div>
 			{/if}
 
 			<!-- Legend -->
@@ -173,6 +199,16 @@
 						value="atomicSize"
 					/>
 					<span class="label-text ml-2">Atomic Size</span>
+				</label>
+				<label class="cursor-pointer label">
+					<input
+						bind:group={labels}
+						class="radio radio-primary"
+						type="radio"
+						name="labels"
+						value="valenceElectrons"
+					/>
+					<span class="label-text ml-2">Valence Electrons (1A-8A)</span>
 				</label>
 			</div>
 		</div>
