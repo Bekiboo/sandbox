@@ -1,16 +1,17 @@
 <script lang="ts">
 	import { elements, categories } from './elements'
+	import { tooltip } from './tooltip/tooltip'
 
 	let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups'
 </script>
 
 <main class="flex flex-col items-center mx-auto">
 	<h1
-		class="text-4xl font-bold text-center mb-2 text-gray-700 dark:text-gray-300 uppercase tracking-widest leading-none md:text-5xl md:mb-4 md:leading-none md:tracking-widest"
+		class="mb-2 text-4xl font-bold leading-none tracking-widest text-center text-gray-700 uppercase dark:text-gray-300 md:text-5xl md:mb-4 md:leading-none md:tracking-widest"
 	>
 		Periodic Table of the Elements
 	</h1>
-	<h2 class="text-2xl text-center mb-4 text-gray-600 dark:text-gray-400">
+	<h2 class="mb-4 text-2xl text-center text-gray-600 dark:text-gray-400">
 		CHEM 101 - BYU-Idaho - Julien Connault
 	</h2>
 
@@ -30,8 +31,8 @@
 		</h3>
 
 		<!-- Y-axis -->
-		<h3 class="relative col-start-1 row-start-2 text-2xl w-16">
-			<div class="flex gap-4 absolute -rotate-90 origin-top-left ml-4 whitespace-nowrap">
+		<h3 class="relative w-16 col-start-1 row-start-2 text-2xl">
+			<div class="absolute flex gap-4 ml-4 origin-top-left -rotate-90 whitespace-nowrap">
 				{#if labels === 'ionizationEnergy'}
 					<span>&lt;-</span>Decreasing
 				{:else if labels === 'groups'}
@@ -42,7 +43,7 @@
 			</div>
 		</h3>
 
-		<div class="row-start-2 grid w-min gap-1 mx-auto mb-4">
+		<div class="grid row-start-2 gap-1 mx-auto mb-4 w-min">
 			{#each elements as element}
 				{@const row = element.row}
 				{@const col = element.column}
@@ -50,6 +51,7 @@
 				{@const name = element.name}
 				{@const symbol = element.symbol}
 				{@const number = element.number}
+				{@const electronicConfiguration = element.electronicConfiguration}
 				<button
 					style="
                         grid-column: {col + 1} / span 1;
@@ -57,8 +59,10 @@
                         background-color: {categories[metallicity].color};"
 					class="w-12 h-12 opacity-80 hover:opacity-100"
 					on:click={() => console.log(element.groupBlock)}
+					data-tooltip={electronicConfiguration}
+					use:tooltip
 				>
-					<div class="text-white p-1">
+					<div class="p-1 text-white">
 						<div class="text-[0.6rem] -mb-1 text-left">{number}</div>
 						<div class="text-2xl text-center">{symbol}</div>
 					</div>
@@ -73,7 +77,7 @@
 				<!-- X-axis -->
 				{#each Array(18) as _, i}
 					<span
-						class="row-start-1 h-8 bg-red-500"
+						class="h-8 row-start-1 bg-red-500"
 						style="opacity: {0.1 + i * 0.05}; grid-column: {i + 2}"
 					></span>
 				{/each}
@@ -81,7 +85,7 @@
 				<!-- Y-axis -->
 				{#each Array(7) as _, i}
 					<span
-						class="col-start-1 w-8 bg-red-500"
+						class="w-8 col-start-1 bg-red-500"
 						style="opacity: {1 - i * 0.15}; grid-row: {i + 2}"
 					></span>
 				{/each}
@@ -89,50 +93,50 @@
 				<!-- X-axis -->
 				{#each Array(18) as _, i}
 					<span
-						class="row-start-1 h-8 bg-red-500"
+						class="h-8 row-start-1 bg-red-500"
 						style="opacity: {1 - i * 0.05}; grid-column: {i + 2}"
 					></span>
 				{/each}
 
 				<!-- Y-axis -->
 				{#each Array(7) as _, i}
-					<span class="col-start-1 w-8 bg-red-500" style="opacity: {i * 0.15}; grid-row: {i + 2}"
+					<span class="w-8 col-start-1 bg-red-500" style="opacity: {i * 0.15}; grid-row: {i + 2}"
 					></span>
 				{/each}
 			{:else if labels === 'groups'}
 				<!-- X-axis Groups -->
 				{#each Array(18) as _, i}
-					<span class="row-start-1 h-8 text-center font-bold" style="grid-column: {i + 2}"
+					<span class="h-8 row-start-1 font-bold text-center" style="grid-column: {i + 2}"
 						>{i + 1}</span
 					>
 				{/each}
 
 				<!-- Y-axis Periods -->
 				{#each Array(7) as _, i}
-					<span class="col-start-1 w-8 my-auto font-bold" style="grid-row: {i + 2}">{i + 1}</span>
+					<span class="w-8 col-start-1 my-auto font-bold" style="grid-row: {i + 2}">{i + 1}</span>
 				{/each}
 			{:else if labels === 'valenceElectrons'}
 				<!-- X-axis -->
 				{#each Array(18) as _, i}
 					{#if i == 0 || i == 1}
-						<span class="row-start-1 h-8 text-center font-bold" style="grid-column: {i + 2}"
+						<span class="h-8 row-start-1 font-bold text-center" style="grid-column: {i + 2}"
 							>{i + 1}</span
 						>
 					{:else if i > 11}
-						<span class="row-start-1 h-8 text-center font-bold" style="grid-column: {i + 2}"
+						<span class="h-8 row-start-1 font-bold text-center" style="grid-column: {i + 2}"
 							>{i - 11}</span
 						>
 					{/if}
 				{/each}
 
 				<!-- Y-axis -->
-				<div class="col-start-1 w-8"></div>
+				<div class="w-8 col-start-1"></div>
 			{:else}
 				<!-- X-axis -->
-				<div class="row-start-1 h-8"></div>
+				<div class="h-8 row-start-1"></div>
 
 				<!-- Y-axis -->
-				<div class="col-start-1 w-8"></div>
+				<div class="w-8 col-start-1"></div>
 			{/if}
 
 			<!-- Legend -->
@@ -162,7 +166,7 @@
 						value="metallicity"
 						checked
 					/>
-					<span class="label-text ml-2">Metallicity</span>
+					<span class="ml-2 label-text">Metallicity</span>
 				</label>
 			</div>
 		</div>
@@ -178,7 +182,7 @@
 						name="labels"
 						value="groups"
 					/>
-					<span class="label-text ml-2">Groups & Periods</span>
+					<span class="ml-2 label-text">Groups & Periods</span>
 				</label>
 				<label class="cursor-pointer label">
 					<input
@@ -188,7 +192,7 @@
 						name="labels"
 						value="ionizationEnergy"
 					/>
-					<span class="label-text ml-2">Ionization energy</span>
+					<span class="ml-2 label-text">Ionization energy</span>
 				</label>
 				<label class="cursor-pointer label">
 					<input
@@ -198,7 +202,7 @@
 						name="labels"
 						value="atomicSize"
 					/>
-					<span class="label-text ml-2">Atomic Size</span>
+					<span class="ml-2 label-text">Atomic Size</span>
 				</label>
 				<label class="cursor-pointer label">
 					<input
@@ -208,7 +212,7 @@
 						name="labels"
 						value="valenceElectrons"
 					/>
-					<span class="label-text ml-2">Valence Electrons (1A-8A)</span>
+					<span class="ml-2 label-text">Valence Electrons (1A-8A)</span>
 				</label>
 			</div>
 		</div>
