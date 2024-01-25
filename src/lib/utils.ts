@@ -8,3 +8,15 @@ export function generateUUID(): string {
 	})
 	return uuid
 }
+
+export const throttle = (fn: any, delay: number) => {
+	let last = 0
+	return (...args: unknown[]) => {
+		const now = new Date().getTime()
+		if (now - last < delay) {
+			return
+		}
+		last = now
+		return fn(...args)
+	}
+}
