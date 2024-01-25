@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	import { tooltip } from './tooltip/tooltip'
 
 	export let element: any
 	const { row, column, metallicity, name, symbol, number, electronicConfiguration } = element
 	export let categories: any
 	export let cursorPosition: { x: number; y: number }
+	export let selectedElement: string | null
 
 	let elementButton: HTMLButtonElement
 	let elementButtonCenter: { x: number; y: number } = { x: 0, y: 0 }
@@ -24,13 +24,6 @@
 		)
 	}
 
-	// function getMouseIntensity(cursorPos) {
-	// 	const distance = getDistanceBetweenCursorAndElementButtonCenter(cursorPos)
-	// 	const radius = elementButton?.offsetWidth / 2
-	// 	if (distance > radius) return 0
-	// 	return 1 - distance / radius
-	// }
-
 	$: intensity = getDistanceBetweenCursorAndElementButtonCenter(cursorPosition)
 
 	onMount(() => {
@@ -44,15 +37,16 @@
             grid-row: {row + 1} / span 1;
             background-color: {categories[metallicity].color};
 			border: 1px solid rgba(255,255,255, {1 - intensity / 225});
-
             "
 	class="w-12 h-12 opacity-80 hover:opacity-100"
 	on:click={() => console.log(element.groupBlock)}
 	data-tooltip={electronicConfiguration}
-	use:tooltip
 	bind:this={elementButton}
+	on:click={() => (selectedElement = element)}
+	class:!bg-white={selectedElement == element}
+	class:!opacity-100={selectedElement == element}
 >
-	<div class="p-1 text-white">
+	<div class="p-1 text-white" class:!text-black={selectedElement == element}>
 		<div class="text-[0.6rem] -mb-1 text-left">{number}</div>
 		<div class="text-2xl text-center">{symbol}</div>
 	</div>

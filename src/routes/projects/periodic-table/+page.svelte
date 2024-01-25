@@ -7,7 +7,7 @@
 	import { throttle } from '$lib/utils'
 
 	let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups'
-
+	let selectedElement: any = null
 	let cursorPosition = { x: 0, y: 0 }
 
 	const handleMouseMove = (e: MouseEvent) => {
@@ -30,8 +30,35 @@
 
 		<div class="grid row-start-2 gap-1 mx-auto mb-4 w-min">
 			{#each elements as element}
-				<Element {element} {categories} {cursorPosition} />
+				<Element {element} {categories} {cursorPosition} bind:selectedElement />
 			{/each}
+
+			<!-- Info -->
+			<div
+				class="flex flex-col col-start-6 col-end-12 row-span-3 row-start-2 gap-2 text-sm text-white"
+			>
+				{#if selectedElement}
+					<div class="flex items-center justify-between">
+						<span class="text-xl">{selectedElement?.name} ({selectedElement.symbol})</span>
+					</div>
+					<div class="flex items-center justify-between">
+						<span>Atomic Number</span>
+						<span>{selectedElement?.number}</span>
+					</div>
+					<div class="flex items-center justify-between">
+						<span>Electron Configuration</span>
+						<span>{selectedElement?.electronicConfiguration}</span>
+					</div>
+					<div class="flex items-center justify-between">
+						<span>Group</span>
+						<span>{selectedElement?.groupBlock}</span>
+					</div>
+					<div class="flex items-center justify-between">
+						<span>Atomic Mass</span>
+						<span>{selectedElement?.atomicMass}</span>
+					</div>
+				{/if}
+			</div>
 
 			<!-- Divider -->
 			<span class="row-start-[8] h-8"></span>
