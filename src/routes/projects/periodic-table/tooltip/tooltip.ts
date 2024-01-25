@@ -4,7 +4,7 @@ export function tooltip(element: HTMLElement) {
 	let message: string
 	let tooltipComponent: Tooltip | null = null
 
-	function mouseOver(event: MouseEvent) {
+	function click(event: MouseEvent) {
 		if (element.dataset.tooltip) {
 			message = element.dataset.tooltip
 		}
@@ -22,33 +22,18 @@ export function tooltip(element: HTMLElement) {
 		}
 	}
 
-	function mouseMove(event: MouseEvent) {
-		// Update the position only if the tooltip exists
-		if (tooltipComponent) {
-			tooltipComponent.$set({
-				x: event.pageX,
-				y: event.pageY
-			})
-		}
-	}
-
-	function mouseLeave() {
-		// Destroy the tooltip only if it exists
-		if (tooltipComponent) {
+	element.addEventListener('click', click)
+	document.addEventListener('click', (event: MouseEvent) => {
+		if (tooltipComponent && !element.contains(event.target as Node)) {
 			tooltipComponent.$destroy()
 			tooltipComponent = null
 		}
-	}
-
-	element.addEventListener('mouseover', mouseOver)
-	element.addEventListener('mouseleave', mouseLeave)
-	element.addEventListener('mousemove', mouseMove)
+	})
 
 	return {
 		destroy() {
-			element.removeEventListener('mouseover', mouseOver)
-			element.removeEventListener('mouseleave', mouseLeave)
-			element.removeEventListener('mousemove', mouseMove)
+			element.removeEventListener('click', click)
+			document.removeEventListener('click', click)
 
 			// Ensure the tooltip is destroyed when the component is destroyed
 			if (tooltipComponent) {
