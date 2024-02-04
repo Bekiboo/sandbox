@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 
-	export let borderColor = '255,0,0'
+	export let borderColor = 'rgba(255,0,0,.66)'
 	export let bgColor = '#212121'
-	export let intensity = 1
 	export let borderWidth = '0.1rem'
 	export let borderRadius = '2rem'
 
@@ -11,7 +10,6 @@
 	let wrapperCenter: { x: number; y: number } = { x: 0, y: 0 }
 	let wrapperDims: { width: number; height: number } = { width: 0, height: 0 }
 	let cursor: { x: number; y: number }
-	let correctedIntensity: number
 	let dx: number
 	let dy: number
 
@@ -38,23 +36,8 @@
 		}
 	}
 
-	function getMouseIntensity(
-		cursor: { x: number; y: number },
-		center: { x: number; y: number },
-		radius: number
-	) {
-		// get distance between cursor and center (pythagore)
-		const distance = Math.sqrt(Math.pow(center.x - cursor.x, 2) + Math.pow(center.y - cursor.y, 2))
-		if (distance > radius) return 0
-
-		// return a value between 0 and intensity
-		return intensity - distance / radius
-	}
-
 	function handleMouseMove(e: MouseEvent) {
 		cursor = { x: e.clientX, y: e.clientY }
-
-		correctedIntensity = getMouseIntensity(cursor, wrapperCenter, wrapperDims.width)
 
 		dx = wrapperCenter.x - cursor.x - wrapperDims.width / 2
 		dy = wrapperCenter.y - cursor.y - wrapperDims.height / 2
@@ -71,19 +54,14 @@
 <div
 	class="wrapper"
 	bind:this={wrapper}
-	style={`
-        background: radial-gradient(circle at  ${-dx}px ${-dy}px, rgba(${borderColor}, ${correctedIntensity}), ${bgColor});
-		padding: ${borderWidth};
-		border-radius: ${borderRadius};
-        `}
+	style:--pos-x="{-dx}px"
+	style:--pos-y="{-dy}px"
+	style:--borderColor={borderColor}
+	style:--bgColor={bgColor}
+	style:--borderWidth={borderWidth}
+	style:--borderRadius={borderRadius}
 >
-	<div
-		class="content"
-		style={`
-			border-radius: ${borderRadius};
-			background-color: ${bgColor};
-	`}
-	>
+	<div class="content">
 		<slot />
 	</div>
 </div>
@@ -95,10 +73,20 @@
 		width: min-content;
 		z-index: 1;
 		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.75);
+		background: radial-gradient(
+			circle at left var(--pos-x) top var(--pos-y),
+			var(--borderColor) 10%,
+			var(--bgColor) 50%
+		);
+		padding: var(--borderWidth);
+		border-radius: var(--borderRadius);
 	}
 
 	.content {
 		background-clip: padding-box;
 		z-index: -1;
+
+		border-radius: var(--borderRadius);
+		background-color: var(--bgColor);
 	}
 </style>
