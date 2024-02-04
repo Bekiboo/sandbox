@@ -103,10 +103,10 @@
 		</div>
 	</div>
 
-	<div class="checkbox">
+	<div class="direction-checkbox">
 		<input type="checkbox" id="toggle" bind:checked={reverse} />
 		<label for="toggle">
-			<div class="toggle-button">Changer de sens!</div>
+			<div class="toggle-button">Changer de sens !</div>
 		</label>
 	</div>
 </main>
@@ -137,7 +137,7 @@
 		color: dimgray;
 	}
 
-	.checkbox {
+	.direction-checkbox {
 		position: relative;
 		display: flex;
 		flex-direction: row-reverse;
@@ -145,5 +145,11 @@
 		align-items: center;
 		justify-content: center;
 		margin-top: 2rem;
+		border: none;
+	}
+
+	.toggle-button,
+	.direction-checkbox input {
+		cursor: pointer;
 	}
 </style>
