@@ -12,6 +12,36 @@ export type Project = {
 
 export const projects: Project[] = [
 	{
+		title: 'Periodic Table',
+		description: 'An interactive periodic table with SvelteKit and TailwindCSS.',
+		path: '/projects/periodic-table',
+		image: 'images/minis/periodic-table.png',
+		dateStarted: '2024-01',
+		tech: ['svelte', 'sveltekit', 'tailwindcss'],
+		status: 'in-progress',
+		type: 'project'
+	},
+	{
+		title: 'French Society - Defi 2',
+		description: 'A chrono with animation.',
+		path: '/challenges/french-society/defi-2',
+		image: 'images/minis/defi-2.png',
+		dateStarted: '2024-02',
+		tech: ['svelte', 'sveltekit', 'vanilla'],
+		status: 'in-progress',
+		type: 'project'
+	},
+	{
+		title: 'French Society - Defi 1',
+		description: 'A form with validation, feedback, and a sweet animation.',
+		path: '/challenges/french-society/defi-1',
+		image: 'images/minis/defi-1.png',
+		dateStarted: '2024-01',
+		tech: ['svelte', 'sveltekit', 'superforms', 'zod'],
+		status: 'in-progress',
+		type: 'project'
+	},
+	{
 		title: 'Image to Caption',
 		description: 'Compare different Hugging Face models for image captioning.',
 		path: '/experiments/ai/image-to-caption',
@@ -67,7 +97,7 @@ export const projects: Project[] = [
 		title: 'Particles test',
 		description: 'TODO',
 		path: '/experiments/three-js/connected-dots',
-		image: null,
+		image: 'images/minis/connected-dots.png',
 		dateStarted: '2023-10',
 		tech: [
 			'three.js',
