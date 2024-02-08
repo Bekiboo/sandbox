@@ -42,6 +42,16 @@ export const projects: Project[] = [
 		type: 'project'
 	},
 	{
+		title: 'Dice Roller',
+		description: 'A dice roller for role-playing games.',
+		path: '/projects/mulligan',
+		image: 'images/minis/dice-roller.png',
+		dateStarted: '2023-10',
+		tech: ['svelte', 'sveltekit', 'typescript'],
+		status: 'in-progress',
+		type: 'project'
+	},
+	{
 		title: 'Image to Caption',
 		description: 'Compare different Hugging Face models for image captioning.',
 		path: '/experiments/ai/image-to-caption',
