@@ -14,9 +14,6 @@ dependencies:
   '@huggingface/inference':
     specifier: ^2.6.4
     version: registry.npmjs.org/@huggingface/inference@2.6.4
-  '@tabler/icons-svelte':
-    specifier: ^2.40.0
-    version: registry.npmjs.org/@tabler/icons-svelte@2.40.0(svelte@4.2.3)
   '@theatre/core':
     specifier: ^0.7.0
     version: registry.npmjs.org/@theatre/core@0.7.0
@@ -115,6 +112,9 @@ devDependencies:
   svelte-check:
     specifier: ^3.5.2
     version: registry.npmjs.org/svelte-check@3.6.0(postcss@8.4.31)(svelte@4.2.3)
+  sveltekit-superforms:
+    specifier: ^1.13.4
+    version: 1.13.4(@sveltejs/kit@1.27.5)(svelte@4.2.3)(zod@3.22.4)
   tailwindcss:
     specifier: ^3.3.5
     version: registry.npmjs.org/tailwindcss@3.3.5
@@ -127,6 +127,9 @@ devDependencies:
   vite:
     specifier: ^4.5.0
     version: registry.npmjs.org/vite@4.5.0
+  zod:
+    specifier: ^3.22.4
+    version: 3.22.4
 
 packages:
 
@@ -486,6 +489,11 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /klona@2.0.6:
+    resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==, tarball: https://registry.npmjs.org/klona/-/klona-2.0.6.tgz}
+    engines: {node: '>= 8'}
+    dev: true
+
   /magic-string@0.30.5:
     resolution: {integrity: sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA==, tarball: https://registry.npmjs.org/magic-string/-/magic-string-0.30.5.tgz}
     engines: {node: '>=12'}
@@ -536,6 +544,20 @@ packages:
       svelte: registry.npmjs.org/svelte@4.2.3
     dev: true
 
+  /sveltekit-superforms@1.13.4(@sveltejs/kit@1.27.5)(svelte@4.2.3)(zod@3.22.4):
+    resolution: {integrity: sha512-rM2+Ictaw7OAIorCLmvg82orci/mtO9ZouI4emtx8SyYngx9aED+eNZlHPLufgB6D7geL2a+hMSFtM3zmMQixQ==, tarball: https://registry.npmjs.org/sveltekit-superforms/-/sveltekit-superforms-1.13.4.tgz}
+    peerDependencies:
+      '@sveltejs/kit': 1.x || 2.x
+      svelte: 3.x || 4.x
+      zod: 3.x
+    dependencies:
+      '@sveltejs/kit': 1.27.5(svelte@4.2.3)(vite@4.5.0)
+      devalue: 4.3.2
+      klona: 2.0.6
+      svelte: registry.npmjs.org/svelte@4.2.3
+      zod: 3.22.4
+    dev: true
+
   /tiny-glob@0.2.9:
     resolution: {integrity: sha512-g/55ssRPUjShh+xkfx9UPDXqhckHEsHr4Vd9zX55oSdGZc/MD0m3sferOkwWtp98bv+kcVfEHtRJgBVJzelrzg==, tarball: https://registry.npmjs.org/tiny-glob/-/tiny-glob-0.2.9.tgz}
     dependencies:
@@ -570,6 +592,10 @@ packages:
         optional: true
     dependencies:
       vite: registry.npmjs.org/vite@4.5.0
+    dev: true
+
+  /zod@3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==, tarball: https://registry.npmjs.org/zod/-/zod-3.22.4.tgz}
     dev: true
 
   registry.npmjs.org/@aashutoshrathi/word-wrap@1.2.6:
@@ -793,24 +819,6 @@ packages:
       '@sveltejs/kit': 1.27.5(svelte@4.2.3)(vite@4.5.0)
       import-meta-resolve: registry.npmjs.org/import-meta-resolve@4.0.0
     dev: true
-
-  registry.npmjs.org/@tabler/icons-svelte@2.40.0(svelte@4.2.3):
-    resolution: {integrity: sha512-jAw7tbCXqdvvSqGVP97u9JyZt6WaJbFqMrwjXBXtUZ+ZKIJub6q2cVjsdCaWP43SPQsm4mLA0uHzuW+q6kOxJQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tabler/icons-svelte/-/icons-svelte-2.40.0.tgz}
-    id: registry.npmjs.org/@tabler/icons-svelte/2.40.0
-    name: '@tabler/icons-svelte'
-    version: 2.40.0
-    peerDependencies:
-      svelte: '>=3 <5'
-    dependencies:
-      '@tabler/icons': registry.npmjs.org/@tabler/icons@2.40.0
-      svelte: registry.npmjs.org/svelte@4.2.3
-    dev: false
-
-  registry.npmjs.org/@tabler/icons@2.40.0:
-    resolution: {integrity: sha512-VqKsBSX159cLFTnCzkCmGhZtSPJHNN0lM2sC4xe0HPOfPUnjiex7rDHDdut4oe4iKRecDDpwXwM9BcU6xCPlCg==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tabler/icons/-/icons-2.40.0.tgz}
-    name: '@tabler/icons'
-    version: 2.40.0
-    dev: false
 
   registry.npmjs.org/@theatre/core@0.7.0:
     resolution: {integrity: sha512-CXRUxOaKQtb4biQa6+I6PW8wPsFj9NsZgr7VdosSB20WxlanQ8/ZR0xH/A3A3oCHdCXKaZxQlNcEOeByk4Yf/g==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@theatre/core/-/core-0.7.0.tgz}
