@@ -131,7 +131,7 @@
 			{@const isMatched = matches.includes(card)}
 
 			<button
-				class="flex items-center justify-center w-32 h-32 text-6xl bg-primary card"
+				class="flex items-center justify-center w-16 h-16 text-4xl md:w-32 md:h-32 md:text-6xl bg-primary card"
 				class:isSelected
 				class:flip={isSelectedOrMatched}
 				class:disabled={isSelectedOrMatched}
@@ -144,30 +144,30 @@
 {/if}
 
 {#if $state === 'start'}
-	<div class="flex flex-col justify-center items-center w-screen h-screen">
+	<div class="flex flex-col items-center justify-center w-screen h-screen">
 		<h1 class="text-2xl">Matching Game</h1>
 		<button
 			on:click={() => send({ type: 'CLICK' })}
-			class="btn btn-primary mt-4 uppercase btn-lg btn-wide">Play</button
+			class="mt-4 uppercase btn btn-primary btn-lg btn-wide">Play</button
 		>
 	</div>
 {/if}
 {#if $state == 'gameover'}
-	<div class="flex flex-col justify-center items-center w-screen h-screen">
+	<div class="flex flex-col items-center justify-center w-screen h-screen">
 		<h1 class="text-2xl">You lost 💩</h1>
 		<button
 			on:click={() => ($state = 'playing')}
-			class="btn btn-primary mt-4 uppercase btn-lg btn-wide">Play again</button
+			class="mt-4 uppercase btn btn-primary btn-lg btn-wide">Play again</button
 		>
 	</div>
 {/if}
 
 {#if $state == 'won'}
-	<div class="flex flex-col justify-center items-center w-screen h-screen">
+	<div class="flex flex-col items-center justify-center w-screen h-screen">
 		<h1 class="text-2xl">You won!</h1>
 		<button
 			on:click={() => ($state = 'playing')}
-			class="btn btn-primary mt-4 uppercase btn-lg btn-wide">Play again</button
+			class="mt-4 uppercase btn btn-primary btn-lg btn-wide">Play again</button
 		>
 	</div>
 {/if}
