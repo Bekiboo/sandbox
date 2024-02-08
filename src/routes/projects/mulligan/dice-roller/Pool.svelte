@@ -1,10 +1,9 @@
 <script lang="ts">
 	import type { DicePool } from './Die'
-	import type Die from './Die.svelte'
 
 	export let dicePool: DicePool
 
-	let selected: any = null
+	let selected: unknown | null = null
 </script>
 
 <div class="flex gap-2 mb-2">
