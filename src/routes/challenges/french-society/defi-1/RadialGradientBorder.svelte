@@ -1,29 +1,13 @@
 <script lang="ts">
-	import { onMount } from 'svelte'
-
-	export let borderColor = 'rgba(255,0,0,.66)'
+	export let borderColor = 'rgba(0,255,255,.66)'
 	export let bgColor = '#212121'
 	export let borderWidth = '0.1rem'
 	export let borderRadius = '2rem'
 
+	let pos = { x: '0', y: '0' }
 	let wrapper: HTMLDivElement
-	let wrapperCenter: { x: number; y: number } = { x: 0, y: 0 }
-	let wrapperDims: { width: number; height: number } = { width: 0, height: 0 }
-	let cursor: { x: number; y: number }
-	let dx: number
-	let dy: number
 
-	onMount(() => {
-		wrapperCenter = {
-			x: wrapper.offsetLeft + wrapper.offsetWidth / 2,
-			y: wrapper.offsetTop + wrapper.offsetHeight / 2
-		}
-		wrapperDims = {
-			width: wrapper.offsetWidth,
-			height: wrapper.offsetHeight
-		}
-	})
-
+	// This should be in $lib/utils
 	const throttle = (fn: Function, delay: number) => {
 		let last = 0
 		return (...args: any[]) => {
@@ -36,17 +20,18 @@
 		}
 	}
 
-	function handleMouseMove(e: MouseEvent) {
-		cursor = { x: e.clientX, y: e.clientY }
-
-		dx = wrapperCenter.x - cursor.x - wrapperDims.width / 2
-		dy = wrapperCenter.y - cursor.y - wrapperDims.height / 2
+	function handleMouseMove({ clientX, clientY }: MouseEvent) {
+		const { top, left, width, height } = wrapper.getBoundingClientRect()
+		pos = {
+			x: ((100 * (clientX - left)) / width).toFixed(2),
+			y: ((100 * (clientY - top)) / height).toFixed(2)
+		}
 	}
 
-	function handleResize() {
-		wrapperCenter = {
-			x: wrapper.offsetLeft + wrapper.offsetWidth / 2,
-			y: wrapper.offsetTop + wrapper.offsetHeight / 2
+	// Hide the radial gradient when the mouse leaves the window
+	function mouseOut(e: MouseEvent) {
+		if (e.relatedTarget === null) {
+			pos = { x: '-1000', y: '-1000' }
 		}
 	}
 </script>
@@ -54,8 +39,8 @@
 <div
 	class="wrapper"
 	bind:this={wrapper}
-	style:--pos-x="{-dx}px"
-	style:--pos-y="{-dy}px"
+	style:--pos-x="{pos.x}%"
+	style:--pos-y="{pos.y}%"
 	style:--borderColor={borderColor}
 	style:--bgColor={bgColor}
 	style:--borderWidth={borderWidth}
@@ -66,7 +51,7 @@
 	</div>
 </div>
 
-<svelte:window on:resize={handleResize} on:mousemove={throttle(handleMouseMove, 50)} />
+<svelte:window on:mouseout={mouseOut} on:mousemove={throttle(handleMouseMove, 50)} />
 
 <style>
 	.wrapper {
