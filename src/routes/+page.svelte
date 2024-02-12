@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ProjectCard from './ProjectCard.svelte'
 	import { projects } from './projects'
 	import { DateTime } from 'luxon'
 </script>
@@ -16,27 +17,7 @@
 	<!-- Tiles -->
 	<div class="flex flex-wrap justify-center w-full gap-6">
 		{#each projects as project}
-			<div class="flex-grow w-64 shadow-xl card bg-base-100 image-full">
-				{#if project.image}
-					<figure>
-						<img src={project.image} alt={project.title} />
-					</figure>
-				{:else}
-					<figure>
-						<div
-							class="w-full h-full"
-							style="background-color: hsl({Math.random() * 360}, 100%, 50%);"
-						/>
-					</figure>
-				{/if}
-				<div class="card-body">
-					<h2 class="card-title">{project.title}</h2>
-					<p>{project.description}</p>
-					<div class="justify-end card-actions">
-						<a class="btn btn-primary" href={project.path}>View</a>
-					</div>
-				</div>
-			</div>
+			<ProjectCard {project} />
 		{/each}
 	</div>
 </main>
