@@ -1,28 +1,32 @@
 <script lang="ts">
+	import { colorSchemes } from './elements'
 	export let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups'
+	export let colorScheme: 'chemicalFamily' | 'standardState' | 'metallicity' = 'metallicity'
 </script>
 
 <div class="flex gap-8">
 	<div>
 		<h4>Color Scheme</h4>
 		<div class="form-control">
-			<label class="cursor-pointer label">
-				<input
-					class="radio radio-primary"
-					type="radio"
-					name="color-scheme"
-					value="metallicity"
-					checked
-				/>
-				<span class="ml-2 label-text">Metallicity</span>
-			</label>
+			{#each Object.keys(colorSchemes) as scheme}
+				<label class="justify-start cursor-pointer label">
+					<input
+						bind:group={colorScheme}
+						class="radio radio-primary"
+						type="radio"
+						name="color-scheme"
+						value={scheme}
+					/>
+					<span class="ml-2 label-text">{colorSchemes[scheme].name}</span>
+				</label>
+			{/each}
 		</div>
 	</div>
 
 	<div>
 		<h4>Labels</h4>
 		<div class="form-control">
-			<label class="cursor-pointer label">
+			<label class="justify-start cursor-pointer label">
 				<input
 					bind:group={labels}
 					class="radio radio-primary"
@@ -32,7 +36,7 @@
 				/>
 				<span class="ml-2 label-text">Groups & Periods</span>
 			</label>
-			<label class="cursor-pointer label">
+			<label class="justify-start cursor-pointer label">
 				<input
 					bind:group={labels}
 					class="radio radio-primary"
@@ -42,7 +46,7 @@
 				/>
 				<span class="ml-2 label-text">Ionization energy</span>
 			</label>
-			<label class="cursor-pointer label">
+			<label class="justify-start cursor-pointer label">
 				<input
 					bind:group={labels}
 					class="radio radio-primary"
@@ -52,7 +56,7 @@
 				/>
 				<span class="ml-2 label-text">Atomic Size</span>
 			</label>
-			<label class="cursor-pointer label">
+			<label class="justify-start cursor-pointer label">
 				<input
 					bind:group={labels}
 					class="radio radio-primary"

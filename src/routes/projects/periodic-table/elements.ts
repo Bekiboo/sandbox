@@ -9,7 +9,7 @@ export const elements = [
 		cpkHexColor: 'FFFFFF',
 		electronicConfiguration: '1s1',
 		standardState: 'gas',
-		groupBlock: 'nonmetal',
+		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 13.5984,
 		valence: 1
@@ -24,7 +24,7 @@ export const elements = [
 		cpkHexColor: 'D9FFFF',
 		electronicConfiguration: '1s2',
 		standardState: 'gas',
-		groupBlock: 'noble-gas',
+		chemicalFamily: 'noble-gas',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 24.5874,
 		valence: 2
@@ -39,7 +39,7 @@ export const elements = [
 		cpkHexColor: 'CC80FF',
 		electronicConfiguration: '[He] 2s1',
 		standardState: 'solid',
-		groupBlock: 'alkali-metal',
+		chemicalFamily: 'alkali-metal',
 		metallicity: 'metal',
 		ionizationEnergy: 5.3917,
 		valece: 1
@@ -54,7 +54,7 @@ export const elements = [
 		cpkHexColor: 'C2FF00',
 		electronicConfiguration: '[He] 2s2',
 		standardState: 'solid',
-		groupBlock: 'alkaline-earth-metal',
+		chemicalFamily: 'alkaline-earth-metal',
 		metallicity: 'metal',
 		ionizationEnergy: 9.3227,
 		valence: 2
@@ -69,7 +69,7 @@ export const elements = [
 		cpkHexColor: 'FFB5B5',
 		electronicConfiguration: '[He] 2s2 2p1',
 		standardState: 'solid',
-		groupBlock: 'metalloid',
+		chemicalFamily: 'metalloid',
 		metallicity: 'metalloid',
 		ionizationEnergy: 8.298,
 		valence: 3
@@ -84,7 +84,7 @@ export const elements = [
 		cpkHexColor: 909090,
 		electronicConfiguration: '[He] 2s2 2p2',
 		standardState: 'solid',
-		groupBlock: 'nonmetal',
+		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 11.2603,
 		valence: 4
@@ -99,7 +99,7 @@ export const elements = [
 		cpkHexColor: '3050F8',
 		electronicConfiguration: '[He] 2s2 2p3',
 		standardState: 'gas',
-		groupBlock: 'nonmetal',
+		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 14.5341,
 		valence: 5
@@ -114,7 +114,7 @@ export const elements = [
 		cpkHexColor: 'FF0D0D',
 		electronicConfiguration: '[He] 2s2 2p4',
 		standardState: 'gas',
-		groupBlock: 'nonmetal',
+		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 13.6181,
 		valence: 6
@@ -129,7 +129,7 @@ export const elements = [
 		cpkHexColor: '90E050',
 		electronicConfiguration: '[He] 2s2 2p5',
 		standardState: 'gas',
-		groupBlock: 'halogen',
+		chemicalFamily: 'halogen',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 17.4228,
 		valence: 7
@@ -144,7 +144,7 @@ export const elements = [
 		cpkHexColor: 'B3E3F5',
 		electronicConfiguration: '[He] 2s2 2p6',
 		standardState: 'gas',
-		groupBlock: 'noble-gas',
+		chemicalFamily: 'noble-gas',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 21.5645,
 		valence: 8
@@ -159,7 +159,7 @@ export const elements = [
 		cpkHexColor: 'AB5CF2',
 		electronicConfiguration: '[Ne] 3s1',
 		standardState: 'solid',
-		groupBlock: 'alkali-metal',
+		chemicalFamily: 'alkali-metal',
 		metallicity: 'metal',
 		ionizationEnergy: 5.1391,
 		valence: 1
@@ -174,7 +174,7 @@ export const elements = [
 		cpkHexColor: '8AFF00',
 		electronicConfiguration: '[Ne] 3s2',
 		standardState: 'solid',
-		groupBlock: 'alkaline-earth-metal',
+		chemicalFamily: 'alkaline-earth-metal',
 		metallicity: 'metal',
 		ionizationEnergy: 7.6462,
 		valence: 2
@@ -189,7 +189,7 @@ export const elements = [
 		cpkHexColor: 'BFA6A6',
 		electronicConfiguration: '[Ne] 3s2 3p1',
 		standardState: 'solid',
-		groupBlock: 'metal',
+		chemicalFamily: 'metal',
 		metallicity: 'metal',
 		ionizationEnergy: 5.9858,
 		valence: 3
@@ -204,7 +204,7 @@ export const elements = [
 		cpkHexColor: 'F0C8A0',
 		electronicConfiguration: '[Ne] 3s2 3p2',
 		standardState: 'solid',
-		groupBlock: 'metalloid',
+		chemicalFamily: 'metalloid',
 		metallicity: 'metalloid',
 		ionizationEnergy: 8.1517,
 		valence: 4
@@ -219,7 +219,7 @@ export const elements = [
 		cpkHexColor: 'FF8000',
 		electronicConfiguration: '[Ne] 3s2 3p3',
 		standardState: 'solid',
-		groupBlock: 'nonmetal',
+		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 10.4867,
 		valence: 5
@@ -234,7 +234,7 @@ export const elements = [
 		cpkHexColor: 'FFFF30',
 		electronicConfiguration: '[Ne] 3s2 3p4',
 		standardState: 'solid',
-		groupBlock: 'nonmetal',
+		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 10.36,
 		valence: 6
@@ -249,7 +249,7 @@ export const elements = [
 		cpkHexColor: '1FF01F',
 		electronicConfiguration: '[Ne] 3s2 3p5',
 		standardState: 'gas',
-		groupBlock: 'halogen',
+		chemicalFamily: 'halogen',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 12.9676,
 		valence: 7
@@ -264,7 +264,7 @@ export const elements = [
 		cpkHexColor: '80D1E3',
 		electronicConfiguration: '[Ne] 3s2 3p6',
 		standardState: 'gas',
-		groupBlock: 'noble-gas',
+		chemicalFamily: 'noble-gas',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 15.7596,
 		valence: 8
@@ -279,7 +279,7 @@ export const elements = [
 		cpkHexColor: '8F40D4',
 		electronicConfiguration: '[Ar] 4s1',
 		standardState: 'solid',
-		groupBlock: 'alkali-metal',
+		chemicalFamily: 'alkali-metal',
 		metallicity: 'metal',
 		ionizationEnergy: 4.3407,
 		valence: 1
@@ -294,7 +294,7 @@ export const elements = [
 		cpkHexColor: '3DFF00',
 		electronicConfiguration: '[Ar] 4s2',
 		standardState: 'solid',
-		groupBlock: 'alkaline-earth-metal',
+		chemicalFamily: 'alkaline-earth-metal',
 		metallicity: 'metal',
 		ionizationEnergy: 6.1132,
 		valence: 2
@@ -309,7 +309,7 @@ export const elements = [
 		cpkHexColor: 'E6E6E6',
 		electronicConfiguration: '[Ar] 3d1 4s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -322,7 +322,7 @@ export const elements = [
 		cpkHexColor: 'BFC2C7',
 		electronicConfiguration: '[Ar] 3d2 4s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -335,7 +335,7 @@ export const elements = [
 		cpkHexColor: 'A6A6AB',
 		electronicConfiguration: '[Ar] 3d3 4s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -348,7 +348,7 @@ export const elements = [
 		cpkHexColor: '8A99C7',
 		electronicConfiguration: '[Ar] 3d5 4s1',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -361,7 +361,7 @@ export const elements = [
 		cpkHexColor: '9C7AC7',
 		electronicConfiguration: '[Ar] 3d5 4s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -374,7 +374,7 @@ export const elements = [
 		cpkHexColor: 'E06633',
 		electronicConfiguration: '[Ar] 3d6 4s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -387,7 +387,7 @@ export const elements = [
 		cpkHexColor: 'F090A0',
 		electronicConfiguration: '[Ar] 3d7 4s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -400,7 +400,7 @@ export const elements = [
 		cpkHexColor: '50D050',
 		electronicConfiguration: '[Ar] 3d8 4s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -413,7 +413,7 @@ export const elements = [
 		cpkHexColor: 'C88033',
 		electronicConfiguration: '[Ar] 3d10 4s1',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -426,7 +426,7 @@ export const elements = [
 		cpkHexColor: '7D80B0',
 		electronicConfiguration: '[Ar] 3d10 4s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -439,7 +439,7 @@ export const elements = [
 		cpkHexColor: 'C28F8F',
 		electronicConfiguration: '[Ar] 3d10 4s2 4p1',
 		standardState: 'solid',
-		groupBlock: 'metal',
+		chemicalFamily: 'metal',
 		metallicity: 'metal',
 		ionizationEnergy: 5.9993,
 		valence: 3
@@ -454,7 +454,7 @@ export const elements = [
 		cpkHexColor: '668F8F',
 		electronicConfiguration: '[Ar] 3d10 4s2 4p2',
 		standardState: 'solid',
-		groupBlock: 'metalloid',
+		chemicalFamily: 'metalloid',
 		metallicity: 'metalloid',
 		ionizationEnergy: 7.8994,
 		valence: 4
@@ -469,7 +469,7 @@ export const elements = [
 		cpkHexColor: 'BD80E3',
 		electronicConfiguration: '[Ar] 3d10 4s2 4p3',
 		standardState: 'solid',
-		groupBlock: 'metalloid',
+		chemicalFamily: 'metalloid',
 		metallicity: 'metalloid',
 		ionizationEnergy: 9.7886,
 		valence: 5
@@ -484,7 +484,7 @@ export const elements = [
 		cpkHexColor: 'FFA100',
 		electronicConfiguration: '[Ar] 3d10 4s2 4p4',
 		standardState: 'solid',
-		groupBlock: 'nonmetal',
+		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 9.7524,
 		valence: 6
@@ -499,7 +499,7 @@ export const elements = [
 		cpkHexColor: 'A62929',
 		electronicConfiguration: '[Ar] 3d10 4s2 4p5',
 		standardState: 'liquid',
-		groupBlock: 'halogen',
+		chemicalFamily: 'halogen',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 11.8138,
 		valence: 7
@@ -514,7 +514,7 @@ export const elements = [
 		cpkHexColor: '5CB8D1',
 		electronicConfiguration: '[Ar] 3d10 4s2 4p6',
 		standardState: 'gas',
-		groupBlock: 'noble-gas',
+		chemicalFamily: 'noble-gas',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 13.9996,
 		valence: 8
@@ -529,7 +529,7 @@ export const elements = [
 		cpkHexColor: '702EB0',
 		electronicConfiguration: '[Kr] 5s1',
 		standardState: 'solid',
-		groupBlock: 'alkali-metal',
+		chemicalFamily: 'alkali-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -542,7 +542,7 @@ export const elements = [
 		cpkHexColor: '00FF00',
 		electronicConfiguration: '[Kr] 5s2',
 		standardState: 'solid',
-		groupBlock: 'alkaline-earth-metal',
+		chemicalFamily: 'alkaline-earth-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -555,7 +555,7 @@ export const elements = [
 		cpkHexColor: '94FFFF',
 		electronicConfiguration: '[Kr] 4d1 5s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -568,7 +568,7 @@ export const elements = [
 		cpkHexColor: '94E0E0',
 		electronicConfiguration: '[Kr] 4d2 5s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -581,7 +581,7 @@ export const elements = [
 		cpkHexColor: '73C2C9',
 		electronicConfiguration: '[Kr] 4d4 5s1',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -594,7 +594,7 @@ export const elements = [
 		cpkHexColor: '54B5B5',
 		electronicConfiguration: '[Kr] 4d5 5s1',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -607,7 +607,7 @@ export const elements = [
 		cpkHexColor: '3B9E9E',
 		electronicConfiguration: '[Kr] 4d5 5s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -620,7 +620,7 @@ export const elements = [
 		cpkHexColor: '248F8F',
 		electronicConfiguration: '[Kr] 4d7 5s1',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -633,7 +633,7 @@ export const elements = [
 		cpkHexColor: '0A7D8C',
 		electronicConfiguration: '[Kr] 4d8 5s1',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -646,7 +646,7 @@ export const elements = [
 		cpkHexColor: 6985,
 		electronicConfiguration: '[Kr] 4d10',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -659,7 +659,7 @@ export const elements = [
 		cpkHexColor: 'C0C0C0',
 		electronicConfiguration: '[Kr] 4d10 5s1',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -672,7 +672,7 @@ export const elements = [
 		cpkHexColor: 'FFD98F',
 		electronicConfiguration: '[Kr] 4d10 5s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -685,7 +685,7 @@ export const elements = [
 		cpkHexColor: 'A67573',
 		electronicConfiguration: '[Kr] 4d10 5s2 5p1',
 		standardState: 'solid',
-		groupBlock: 'metal',
+		chemicalFamily: 'metal',
 		metallicity: 'metal'
 	},
 	{
@@ -698,7 +698,7 @@ export const elements = [
 		cpkHexColor: 668080,
 		electronicConfiguration: '[Kr] 4d10 5s2 5p2',
 		standardState: 'solid',
-		groupBlock: 'metal',
+		chemicalFamily: 'metal',
 		metallicity: 'metal'
 	},
 	{
@@ -711,7 +711,7 @@ export const elements = [
 		cpkHexColor: '9E63B5',
 		electronicConfiguration: '[Kr] 4d10 5s2 5p3',
 		standardState: 'solid',
-		groupBlock: 'metalloid',
+		chemicalFamily: 'metalloid',
 		metallicity: 'metalloid'
 	},
 	{
@@ -724,7 +724,7 @@ export const elements = [
 		cpkHexColor: 'D47A00',
 		electronicConfiguration: '[Kr] 4d10 5s2 5p4',
 		standardState: 'solid',
-		groupBlock: 'metalloid',
+		chemicalFamily: 'metalloid',
 		metallicity: 'metalloid'
 	},
 	{
@@ -737,7 +737,7 @@ export const elements = [
 		cpkHexColor: 940094,
 		electronicConfiguration: '[Kr] 4d10 5s2 5p5',
 		standardState: 'solid',
-		groupBlock: 'halogen',
+		chemicalFamily: 'halogen',
 		metallicity: 'nonmetal'
 	},
 	{
@@ -750,7 +750,7 @@ export const elements = [
 		cpkHexColor: '429EB0',
 		electronicConfiguration: '[Kr] 4d10 5s2 5p6',
 		standardState: 'gas',
-		groupBlock: 'noble-gas',
+		chemicalFamily: 'noble-gas',
 		metallicity: 'nonmetal'
 	},
 	{
@@ -763,7 +763,7 @@ export const elements = [
 		cpkHexColor: '57178F',
 		electronicConfiguration: '[Xe] 6s1',
 		standardState: 'solid',
-		groupBlock: 'alkali-metal',
+		chemicalFamily: 'alkali-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -776,7 +776,7 @@ export const elements = [
 		cpkHexColor: '00C900',
 		electronicConfiguration: '[Xe] 6s2',
 		standardState: 'solid',
-		groupBlock: 'alkaline-earth-metal',
+		chemicalFamily: 'alkaline-earth-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -789,7 +789,7 @@ export const elements = [
 		cpkHexColor: '70D4FF',
 		electronicConfiguration: '[Xe] 5d1 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -802,7 +802,7 @@ export const elements = [
 		cpkHexColor: 'FFFFC7',
 		electronicConfiguration: '[Xe] 4f1 5d1 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -815,7 +815,7 @@ export const elements = [
 		cpkHexColor: 'D9FFC7',
 		electronicConfiguration: '[Xe] 4f3 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -828,7 +828,7 @@ export const elements = [
 		cpkHexColor: 'C7FFC7',
 		electronicConfiguration: '[Xe] 4f4 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -841,7 +841,7 @@ export const elements = [
 		cpkHexColor: 'A3FFC7',
 		electronicConfiguration: '[Xe] 4f5 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -854,7 +854,7 @@ export const elements = [
 		cpkHexColor: '8FFFC7',
 		electronicConfiguration: '[Xe] 4f6 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -867,7 +867,7 @@ export const elements = [
 		cpkHexColor: '61FFC7',
 		electronicConfiguration: '[Xe] 4f7 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -880,7 +880,7 @@ export const elements = [
 		cpkHexColor: '45FFC7',
 		electronicConfiguration: '[Xe] 4f7 5d1 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -893,7 +893,7 @@ export const elements = [
 		cpkHexColor: '30FFC7',
 		electronicConfiguration: '[Xe] 4f9 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -906,7 +906,7 @@ export const elements = [
 		cpkHexColor: '1FFFC7',
 		electronicConfiguration: '[Xe] 4f10 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -919,7 +919,7 @@ export const elements = [
 		cpkHexColor: '00FF9C',
 		electronicConfiguration: '[Xe] 4f11 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -932,7 +932,7 @@ export const elements = [
 		cpkHexColor: '00E675',
 		electronicConfiguration: '[Xe] 4f12 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -945,7 +945,7 @@ export const elements = [
 		cpkHexColor: '00D452',
 		electronicConfiguration: '[Xe] 4f13 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -958,7 +958,7 @@ export const elements = [
 		cpkHexColor: '00BF38',
 		electronicConfiguration: '[Xe] 4f14 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -971,7 +971,7 @@ export const elements = [
 		cpkHexColor: '00AB24',
 		electronicConfiguration: '[Xe] 4f14 5d1 6s2',
 		standardState: 'solid',
-		groupBlock: 'lanthanoid',
+		chemicalFamily: 'lanthanoid',
 		metallicity: 'metal'
 	},
 	{
@@ -984,7 +984,7 @@ export const elements = [
 		cpkHexColor: '4DC2FF',
 		electronicConfiguration: '[Xe] 4f14 5d2 6s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -997,7 +997,7 @@ export const elements = [
 		cpkHexColor: '4DA6FF',
 		electronicConfiguration: '[Xe] 4f14 5d3 6s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1010,7 +1010,7 @@ export const elements = [
 		cpkHexColor: '2194D6',
 		electronicConfiguration: '[Xe] 4f14 5d4 6s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1023,7 +1023,7 @@ export const elements = [
 		cpkHexColor: '267DAB',
 		electronicConfiguration: '[Xe] 4f14 5d5 6s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1036,7 +1036,7 @@ export const elements = [
 		cpkHexColor: 266696,
 		electronicConfiguration: '[Xe] 4f14 5d6 6s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1049,7 +1049,7 @@ export const elements = [
 		cpkHexColor: 175487,
 		electronicConfiguration: '[Xe] 4f14 5d7 6s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1062,7 +1062,7 @@ export const elements = [
 		cpkHexColor: 'D0D0E0',
 		electronicConfiguration: '[Xe] 4f14 5d9 6s1',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1075,7 +1075,7 @@ export const elements = [
 		cpkHexColor: 'FFD123',
 		electronicConfiguration: '[Xe] 4f14 5d10 6s1',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1088,7 +1088,7 @@ export const elements = [
 		cpkHexColor: 'B8B8D0',
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2',
 		standardState: 'liquid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1101,7 +1101,7 @@ export const elements = [
 		cpkHexColor: 'A6544D',
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2 6p1',
 		standardState: 'solid',
-		groupBlock: 'metal',
+		chemicalFamily: 'metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1114,7 +1114,7 @@ export const elements = [
 		cpkHexColor: 575961,
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2 6p2',
 		standardState: 'solid',
-		groupBlock: 'metal',
+		chemicalFamily: 'metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1127,7 +1127,7 @@ export const elements = [
 		cpkHexColor: '9E4FB5',
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2 6p3',
 		standardState: 'solid',
-		groupBlock: 'metal',
+		chemicalFamily: 'metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1140,7 +1140,7 @@ export const elements = [
 		cpkHexColor: 'AB5C00',
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2 6p4',
 		standardState: 'solid',
-		groupBlock: 'metalloid',
+		chemicalFamily: 'metalloid',
 		metallicity: 'metal'
 	},
 	{
@@ -1153,7 +1153,7 @@ export const elements = [
 		cpkHexColor: '754F45',
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2 6p5',
 		standardState: 'solid',
-		groupBlock: 'halogen',
+		chemicalFamily: 'halogen',
 		metallicity: 'metalloid'
 	},
 	{
@@ -1166,7 +1166,7 @@ export const elements = [
 		cpkHexColor: 428296,
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2 6p6',
 		standardState: 'gas',
-		groupBlock: 'noble-gas',
+		chemicalFamily: 'noble-gas',
 		metallicity: 'nonmetal'
 	},
 	{
@@ -1179,7 +1179,7 @@ export const elements = [
 		cpkHexColor: 420066,
 		electronicConfiguration: '[Rn] 7s1',
 		standardState: 'solid',
-		groupBlock: 'alkali-metal',
+		chemicalFamily: 'alkali-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1192,7 +1192,7 @@ export const elements = [
 		cpkHexColor: '007D00',
 		electronicConfiguration: '[Rn] 7s2',
 		standardState: 'solid',
-		groupBlock: 'alkaline-earth-metal',
+		chemicalFamily: 'alkaline-earth-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1205,7 +1205,7 @@ export const elements = [
 		cpkHexColor: '70ABFA',
 		electronicConfiguration: '[Rn] 6d1 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1218,7 +1218,7 @@ export const elements = [
 		cpkHexColor: '00BAFF',
 		electronicConfiguration: '[Rn] 6d2 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1231,7 +1231,7 @@ export const elements = [
 		cpkHexColor: '00A1FF',
 		electronicConfiguration: '[Rn] 5f2 6d1 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1244,7 +1244,7 @@ export const elements = [
 		cpkHexColor: '008FFF',
 		electronicConfiguration: '[Rn] 5f3 6d1 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1257,7 +1257,7 @@ export const elements = [
 		cpkHexColor: '0080FF',
 		electronicConfiguration: '[Rn] 5f4 6d1 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1270,7 +1270,7 @@ export const elements = [
 		cpkHexColor: '006BFF',
 		electronicConfiguration: '[Rn] 5f6 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1283,7 +1283,7 @@ export const elements = [
 		cpkHexColor: '545CF2',
 		electronicConfiguration: '[Rn] 5f7 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1296,7 +1296,7 @@ export const elements = [
 		cpkHexColor: '785CE3',
 		electronicConfiguration: '[Rn] 5f7 6d1 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1309,7 +1309,7 @@ export const elements = [
 		cpkHexColor: '8A4FE3',
 		electronicConfiguration: '[Rn] 5f9 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1322,7 +1322,7 @@ export const elements = [
 		cpkHexColor: 'A136D4',
 		electronicConfiguration: '[Rn] 5f10 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1335,7 +1335,7 @@ export const elements = [
 		cpkHexColor: 'B31FD4',
 		electronicConfiguration: '[Rn] 5f11 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1348,7 +1348,7 @@ export const elements = [
 		cpkHexColor: 'B31FBA',
 		electronicConfiguration: '[Rn] 5f12 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1361,7 +1361,7 @@ export const elements = [
 		cpkHexColor: 'B30DA6',
 		electronicConfiguration: '[Rn] 5f13 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1374,7 +1374,7 @@ export const elements = [
 		cpkHexColor: 'BD0D87',
 		electronicConfiguration: '[Rn] 5f14 7s2',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1387,7 +1387,7 @@ export const elements = [
 		cpkHexColor: 'C70066',
 		electronicConfiguration: '[Rn] 5f14 7s2 7p1',
 		standardState: 'solid',
-		groupBlock: 'actinoid',
+		chemicalFamily: 'actinoid',
 		metallicity: 'metal'
 	},
 	{
@@ -1400,7 +1400,7 @@ export const elements = [
 		cpkHexColor: 'CC0059',
 		electronicConfiguration: '[Rn] 5f14 6d2 7s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1413,7 +1413,7 @@ export const elements = [
 		cpkHexColor: 'D1004F',
 		electronicConfiguration: '[Rn] 5f14 6d3 7s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1426,7 +1426,7 @@ export const elements = [
 		cpkHexColor: 'D90045',
 		electronicConfiguration: '[Rn] 5f14 6d4 7s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1439,7 +1439,7 @@ export const elements = [
 		cpkHexColor: 'E00038',
 		electronicConfiguration: '[Rn] 5f14 6d5 7s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1452,7 +1452,7 @@ export const elements = [
 		cpkHexColor: 'E6002E',
 		electronicConfiguration: '[Rn] 5f14 6d6 7s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	{
@@ -1465,7 +1465,7 @@ export const elements = [
 		cpkHexColor: 'EB0026',
 		electronicConfiguration: '[Rn] 5f14 6d7 7s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'unspecified'
 	},
 	{
@@ -1478,7 +1478,7 @@ export const elements = [
 		cpkHexColor: 'EB0026',
 		electronicConfiguration: '[Rn] 5f14 6d9 7s1',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'unspecified'
 	},
 	{
@@ -1491,7 +1491,7 @@ export const elements = [
 		cpkHexColor: 'EB0026',
 		electronicConfiguration: '[Rn] 5f14 6d10 7s1',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'unspecified'
 	},
 	{
@@ -1504,7 +1504,7 @@ export const elements = [
 		cpkHexColor: 'EB0026',
 		electronicConfiguration: '[Rn] 5f14 6d10 7s2',
 		standardState: 'solid',
-		groupBlock: 'transition-metal',
+		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
 	// {
@@ -1517,7 +1517,7 @@ export const elements = [
 	// 	cpkHexColor: 'EB0026',
 	// 	electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p1',
 	// 	standardState: 'solid',
-	// 	groupBlock: 'post-transition-metal',
+	// 	chemicalFamily: 'post-transition-metal',
 	// 	metallicity: 'metal'
 	// },
 	{
@@ -1530,7 +1530,7 @@ export const elements = [
 		cpkHexColor: 'EB0026',
 		electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p2',
 		standardState: 'solid',
-		groupBlock: 'post-transition-metal',
+		chemicalFamily: 'post-transition-metal',
 		metallicity: 'metal'
 	},
 	// {
@@ -1543,7 +1543,7 @@ export const elements = [
 	// 	cpkHexColor: 'EB0026',
 	// 	electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p3',
 	// 	standardState: 'solid',
-	// 	groupBlock: 'post-transition-metal',
+	// 	chemicalFamily: 'post-transition-metal',
 	// 	metallicity: 'metal'
 	// },
 	{
@@ -1556,7 +1556,7 @@ export const elements = [
 		cpkHexColor: 'EB0026',
 		electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p4',
 		standardState: 'solid',
-		groupBlock: 'post-transition-metal',
+		chemicalFamily: 'post-transition-metal',
 		metallicity: 'unspecified'
 	}
 	// {
@@ -1569,7 +1569,7 @@ export const elements = [
 	// 	cpkHexColor: 'EB0026',
 	// 	electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p5',
 	// 	standardState: 'solid',
-	// 	groupBlock: 'post-transition-metal',
+	// 	chemicalFamily: 'post-transition-metal',
 	// 	metallicity: 'metal'
 	// },
 	// {
@@ -1582,72 +1582,164 @@ export const elements = [
 	// 	cpkHexColor: 'EB0026',
 	// 	electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p6',
 	// 	standardState: 'solid',
-	// 	groupBlock: 'noble-gas',
+	// 	chemicalFamily: 'noble-gas',
 	// 	metallicity: 'nonmetal'
 	// }
 ]
 
-export type Category = keyof typeof categories
-
-export const categories: { [key: string]: { name: string; color: string } } = {
-	metal: {
-		name: 'Metal',
-		color: '#622E39'
-	},
-	metalloid: {
-		name: 'Metalloid',
-		color: '#523E1B'
-	},
-	nonmetal: {
-		name: 'Nonmetal',
-		color: '#2A4165'
-	},
-	unspecified: {
-		name: 'Unspecified',
-		color: ''
+type colorSchemeGroup = Record<
+	string,
+	{
+		name: string
+		color: string
 	}
-	// actinoid: {
-	// 	name: 'Actinoid',
-	// 	color: '#613B28'
+>
+
+type ColorSchemes = Record<
+	string,
+	{
+		name: string
+		group: colorSchemeGroup
+	}
+>
+
+export const colorSchemes: ColorSchemes = {
+	chemicalFamily: {
+		name: 'Chemical Family',
+		group: {
+			actinoid: {
+				name: 'Actinoid',
+				color: '#613B28'
+			},
+			'alkali-metal': {
+				name: 'Alkali Metal',
+				color: '#244D57'
+			},
+			'alkaline-earth-metal': {
+				name: 'Alkaline Earth Metal',
+				color: '#622E39'
+			},
+			halogen: {
+				name: 'Halogen',
+				color: '#940094' // a faire
+			},
+			lanthanoid: {
+				name: 'Lanthanoid',
+				color: '#622E39'
+			},
+			metal: {
+				name: 'Metal',
+				color: '#622E39'
+			},
+			metalloid: {
+				name: 'Metalloid',
+				color: '#523E1B'
+			},
+			'noble-gas': {
+				name: 'Noble Gas',
+				color: '#622E39'
+			},
+			nonmetal: {
+				name: 'Nonmetal',
+				color: '#2A4165'
+			},
+			'post-transition-metal': {
+				name: 'Post Transition Metal',
+				color: '#2F4D47'
+			},
+			'transition-metal': {
+				name: 'Transition Metal',
+				color: '#523E1B'
+			}
+		}
+	},
+	standardState: {
+		name: 'Standard State',
+		group: {
+			gas: {
+				name: 'Gas',
+				color: '#622E39'
+			},
+			liquid: {
+				name: 'Liquid',
+				color: '#523E1B'
+			},
+			solid: {
+				name: 'Solid',
+				color: '#2A4165'
+			}
+		}
+	},
+	metallicity: {
+		name: 'Metallicity',
+		group: {
+			metal: {
+				name: 'Metal',
+				color: '#622E39'
+			},
+			metalloid: {
+				name: 'Metalloid',
+				color: '#523E1B'
+			},
+			nonmetal: {
+				name: 'Nonmetal',
+				color: '#2A4165'
+			},
+			unspecified: {
+				name: 'Unspecified',
+				color: ''
+			}
+		}
+	}
+	// electronegativity: {
+	// 	name: 'Electronegativity',
+	// 	group: {
+	// 		high: {
+	// 			name: 'High Electronegativity',
+	// 			color: '#FF0000'
+	// 		},
+	// 		medium: {
+	// 			name: 'Medium Electronegativity',
+	// 			color: '#FFFF00'
+	// 		},
+	// 		low: {
+	// 			name: 'Low Electronegativity',
+	// 			color: '#00FF00'
+	// 		}
+	// 	}
 	// },
-	// 'alkali-metal': {
-	// 	name: 'Alkali Metal',
-	// 	color: '#244D57'
+	// blocks: {
+	// 	name: 'Blocks',
+	// 	group: {
+	// 		sBlock: {
+	// 			name: 'S-Block',
+	// 			color: '#7F7F7F'
+	// 		},
+	// 		pBlock: {
+	// 			name: 'P-Block',
+	// 			color: '#A52A2A'
+	// 		},
+	// 		dBlock: {
+	// 			name: 'D-Block',
+	// 			color: '#008B8B'
+	// 		},
+	// 		fBlock: {
+	// 			name: 'F-Block',
+	// 			color: '#8B4513'
+	// 		}
+	// 	}
 	// },
-	// 'alkaline-earth-metal': {
-	// 	name: 'Alkaline Earth Metal',
-	// 	color: '#622E39'
-	// },
-	// halogen: {
-	// 	name: 'Halogen',
-	// 	color: '#940094' // a faire
-	// },
-	// lanthanoid: {
-	// 	name: 'Lanthanoid',
-	// 	color: '#622E39'
-	// },
-	// metal: {
-	// 	name: 'Metal',
-	// 	color: '#622E39'
-	// },
-	// metalloid: {
-	// 	name: 'Metalloid',
-	// 	color: '#523E1B'
-	// },
-	// 'noble-gas': {
-	// 	name: 'Noble Gas',
-	// 	color: '#622E39'
-	// },
-	// nonmetal: {
-	// 	name: 'Nonmetal',
-	// 	color: '#2A4165'
-	// },
-	// 'post-transition-metal': {
-	// 	name: 'Post Transition Metal',
-	// 	color: '#2F4D47'
-	// },
-	// 'transition-metal': {
-	// 	name: 'Transition Metal',
-	// 	color: '#523E1B'
+	// radioactivity: {
+	// 	name: 'Radioactivity',
+	// 	group: {
+	// 		radioactive: {
+	// 			name: 'Radioactive',
+	// 			color: '#FF4500'
+	// 		},
+	// 		nonRadioactive: {
+	// 			name: 'Non-Radioactive',
+	// 			color: '#00FF00'
+	// 		}
+	// 	}
 	// }
 }

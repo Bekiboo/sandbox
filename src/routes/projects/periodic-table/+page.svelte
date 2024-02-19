@@ -2,11 +2,13 @@
 	import Element from './Element.svelte'
 	import Titles from './Titles.svelte'
 	import Labels from './Labels.svelte'
-	import { elements, categories } from './elements'
+	import { elements, colorSchemes } from './elements'
 	import ControlPanel from './ControlPanel.svelte'
 	import { throttle } from '$lib/utils'
+	import { fly } from 'svelte/transition'
 
 	let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups'
+	let colorScheme: 'metallicity' | 'chemicalFamily' | 'standardState' = 'chemicalFamily'
 	let selectedElement: any = null
 	let cursorPosition = { x: 0, y: 0 }
 
@@ -30,14 +32,20 @@
 
 		<div class="grid row-start-2 gap-1 mx-auto mb-4 w-min">
 			{#each elements as element}
-				<Element {element} {categories} {cursorPosition} bind:selectedElement />
+				<Element
+					{element}
+					colorScheme={colorSchemes[colorScheme]}
+					{cursorPosition}
+					bind:selectedElement
+				/>
 			{/each}
 
 			<!-- Info -->
-			<div
-				class="flex flex-col col-start-6 col-end-12 row-span-3 row-start-2 gap-2 text-sm text-white"
-			>
-				{#if selectedElement}
+			{#if selectedElement}
+				<div
+					class="flex flex-col col-start-6 col-end-12 row-span-3 row-start-2 gap-2 text-sm text-white"
+					in:fly
+				>
 					<div class="flex items-center justify-between">
 						<span class="text-xl">{selectedElement?.name} ({selectedElement.symbol})</span>
 					</div>
@@ -57,8 +65,8 @@
 						<span>Atomic Mass</span>
 						<span>{selectedElement?.atomicMass}</span>
 					</div>
-				{/if}
-			</div>
+				</div>
+			{/if}
 
 			<!-- Divider -->
 			<span class="row-start-[8] h-8"></span>
@@ -66,21 +74,25 @@
 			<Labels {labels} />
 
 			<!-- Legend -->
+		</div>
+		<div class="flex justify-between w-full row-start-[12] col-start-2 col-span-12">
+			<ControlPanel bind:labels bind:colorScheme />
 			<div
-				class="flex flex-col gap-2 text-xs text-gray-600 dark:text-gray-400 row-start-[9] col-start-2 col-span-3 row-span-3"
+				class="flex flex-col gap-2 text-xs text-gray-600 dark:text-gray-400 row-start-[9] col-start-2 col-span-3 row-span-6"
 			>
-				{#each Object.values(categories) as category}
-					<button class="flex items-center" on:click={() => console.log(category.name)}>
-						<div class="w-6 h-6 mr-2" style="background-color: {category.color};"></div>
-						<div class="text-lg">{category.name}</div>
-					</button>
+				<h3 class="text-lg font-bold">Legend</h3>
+				{#each Object.keys(colorSchemes[colorScheme].group) as key}
+					<div class="flex items-center justify-between">
+						<div
+							class="w-6 h-6 mr-2"
+							style="background-color: {colorSchemes[colorScheme].group[key].color};"
+						></div>
+						<span class="text-lg">{colorSchemes[colorScheme].group[key].name}</span>
+					</div>
 				{/each}
 			</div>
 		</div>
 	</section>
-
-	<!-- Control Panel -->
-	<ControlPanel bind:labels />
 </main>
 
 <svelte:window on:mousemove={throttle(handleMouseMove, 50)} />

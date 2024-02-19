@@ -1,33 +1,53 @@
 <script lang="ts">
+	import { throttle } from '$lib/utils'
 	import { onMount } from 'svelte'
 
 	export let element: any
-	const { row, column, metallicity, name, symbol, number, electronicConfiguration } = element
-	export let categories: any
+	const { row, column, metallicity, symbol, number, chemicalFamily, standardState } = element
+	export let colorScheme: { name: string; group: any }
 	export let cursorPosition: { x: number; y: number }
 	export let selectedElement: string | null
 
-	let elementButton: HTMLButtonElement
-	let elementButtonCenter: { x: number; y: number } = { x: 0, y: 0 }
+	let button: HTMLButtonElement
+	let buttonCenter: { x: number; y: number } = { x: 0, y: 0 }
+	let intensity: number = 1000
 
-	function getElementButtonCenter() {
-		elementButtonCenter = {
-			x: elementButton.offsetLeft + elementButton.offsetWidth / 2,
-			y: elementButton.offsetTop + elementButton.offsetHeight / 2
+	let color: string
+
+	$: switch (colorScheme.name) {
+		case 'Metallicity':
+			color = colorScheme.group[metallicity].color
+			break
+
+		case 'Chemical Family':
+			color = colorScheme.group[chemicalFamily].color
+			break
+		case 'Standard State':
+			color = colorScheme.group[standardState].color
+			break
+
+		default:
+			color = '#333'
+			break
+	}
+
+	function getButtonCenter() {
+		buttonCenter = {
+			x: button.offsetLeft + button.offsetWidth / 2,
+			y: button.offsetTop + button.offsetHeight / 2
 		}
 	}
 
-	function getDistanceBetweenCursorAndElementButtonCenter(cursorPos: { x: number; y: number }) {
+	function getDistFromCursorToButton(cursorPos: { x: number; y: number }) {
 		return Math.sqrt(
-			Math.pow(elementButtonCenter?.x - cursorPos.x, 2) +
-				Math.pow(elementButtonCenter?.y - cursorPos.y, 2)
+			Math.pow(buttonCenter?.x - cursorPos.x, 2) + Math.pow(buttonCenter?.y - cursorPos.y, 2)
 		)
 	}
 
-	$: intensity = getDistanceBetweenCursorAndElementButtonCenter(cursorPosition)
+	$: intensity = getDistFromCursorToButton(cursorPosition)
 
 	onMount(() => {
-		getElementButtonCenter()
+		getButtonCenter()
 	})
 </script>
 
@@ -35,13 +55,11 @@
 	style="
             grid-column: {column + 1} / span 1;
             grid-row: {row + 1} / span 1;
-            background-color: {categories[metallicity].color};
+			background-color: {color};
 			border: 1px solid rgba(255,255,255, {1 - intensity / 225});
             "
 	class="w-12 h-12 opacity-80 hover:opacity-100"
-	on:click={() => console.log(element.groupBlock)}
-	data-tooltip={electronicConfiguration}
-	bind:this={elementButton}
+	bind:this={button}
 	on:click={() => (selectedElement = element)}
 	class:!bg-white={selectedElement == element}
 	class:!opacity-100={selectedElement == element}
@@ -52,4 +70,10 @@
 	</div>
 </button>
 
-<svelte:window on:resize={getElementButtonCenter} />
+<svelte:window on:resize={throttle(getButtonCenter, 50)} />
+
+<style>
+	button {
+		transition: background-color 0.3s ease-in-out;
+	}
+</style>
