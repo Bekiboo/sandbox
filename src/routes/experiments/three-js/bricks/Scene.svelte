@@ -6,50 +6,64 @@
 
 	// interactivity()
 
-	let cameraPos: [x: number, y: number, z: number] = [10, 20, 40]
+	let cameraPos: [x: number, y: number, z: number] = [20, 20, 80]
 	let lightPos: [x: number, y: number, z: number] = [5, 10, 5]
 
-	const BRICK_DIMENSIONS = { x: 2, y: 0.5, z: 0.5 }
+	const BRICK = { x: 2, y: 1, z: 1 }
 
-	const leftWall = -10
-	const rightWall = 10
-	const frontWall = 10
-	const backWall = -10
-	const topWall = 10
-	const bottomWall = -10
+	const leftWall = -8
+	const rightWall = 16
+	const frontWall = 8
+	const backWall = -12
+	const ceilling = 8
+	const floor = 0
 
 	let bricks = []
 
 	// Generate back wall
-	for (let x = leftWall; x < rightWall; x += BRICK_DIMENSIONS.x) {
-		for (let y = bottomWall; y < topWall; y += BRICK_DIMENSIONS.y) {
-			bricks.push({ pos: { x, y, z: backWall }, rotation: { x: 0, y: 0, z: 0 } })
+	for (let x = leftWall; x < rightWall; x += BRICK.x) {
+		for (let y = floor; y < ceilling; y += BRICK.y) {
+			let shift = 0
+			y % 2 == 0 ? (shift = 0) : (shift = BRICK.x / 2)
+			bricks.push({
+				pos: { x: x + shift + BRICK.z / 2, y: y + BRICK.y / 2, z: backWall - BRICK.z / 2 },
+				rotation: { x: 0, y: 0, z: 0 }
+			})
 		}
 	}
 
-	// Generate front wall
-	for (let x = leftWall; x < rightWall; x += BRICK_DIMENSIONS.x) {
-		for (let y = bottomWall; y < topWall; y += BRICK_DIMENSIONS.y) {
+	// Generate right wall
+	for (let z = backWall; z < frontWall; z += BRICK.x) {
+		for (let y = floor; y < ceilling; y += BRICK.y) {
+			let shift = 0
+			y % 2 == 0 ? (shift = 0) : (shift = BRICK.x / 2)
 			bricks.push({
-				pos: { x, y, z: frontWall - BRICK_DIMENSIONS.z },
-				rotation: { x: 0, y: Math.PI, z: 0 }
+				pos: { x: rightWall, y: y + BRICK.y / 2, z: z + shift },
+				rotation: { x: 0, y: Math.PI / 2, z: 0 }
 			})
 		}
 	}
 
 	// Generate left wall
-	for (let z = backWall; z < frontWall; z += BRICK_DIMENSIONS.z) {
-		for (let y = bottomWall; y < topWall; y += BRICK_DIMENSIONS.y) {
-			bricks.push({ pos: { x: leftWall, y, z }, rotation: { x: 0, y: Math.PI / 2, z: 0 } })
+	for (let z = backWall; z < frontWall; z += BRICK.x) {
+		for (let y = floor; y < ceilling; y += BRICK.y) {
+			let shift = 0
+			y % 2 != 0 ? (shift = 0) : (shift = BRICK.x / 2)
+			bricks.push({
+				pos: { x: leftWall, y: y + BRICK.y / 2, z: z + shift },
+				rotation: { x: 0, y: Math.PI / 2, z: 0 }
+			})
 		}
 	}
 
-	// Generate right wall
-	for (let z = backWall; z < frontWall; z += BRICK_DIMENSIONS.z) {
-		for (let y = bottomWall; y < topWall; y += BRICK_DIMENSIONS.y) {
+	// Generate front wall
+	for (let x = leftWall; x < rightWall; x += BRICK.x) {
+		for (let y = floor; y < ceilling; y += BRICK.y) {
+			let shift = 0
+			y % 2 != 0 ? (shift = 0) : (shift = BRICK.x / 2)
 			bricks.push({
-				pos: { x: rightWall - BRICK_DIMENSIONS.x, y, z },
-				rotation: { x: 0, y: -Math.PI / 2, z: 0 }
+				pos: { x: x + shift + BRICK.z / 2, y: y + BRICK.y / 2, z: frontWall - BRICK.z / 2 },
+				rotation: { x: 0, y: 0, z: 0 }
 			})
 		}
 	}
@@ -77,14 +91,15 @@
 	<T.Mesh
 		position={[brick.pos.x, brick.pos.y, brick.pos.z]}
 		rotation={[brick.rotation.x, brick.rotation.y, brick.rotation.z]}
+		castShadow
 	>
-		<T.BoxGeometry args={[BRICK_DIMENSIONS.x, BRICK_DIMENSIONS.y, BRICK_DIMENSIONS.z]} />
-		<T.MeshStandardMaterial color={`hsl(0, ${60 + Math.random() * 20}%, 50%)`} />
+		<T.BoxGeometry args={[BRICK.x, BRICK.y, BRICK.z]} />
+		<T.MeshStandardMaterial color={`hsl(20, ${Math.random() * 100}%, 40%)`} />
 	</T.Mesh>
 {/each}
 
 <!-- GROUND -->
-<T.Mesh position={[0, -1.25, 0]} receiveShadow>
-	<T.BoxGeometry args={[3000, 2, 3000]} />
+<T.Mesh position={[0, -1, 0]} receiveShadow>
+	<T.BoxGeometry args={[30, 2, 30]} />
 	<T.MeshStandardMaterial color={'#fff'} />
 </T.Mesh>
