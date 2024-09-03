@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Ladou",
+    "age": 30,
+    "city": "Paris",
+    "favoriteFoods": ["Sushi", "Ramen", "Pizza"]
+  },
+  {
+    "name": "Julien",
+    "age": 25,
+    "city": "New York",
+    "favoriteFoods": ["Burgers", "Ice cream", "Hot dogs"]
+  },
+  {
+    "name": "Alice",
+    "age": 35,
+    "city": "London",
+    "favoriteFoods": ["Pasta", "Gnocchi", "Pizza"]
+  },
+  {
+    "name": "John",
+    "age": 40,
+    "city": "Berlin",
+    "favoriteFoods": ["Currywurst", "Schnitzel", "Bratwurst"]
+  },
+  {
+    "name": "Sophie",
+    "age": 22,
+    "city": "Madrid",
+    "favoriteFoods": ["Paella", "Tapas", "Churros"]
+  }
+]
