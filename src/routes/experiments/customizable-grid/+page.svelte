@@ -173,7 +173,7 @@
 </script>
 
 <div
-	class="grid gap-1 p-1 m-4 border w-min hover:bg-red-500"
+	class="grid gap-1 p-1 m-4 border w-min"
 	style="grid-template-columns: repeat({grid.columns}, {grid.gridUnitSize}px);
     grid-auto-rows: {grid.gridUnitSize}px);
     "
@@ -182,8 +182,8 @@
 	{#each cells as cell, i}
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
-			class="cursor-pointer truc"
-			class:grid-cell-hover={cell.isHovered}
+			class="rounded-lg cursor-pointer truc"
+			class:bg-stone-500={cell.isHovered}
 			style="grid-area: {cell.rowStart} / {cell.colStart} / {cell.rowEnd} / {cell.colEnd}; height: 50px"
 		>
 			<!-- {cell.rowStart}/{cell.colStart} -->
@@ -193,22 +193,12 @@
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<div
 			draggable="true"
-			class="cursor-pointer hover:bg-red-300"
+			class="cursor-pointer"
 			style="grid-area: {cell.rowStart} / {cell.colStart} / {cell.rowEnd} / {cell.colEnd};"
 			on:drag={(e) => dragCell(e, i)}
 			on:dragend={(e) => dropCell(e, i)}
 		>
-			<div class="w-full h-full bg-red-500 rounded-lg">{cell.name}</div>
+			<div class="w-full h-full p-1 rounded-lg bg-stone-700">{cell.name}</div>
 		</div>
 	{/each}
 </div>
-
-<style>
-	.grid {
-		display: grid;
-	}
-
-	.grid-cell-hover {
-		background-color: rgba(255, 0, 0, 0.5);
-	}
-</style>
