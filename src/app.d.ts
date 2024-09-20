@@ -5,10 +5,9 @@ declare global {
 		// interface Error {}
 		// interface Locals {}
 		// interface PageData {}
+		// interface PageState {}
 		// interface Platform {}
 	}
 }
 
-declare module 'quill/core'
-
-export {}
+export {};
