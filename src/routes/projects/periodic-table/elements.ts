@@ -1585,23 +1585,23 @@ export const elements = [
 		chemicalFamily: 'noble-gas',
 		metallicity: 'nonmetal'
 	}
-]
+];
 
 type colorSchemeGroup = Record<
 	string,
 	{
-		name: string
-		color: string
+		name: string;
+		color: string;
 	}
->
+>;
 
 type ColorSchemes = Record<
 	string,
 	{
-		name: string
-		group: colorSchemeGroup
+		name: string;
+		group: colorSchemeGroup;
 	}
->
+>;
 
 export const colorSchemes: ColorSchemes = {
 	chemicalFamily: {
@@ -1742,4 +1742,4 @@ export const colorSchemes: ColorSchemes = {
 	// 		}
 	// 	}
 	// }
-}
+};

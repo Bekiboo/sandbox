@@ -1,20 +1,20 @@
 <script lang="ts">
-	import Element from './Element.svelte'
-	import Titles from './Titles.svelte'
-	import Labels from './Labels.svelte'
-	import { elements, colorSchemes } from './elements'
-	import ControlPanel from './ControlPanel.svelte'
-	import { throttle } from '$lib/utils'
-	import { fly } from 'svelte/transition'
+	import Element from './Element.svelte';
+	import Titles from './Titles.svelte';
+	import Labels from './Labels.svelte';
+	import { elements, colorSchemes } from './elements';
+	import ControlPanel from './ControlPanel.svelte';
+	import { throttle } from '$lib/utils';
+	import { fly } from 'svelte/transition';
 
-	let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups'
-	let colorScheme: 'metallicity' | 'chemicalFamily' | 'standardState' = 'chemicalFamily'
-	let selectedElement: any = null
-	let cursorPosition = { x: 0, y: 0 }
+	let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups';
+	let colorScheme: 'metallicity' | 'chemicalFamily' | 'standardState' = 'metallicity';
+	let selectedElement: any = null;
+	let cursorPosition = { x: 0, y: 0 };
 
 	const handleMouseMove = (e: MouseEvent) => {
-		cursorPosition = { x: e.clientX, y: e.clientY }
-	}
+		cursorPosition = { x: e.clientX, y: e.clientY };
+	};
 </script>
 
 <main class="flex flex-col items-center mx-auto">
@@ -59,7 +59,7 @@
 					</div>
 					<div class="flex items-center justify-between">
 						<span>Group</span>
-						<span>{selectedElement?.groupBlock}</span>
+						<span>{selectedElement?.chemicalFamily}</span>
 					</div>
 					<div class="flex items-center justify-between">
 						<span>Atomic Mass</span>
