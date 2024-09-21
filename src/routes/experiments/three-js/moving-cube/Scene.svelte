@@ -1,32 +1,39 @@
 <script lang="ts">
-	import { T, useFrame } from '@threlte/core'
-	import { Grid, interactivity, OrbitControls } from '@threlte/extras'
-	import { BufferGeometry, Float32BufferAttribute, MathUtils } from 'three'
-	import { DEG2RAD } from 'three/src/math/MathUtils'
-	import { handleKeysDown, handleKeysUp } from './keyboardInputHandler'
+	import { T, useFrame } from '@threlte/core';
+	import { Grid, interactivity, OrbitControls } from '@threlte/extras';
+	import { BufferGeometry, Float32BufferAttribute, MathUtils } from 'three';
+	import { handleKeysDown, handleKeysUp } from './keyboardInputHandler';
+	import { DEG2RAD } from 'three/src/math/MathUtils.js';
+	import { Game } from './Game';
+	import { onMount } from 'svelte';
+	import { AutoColliders } from '@threlte/rapier';
+	import Emitter from './Emitter.svelte';
 
-	interactivity()
+	interactivity();
 
-	let cameraPos: [x: number, y: number, z: number] = [10, 20, 40]
-	let lightPos: [x: number, y: number, z: number] = [5, 10, 5]
+	let cameraPos: [x: number, y: number, z: number] = [10, 20, 40];
+	let lightPos: [x: number, y: number, z: number] = [5, 10, 5];
 
-	const count = 100
-	const distance = 2
+	const GRAVITY = 0.02;
 
-	const GRAVITY = 0.03
+	let game: Game;
 
-	const points = new Float32Array(count * 3)
-	for (let i = 0; i < points.length; i++) {
-		points[i] = MathUtils.randFloatSpread(distance * 2)
-	}
+	let ground = {
+		width: 30,
+		depth: 30
+	};
 
-	const geometry = new BufferGeometry()
-	geometry.setAttribute('position', new Float32BufferAttribute(points, 3))
+	onMount(() => {
+		game = new Game(ground.width, ground.depth);
+		console.log('🚀 ~ onMount ~ game:', game);
+	});
+
+	let elapsedTime = 0;
 
 	let player = {
 		pos: {
 			x: 0,
-			y: 0,
+			y: 1,
 			z: 0
 		},
 		velocity: {
@@ -34,45 +41,63 @@
 			y: 0,
 			z: 0
 		}
-	}
+	};
 
-	let keysPressed: string[] = []
+	let keysPressed: string[] = [];
 
 	function handleKeyDown(e: KeyboardEvent) {
-		keysPressed = handleKeysDown(e, keysPressed)
+		keysPressed = handleKeysDown(e, keysPressed);
 	}
 
 	function handleKeyUp(e: KeyboardEvent) {
-		keysPressed = handleKeysUp(e, keysPressed)
+		keysPressed = handleKeysUp(e, keysPressed);
 	}
 
 	useFrame((state, delta) => {
-		if (keysPressed.includes('right')) {
-			player.pos.x += 0.1
+		{
+			if (keysPressed.includes('right')) {
+				player.pos.x += 0.1;
+			}
+			if (keysPressed.includes('left')) {
+				player.pos.x -= 0.1;
+			}
+			if (keysPressed.includes('forward')) {
+				player.pos.z -= 0.1;
+			}
+			if (keysPressed.includes('backward')) {
+				player.pos.z += 0.1;
+			}
+			if (keysPressed.includes('jump')) {
+				player.velocity.y = -0.2;
+			}
+			switch (true) {
+				case player.pos.x > ground.width / 2:
+					player.pos.x = ground.width / 2;
+					break;
+				case player.pos.x < -ground.width / 2:
+					player.pos.x = -ground.width / 2;
+					break;
+				case player.pos.z > ground.depth / 2:
+					player.pos.z = ground.depth / 2;
+					break;
+				case player.pos.z < -ground.depth / 2:
+					player.pos.z = -ground.depth / 2;
+					break;
+			}
 		}
-		if (keysPressed.includes('left')) {
-			player.pos.x -= 0.1
-		}
-		if (keysPressed.includes('forward')) {
-			player.pos.z -= 0.1
-		}
-		if (keysPressed.includes('backward')) {
-			player.pos.z += 0.1
-		}
-		if (keysPressed.includes('jump')) {
-			player.velocity.y = -0.3
-		}
-		player.pos.y -= player.velocity.y
-		player.velocity.y += GRAVITY
 
-		if (player.pos.y < 0) {
-			player.pos.y = 0
+		player.pos.y -= player.velocity.y;
+		player.velocity.y += GRAVITY;
+
+		if (player.pos.y < 0.5) {
+			player.pos.y = 0.5;
 		}
 
-		// cameraPos[0] = player.pos.x + 2
-		// cameraPos[1] = player.pos.y + 2
-		// cameraPos[2] = player.pos.z + 5
-	})
+		elapsedTime += delta;
+		game.update(delta);
+
+		// game = game;
+	});
 </script>
 
 <T.PerspectiveCamera position={cameraPos} makeDefault fov={15} near={0.1} far={1000000}>
@@ -94,14 +119,30 @@
 
 <!-- PLAYER -->
 <T.Mesh position={[player.pos.x, player.pos.y, player.pos.z]} castShadow>
-	<T.BoxGeometry args={[0.5, 0.5, 0.5]} />
+	<T.BoxGeometry args={[1, 1, 1]} />
 	<T.MeshStandardMaterial color={'red'} />
 </T.Mesh>
 
+<!-- ENEMIES -->
+{#if game?.enemies.length > 0}
+	{#each game?.enemies as enemy}
+		<T.Mesh position={[enemy.x, enemy.y, enemy.z]} castShadow>
+			<T.BoxGeometry args={[1, 1, 1]} />
+			<T.MeshStandardMaterial color={'blue'} />
+		</T.Mesh>
+	{/each}
+{/if}
+
 <!-- GROUND -->
-<T.Mesh position={[0, -1.25, 0]} receiveShadow>
-	<T.BoxGeometry args={[30, 2, 30]} />
-	<T.MeshStandardMaterial color={'#fff'} />
-</T.Mesh>
+<T.Group position={[0, -1, 0]}>
+	<AutoColliders shape={'cuboid'}>
+		<T.Mesh receiveShadow>
+			<T.BoxGeometry args={[ground.width, 2, ground.depth]} />
+			<T.MeshStandardMaterial color={'#fff'} />
+		</T.Mesh>
+	</AutoColliders>
+</T.Group>
+
+<Emitter />
 
 <svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />

@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { Canvas } from '@threlte/core'
-	import Scene from './Scene.svelte'
+	import { Canvas } from '@threlte/core';
+	import Scene from './Scene.svelte';
+	import { World } from '@threlte/rapier';
 </script>
 
 <div class="relative">
@@ -20,7 +21,9 @@
 
 	<div class="h-screen w-sceen">
 		<Canvas>
-			<Scene />
+			<World>
+				<Scene />
+			</World>
 		</Canvas>
 	</div>
 </div>
