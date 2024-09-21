@@ -1507,19 +1507,19 @@ export const elements = [
 		chemicalFamily: 'transition-metal',
 		metallicity: 'metal'
 	},
-	{
-		number: 113,
-		symbol: 'Nh',
-		name: 'Nihonium',
-		atomicMass: 286,
-		row: 7,
-		column: 13,
-		cpkHexColor: 'EB0026',
-		electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p1',
-		standardState: 'solid',
-		chemicalFamily: 'post-transition-metal',
-		metallicity: 'metal'
-	},
+	// {
+	// 	number: 113,
+	// 	symbol: 'Nh',
+	// 	name: 'Nihonium',
+	// 	atomicMass: 286,
+	// 	row: 7,
+	// 	column: 13,
+	// 	cpkHexColor: 'EB0026',
+	// 	electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p1',
+	// 	standardState: 'solid',
+	// 	chemicalFamily: 'post-transition-metal',
+	// 	metallicity: 'metal'
+	// },
 	{
 		number: 114,
 		symbol: 'Fl',
@@ -1533,19 +1533,19 @@ export const elements = [
 		chemicalFamily: 'post-transition-metal',
 		metallicity: 'metal'
 	},
-	{
-		number: 115,
-		symbol: 'Mc',
-		name: 'Moscovium',
-		atomicMass: 290,
-		row: 7,
-		column: 15,
-		cpkHexColor: 'EB0026',
-		electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p3',
-		standardState: 'solid',
-		chemicalFamily: 'post-transition-metal',
-		metallicity: 'metal'
-	},
+	// {
+	// 	number: 115,
+	// 	symbol: 'Mc',
+	// 	name: 'Moscovium',
+	// 	atomicMass: 290,
+	// 	row: 7,
+	// 	column: 15,
+	// 	cpkHexColor: 'EB0026',
+	// 	electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p3',
+	// 	standardState: 'solid',
+	// 	chemicalFamily: 'post-transition-metal',
+	// 	metallicity: 'metal'
+	// },
 	{
 		number: 116,
 		symbol: 'Lv',
@@ -1558,33 +1558,33 @@ export const elements = [
 		standardState: 'solid',
 		chemicalFamily: 'post-transition-metal',
 		metallicity: 'unspecified'
-	},
-	{
-		number: 117,
-		symbol: 'Ts',
-		name: 'Tennessine',
-		atomicMass: 294,
-		row: 7,
-		column: 17,
-		cpkHexColor: 'EB0026',
-		electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p5',
-		standardState: 'solid',
-		chemicalFamily: 'post-transition-metal',
-		metallicity: 'metal'
-	},
-	{
-		number: 118,
-		symbol: 'Og',
-		name: 'Oganesson',
-		atomicMass: 294,
-		row: 7,
-		column: 18,
-		cpkHexColor: 'EB0026',
-		electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p6',
-		standardState: 'solid',
-		chemicalFamily: 'noble-gas',
-		metallicity: 'nonmetal'
 	}
+	// {
+	// 	number: 117,
+	// 	symbol: 'Ts',
+	// 	name: 'Tennessine',
+	// 	atomicMass: 294,
+	// 	row: 7,
+	// 	column: 17,
+	// 	cpkHexColor: 'EB0026',
+	// 	electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p5',
+	// 	standardState: 'solid',
+	// 	chemicalFamily: 'post-transition-metal',
+	// 	metallicity: 'metal'
+	// },
+	// {
+	// 	number: 118,
+	// 	symbol: 'Og',
+	// 	name: 'Oganesson',
+	// 	atomicMass: 294,
+	// 	row: 7,
+	// 	column: 18,
+	// 	cpkHexColor: 'EB0026',
+	// 	electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p6',
+	// 	standardState: 'solid',
+	// 	chemicalFamily: 'noble-gas',
+	// 	metallicity: 'nonmetal'
+	// }
 ];
 
 type colorSchemeGroup = Record<
