@@ -1687,7 +1687,7 @@ export const colorSchemes: ColorSchemes = {
 			},
 			unspecified: {
 				name: 'Unspecified',
-				color: ''
+				color: '#333'
 			}
 		}
 	}
