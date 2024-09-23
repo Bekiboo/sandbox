@@ -6,9 +6,14 @@
 	import { DEG2RAD } from 'three/src/math/MathUtils.js';
 	import { Game } from './Game';
 	import { onMount } from 'svelte';
-	import { AutoColliders } from '@threlte/rapier';
+	import { AutoColliders, Debug, useRapier } from '@threlte/rapier';
 	import Emitter from './Emitter.svelte';
+	import { Collider, RigidBody, Attractor } from '@threlte/rapier';
 
+	// const { world } = useRapier();
+	// const noGravity = () => (world.gravity = { x: 0, y: 0, z: 0 });
+
+	// noGravity();
 	interactivity();
 
 	let cameraPos: [x: number, y: number, z: number] = [10, 20, 40];
@@ -118,9 +123,11 @@
 <!-- <Grid /> -->
 
 <!-- PLAYER -->
+<!-- <Debug /> -->
 <T.Mesh position={[player.pos.x, player.pos.y, player.pos.z]} castShadow>
 	<T.BoxGeometry args={[1, 1, 1]} />
 	<T.MeshStandardMaterial color={'red'} />
+	<Attractor range={20} strength={0.3} position={[0, 0, 0]} />
 </T.Mesh>
 
 <!-- ENEMIES -->

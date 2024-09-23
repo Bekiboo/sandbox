@@ -23,8 +23,8 @@
 	};
 	let bodies: Body[] = [];
 	let lastBodyMounted: number = 0;
-	let bodyEveryMilliseconds = 20;
-	let longevityMilliseconds = 8000;
+	let bodyEveryMilliseconds = 50;
+	let longevityMilliseconds = 20000;
 	useTask(() => {
 		if (lastBodyMounted + bodyEveryMilliseconds < Date.now()) {
 			const body: Body = {
