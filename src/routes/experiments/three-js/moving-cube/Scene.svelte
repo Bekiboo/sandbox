@@ -127,7 +127,7 @@
 <T.Mesh position={[player.pos.x, player.pos.y, player.pos.z]} castShadow>
 	<T.BoxGeometry args={[1, 1, 1]} />
 	<T.MeshStandardMaterial color={'red'} />
-	<Attractor range={20} strength={0.3} position={[0, 0, 0]} />
+	<Attractor range={20} strength={0.003} position={[0, 0, 0]} />
 </T.Mesh>
 
 <!-- ENEMIES -->
