@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { colorSchemes } from './elements';
+
 	export let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups';
-	export let colorScheme: 'chemicalFamily' | 'standardState' | 'metallicity' = 'metallicity';
+	export let colorScheme: 'chemicalFamily' | 'standardState' | 'metallicity' | 'subshellBlock' = 'subshellBlock';
 </script>
 
-<div class="flex hidden gap-8">
+<div class="flex gap-8">
 	<div>
 		<h4>Color Scheme</h4>
 		<div class="form-control">

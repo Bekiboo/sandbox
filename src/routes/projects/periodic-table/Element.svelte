@@ -1,54 +1,58 @@
 <script lang="ts">
-	import { throttle } from '$lib/utils'
-	import { onMount } from 'svelte'
+	import { throttle } from '$lib/utils';
+	import { onMount } from 'svelte';
 
-	export let element: any
-	const { row, column, metallicity, symbol, number, chemicalFamily, standardState } = element
-	export let colorScheme: { name: string; group: any }
-	export let cursorPosition: { x: number; y: number }
-	export let selectedElement: string | null
+	export let element: any;
+	const { row, column, metallicity, symbol, number, chemicalFamily, standardState, subshellBlock } =
+		element;
+	export let colorScheme: { name: string; group: any };
+	export let cursorPosition: { x: number; y: number };
+	export let selectedElement: string | null;
 
-	let button: HTMLButtonElement
-	let buttonCenter: { x: number; y: number } = { x: 0, y: 0 }
-	let intensity: number = 1000
+	let button: HTMLButtonElement;
+	let buttonCenter: { x: number; y: number } = { x: 0, y: 0 };
+	let intensity: number = 1000;
 
-	let color: string
+	let color: string;
 
 	$: switch (colorScheme.name) {
 		case 'Metallicity':
-			color = colorScheme.group[metallicity].color
-			break
+			color = colorScheme.group[metallicity].color;
+			break;
 
 		case 'Chemical Family':
-			color = colorScheme.group[chemicalFamily].color
-			break
+			color = colorScheme.group[chemicalFamily].color;
+			break;
 		case 'Standard State':
-			color = colorScheme.group[standardState].color
-			break
+			color = colorScheme.group[standardState].color;
+			break;
+		case 'Subshell Blocks':
+			color = colorScheme.group[subshellBlock].color;
+			break;
 
 		default:
-			color = '#333'
-			break
+			color = '#333';
+			break;
 	}
 
 	function getButtonCenter() {
 		buttonCenter = {
 			x: button.offsetLeft + button.offsetWidth / 2,
 			y: button.offsetTop + button.offsetHeight / 2
-		}
+		};
 	}
 
 	function getDistFromCursorToButton(cursorPos: { x: number; y: number }) {
 		return Math.sqrt(
 			Math.pow(buttonCenter?.x - cursorPos.x, 2) + Math.pow(buttonCenter?.y - cursorPos.y, 2)
-		)
+		);
 	}
 
-	$: intensity = getDistFromCursorToButton(cursorPosition)
+	$: intensity = getDistFromCursorToButton(cursorPosition);
 
 	onMount(() => {
-		getButtonCenter()
-	})
+		getButtonCenter();
+	});
 </script>
 
 <button

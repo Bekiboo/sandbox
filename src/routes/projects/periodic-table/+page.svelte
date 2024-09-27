@@ -8,7 +8,8 @@
 	import { fly } from 'svelte/transition';
 
 	let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups';
-	let colorScheme: 'metallicity' | 'chemicalFamily' | 'standardState' = 'metallicity';
+	let colorScheme: 'metallicity' | 'chemicalFamily' | 'standardState' | 'subshellBlock' =
+		'subshellBlock';
 	let selectedElement: any = null;
 	let cursorPosition = { x: 0, y: 0 };
 
