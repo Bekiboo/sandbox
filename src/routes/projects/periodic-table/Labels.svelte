@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups'
+	export let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups';
 </script>
 
 {#if labels === 'ionizationEnergy'}
@@ -42,8 +42,7 @@
 			<span class="h-8 row-start-1 font-bold text-center" style="grid-column: {i + 2}">{i + 1}</span
 			>
 		{:else if i > 11}
-			<span class="h-8 row-start-1 font-bold text-center" style="grid-column: {i + 2}"
-				>{i - 11}</span
+			<span class="h-8 row-start-1 font-bold text-center" style="grid-column: {i + 2}">{i - 9}</span
 			>
 		{/if}
 	{/each}
