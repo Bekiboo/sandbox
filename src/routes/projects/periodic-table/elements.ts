@@ -13,7 +13,8 @@ export const elements = [
 		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 13.5984,
-		valence: 1
+		valence: 1,
+		electronegativity: 2.20,
 	},
 	{
 		number: 2,
@@ -29,7 +30,8 @@ export const elements = [
 		chemicalFamily: 'noble-gas',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 24.5874,
-		valence: 2
+		valence: 2,
+		electronegativity: null,
 	},
 	{
 		number: 3,
@@ -45,7 +47,8 @@ export const elements = [
 		chemicalFamily: 'alkali-metal',
 		metallicity: 'metal',
 		ionizationEnergy: 5.3917,
-		valece: 1
+		valence: 1,
+		electronegativity: 0.98,
 	},
 	{
 		number: 4,
@@ -61,7 +64,8 @@ export const elements = [
 		chemicalFamily: 'alkaline-earth-metal',
 		metallicity: 'metal',
 		ionizationEnergy: 9.3227,
-		valence: 2
+		valence: 2,
+		electronegativity: 1.57,
 	},
 	{
 		number: 5,
@@ -77,7 +81,8 @@ export const elements = [
 		chemicalFamily: 'metalloid',
 		metallicity: 'metalloid',
 		ionizationEnergy: 8.298,
-		valence: 3
+		valence: 3,
+		electronegativity: 2.04,
 	},
 	{
 		number: 6,
@@ -93,7 +98,8 @@ export const elements = [
 		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 11.2603,
-		valence: 4
+		valence: 4,
+		electronegativity: 2.55,
 	},
 	{
 		number: 7,
@@ -109,7 +115,8 @@ export const elements = [
 		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 14.5341,
-		valence: 5
+		valence: 5,
+		electronegativity: 3.04,
 	},
 	{
 		number: 8,
@@ -125,7 +132,8 @@ export const elements = [
 		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 13.6181,
-		valence: 6
+		valence: 6,
+		electronegativity: 3.44,
 	},
 	{
 		number: 9,
@@ -141,7 +149,8 @@ export const elements = [
 		chemicalFamily: 'halogen',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 17.4228,
-		valence: 7
+		valence: 7,
+		electronegativity: 3.98,
 	},
 	{
 		number: 10,
@@ -157,7 +166,8 @@ export const elements = [
 		chemicalFamily: 'noble-gas',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 21.5645,
-		valence: 8
+		valence: 8,
+		electronegativity: null,
 	},
 	{
 		number: 11,
@@ -173,7 +183,8 @@ export const elements = [
 		chemicalFamily: 'alkali-metal',
 		metallicity: 'metal',
 		ionizationEnergy: 5.1391,
-		valence: 1
+		valence: 1,
+		electronegativity: 0.93,
 	},
 	{
 		number: 12,
@@ -189,7 +200,8 @@ export const elements = [
 		chemicalFamily: 'alkaline-earth-metal',
 		metallicity: 'metal',
 		ionizationEnergy: 7.6462,
-		valence: 2
+		valence: 2,
+		electronegativity: 1.31,
 	},
 	{
 		number: 13,
@@ -205,7 +217,8 @@ export const elements = [
 		chemicalFamily: 'metal',
 		metallicity: 'metal',
 		ionizationEnergy: 5.9858,
-		valence: 3
+		valence: 3,
+		electronegativity: 1.61,
 	},
 	{
 		number: 14,
@@ -221,7 +234,8 @@ export const elements = [
 		chemicalFamily: 'metalloid',
 		metallicity: 'metalloid',
 		ionizationEnergy: 8.1517,
-		valence: 4
+		valence: 4,
+		electronegativity: 1.90,
 	},
 	{
 		number: 15,
@@ -237,7 +251,8 @@ export const elements = [
 		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 10.4867,
-		valence: 5
+		valence: 5,
+		electronegativity: 2.19,
 	},
 	{
 		number: 16,
@@ -253,7 +268,8 @@ export const elements = [
 		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 10.36,
-		valence: 6
+		valence: 6,
+		electronegativity: 2.58,
 	},
 	{
 		number: 17,
@@ -269,7 +285,8 @@ export const elements = [
 		chemicalFamily: 'halogen',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 12.9676,
-		valence: 7
+		valence: 7,
+		electronegativity: 3.16,
 	},
 	{
 		number: 18,
@@ -285,7 +302,8 @@ export const elements = [
 		chemicalFamily: 'noble-gas',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 15.7596,
-		valence: 8
+		valence: 8,
+		electronegativity: null,
 	},
 	{
 		number: 19,
@@ -301,7 +319,8 @@ export const elements = [
 		chemicalFamily: 'alkali-metal',
 		metallicity: 'metal',
 		ionizationEnergy: 4.3407,
-		valence: 1
+		valence: 1,
+		electronegativity: 0.82,
 	},
 	{
 		number: 20,
@@ -317,7 +336,8 @@ export const elements = [
 		chemicalFamily: 'alkaline-earth-metal',
 		metallicity: 'metal',
 		ionizationEnergy: 6.1132,
-		valence: 2
+		valence: 2,
+		electronegativity: 1.00,
 	},
 	{
 		number: 21,
@@ -331,7 +351,10 @@ export const elements = [
 		electronicConfiguration: '[Ar] 3d1 4s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.5615,
+		valence: 3,
+		electronegativity: 1.36,
 	},
 	{
 		number: 22,
@@ -345,7 +368,10 @@ export const elements = [
 		electronicConfiguration: '[Ar] 3d2 4s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.8281,
+		valence: 4,
+		electronegativity: 1.54,
 	},
 	{
 		number: 23,
@@ -359,7 +385,10 @@ export const elements = [
 		electronicConfiguration: '[Ar] 3d3 4s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.7462,
+		valence: 5,
+		electronegativity: 1.63,
 	},
 	{
 		number: 24,
@@ -373,7 +402,10 @@ export const elements = [
 		electronicConfiguration: '[Ar] 3d5 4s1',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.7665,
+		valence: 6,
+		electronegativity: 1.66,
 	},
 	{
 		number: 25,
@@ -387,7 +419,10 @@ export const elements = [
 		electronicConfiguration: '[Ar] 3d5 4s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.434,
+		valence: 7,
+		electronegativity: 1.55,
 	},
 	{
 		number: 26,
@@ -401,7 +436,10 @@ export const elements = [
 		electronicConfiguration: '[Ar] 3d6 4s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.9024,
+		valence: 8,
+		electronegativity: 1.83,
 	},
 	{
 		number: 27,
@@ -415,7 +453,10 @@ export const elements = [
 		electronicConfiguration: '[Ar] 3d7 4s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.881,
+		valence: 9,
+		electronegativity: 1.88,
 	},
 	{
 		number: 28,
@@ -429,7 +470,10 @@ export const elements = [
 		electronicConfiguration: '[Ar] 3d8 4s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.6398,
+		valence: 10,
+		electronegativity: 1.91,
 	},
 	{
 		number: 29,
@@ -443,7 +487,10 @@ export const elements = [
 		electronicConfiguration: '[Ar] 3d10 4s1',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.7264,
+		valence: 11,
+		electronegativity: 1.90,
 	},
 	{
 		number: 30,
@@ -457,7 +504,10 @@ export const elements = [
 		electronicConfiguration: '[Ar] 3d10 4s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 9.3942,
+		valence: 2,
+		electronegativity: 1.65,
 	},
 	{
 		number: 31,
@@ -473,7 +523,8 @@ export const elements = [
 		chemicalFamily: 'metal',
 		metallicity: 'metal',
 		ionizationEnergy: 5.9993,
-		valence: 3
+		valence: 3,
+		electronegativity: 1.81,
 	},
 	{
 		number: 32,
@@ -489,7 +540,8 @@ export const elements = [
 		chemicalFamily: 'metalloid',
 		metallicity: 'metalloid',
 		ionizationEnergy: 7.8994,
-		valence: 4
+		valence: 4,
+		electronegativity: 2.01,
 	},
 	{
 		number: 33,
@@ -505,7 +557,8 @@ export const elements = [
 		chemicalFamily: 'metalloid',
 		metallicity: 'metalloid',
 		ionizationEnergy: 9.7886,
-		valence: 5
+		valence: 5,
+		electronegativity: 2.18,
 	},
 	{
 		number: 34,
@@ -521,7 +574,8 @@ export const elements = [
 		chemicalFamily: 'nonmetal',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 9.7524,
-		valence: 6
+		valence: 6,
+		electronegativity: 2.55,
 	},
 	{
 		number: 35,
@@ -537,7 +591,8 @@ export const elements = [
 		chemicalFamily: 'halogen',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 11.8138,
-		valence: 7
+		valence: 7,
+		electronegativity: 2.96,
 	},
 	{
 		number: 36,
@@ -553,7 +608,8 @@ export const elements = [
 		chemicalFamily: 'noble-gas',
 		metallicity: 'nonmetal',
 		ionizationEnergy: 13.9996,
-		valence: 8
+		valence: 8,
+		electronegativity: null,
 	},
 	{
 		number: 37,
@@ -567,7 +623,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 5s1',
 		standardState: 'solid',
 		chemicalFamily: 'alkali-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 4.1771,
+		valence: 1,
+		electronegativity: 0.82,
 	},
 	{
 		number: 38,
@@ -581,7 +640,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 5s2',
 		standardState: 'solid',
 		chemicalFamily: 'alkaline-earth-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.6949,
+		valence: 2,
+		electronegativity: 0.95,
 	},
 	{
 		number: 39,
@@ -595,7 +657,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d1 5s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.2173,
+		valence: 3,
+		electronegativity: 1.22,
 	},
 	{
 		number: 40,
@@ -609,7 +674,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d2 5s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.6339,
+		valence: 4,
+		electronegativity: 1.33,
 	},
 	{
 		number: 41,
@@ -623,7 +691,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d4 5s1',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.7589,
+		valence: 5,
+		electronegativity: 1.6,
 	},
 	{
 		number: 42,
@@ -637,7 +708,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d5 5s1',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.0924,
+		valence: 6,
+		electronegativity: 2.16,
 	},
 	{
 		number: 43,
@@ -651,7 +725,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d5 5s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.28,
+		valence: 7,
+		electronegativity: 1.9,
 	},
 	{
 		number: 44,
@@ -665,7 +742,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d7 5s1',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.3605,
+		valence: 8,
+		electronegativity: 2.2,
 	},
 	{
 		number: 45,
@@ -679,7 +759,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d8 5s1',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.4589,
+		valence: 9,
+		electronegativity: 2.28,
 	},
 	{
 		number: 46,
@@ -693,7 +776,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d10',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 8.3369,
+		valence: 10,
+		electronegativity: 2.20,
 	},
 	{
 		number: 47,
@@ -707,7 +793,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d10 5s1',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.5762,
+		valence: 11,
+		electronegativity: 1.93,
 	},
 	{
 		number: 48,
@@ -721,7 +810,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d10 5s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 8.9938,
+		valence: 2,
+		electronegativity: 1.69,
 	},
 	{
 		number: 49,
@@ -735,7 +827,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d10 5s2 5p1',
 		standardState: 'solid',
 		chemicalFamily: 'metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.7864,
+		valence: 3,
+		electronegativity: 1.78,
 	},
 	{
 		number: 50,
@@ -749,7 +844,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d10 5s2 5p2',
 		standardState: 'solid',
 		chemicalFamily: 'metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.3439,
+		valence: 4,
+		electronegativity: 1.96,
 	},
 	{
 		number: 51,
@@ -763,7 +861,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d10 5s2 5p3',
 		standardState: 'solid',
 		chemicalFamily: 'metalloid',
-		metallicity: 'metalloid'
+		metallicity: 'metalloid',
+		ionizationEnergy: 8.6084,
+		valence: 5,
+		electronegativity: 2.05,
 	},
 	{
 		number: 52,
@@ -777,7 +878,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d10 5s2 5p4',
 		standardState: 'solid',
 		chemicalFamily: 'metalloid',
-		metallicity: 'metalloid'
+		metallicity: 'metalloid',
+		ionizationEnergy: 9.0096,
+		valence: 6,
+		electronegativity: 2.1,
 	},
 	{
 		number: 53,
@@ -791,7 +895,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d10 5s2 5p5',
 		standardState: 'solid',
 		chemicalFamily: 'halogen',
-		metallicity: 'nonmetal'
+		metallicity: 'nonmetal',
+		ionizationEnergy: 10.4513,
+		valence: 7,
+		electronegativity: 2.66,
 	},
 	{
 		number: 54,
@@ -805,7 +912,10 @@ export const elements = [
 		electronicConfiguration: '[Kr] 4d10 5s2 5p6',
 		standardState: 'gas',
 		chemicalFamily: 'noble-gas',
-		metallicity: 'nonmetal'
+		metallicity: 'nonmetal',
+		ionizationEnergy: 12.1298,
+		valence: 8,
+		electronegativity: null,
 	},
 	{
 		number: 55,
@@ -819,7 +929,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 6s1',
 		standardState: 'solid',
 		chemicalFamily: 'alkali-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 3.8939,
+		valence: 1,
+		electronegativity: 0.79,
 	},
 	{
 		number: 56,
@@ -833,7 +946,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'alkaline-earth-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.2117,
+		valence: 2,
+		electronegativity: 0.89,
 	},
 	{
 		number: 57,
@@ -847,7 +963,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 5d1 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.5769,
+		valence: 3,
+		electronegativity: 1.10,
 	},
 	{
 		number: 58,
@@ -861,7 +980,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f1 5d1 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.5387,
+		valence: 4,
+		electronegativity: 1.12,
 	},
 	{
 		number: 59,
@@ -875,7 +997,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f3 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.473,
+		valence: 5,
+		electronegativity: 1.13,
 	},
 	{
 		number: 60,
@@ -889,7 +1014,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f4 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.525,
+		valence: 6,
+		electronegativity: 1.14,
 	},
 	{
 		number: 61,
@@ -903,7 +1031,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f5 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.582,
+		valence: 7,
+		electronegativity: 1.13,
 	},
 	{
 		number: 62,
@@ -917,7 +1048,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f6 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.6437,
+		valence: 8,
+		electronegativity: 1.17,
 	},
 	{
 		number: 63,
@@ -931,7 +1065,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f7 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.6704,
+		valence: 9,
+		electronegativity: 1.2,
 	},
 	{
 		number: 64,
@@ -945,7 +1082,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f7 5d1 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.1501,
+		valence: 10,
+		electronegativity: 1.20,
 	},
 	{
 		number: 65,
@@ -959,7 +1099,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f9 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.8638,
+		valence: 11,
+		electronegativity: 1.20,
 	},
 	{
 		number: 66,
@@ -973,7 +1116,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f10 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.9389,
+		valence: 12,
+		electronegativity: 1.22,
 	},
 	{
 		number: 67,
@@ -987,7 +1133,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f11 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.0215,
+		valence: 13,
+		electronegativity: 1.23,
 	},
 	{
 		number: 68,
@@ -1001,7 +1150,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f12 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.1077,
+		valence: 14,
+		electronegativity: 1.24,
 	},
 	{
 		number: 69,
@@ -1015,7 +1167,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f13 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.1843,
+		valence: 15,
+		electronegativity: 1.25,
 	},
 	{
 		number: 70,
@@ -1029,7 +1184,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.2542,
+		valence: 16,
+		electronegativity: 1.1,
 	},
 	{
 		number: 71,
@@ -1043,7 +1201,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d1 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'lanthanoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.4259,
+		valence: 17,
+		electronegativity: 1.27,
 	},
 	{
 		number: 72,
@@ -1057,7 +1218,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d2 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.8251,
+		valence: 4,
+		electronegativity: 1.3,
 	},
 	{
 		number: 73,
@@ -1071,7 +1235,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d3 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.5496,
+		valence: 5,
+		electronegativity: 1.5,
 	},
 	{
 		number: 74,
@@ -1085,7 +1252,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d4 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.864,
+		valence: 6,
+		electronegativity: 2.36,
 	},
 	{
 		number: 75,
@@ -1099,7 +1269,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d5 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.8335,
+		valence: 7,
+		electronegativity: 1.9,
 	},
 	{
 		number: 76,
@@ -1113,7 +1286,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d6 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 8.4382,
+		valence: 8,
+		electronegativity: 2.2,
 	},
 	{
 		number: 77,
@@ -1127,7 +1303,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d7 6s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 8.967,
+		valence: 9,
+		electronegativity: 2.20,
 	},
 	{
 		number: 78,
@@ -1141,7 +1320,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d9 6s1',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 8.9588,
+		valence: 10,
+		electronegativity: 2.28,
 	},
 	{
 		number: 79,
@@ -1155,7 +1337,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d10 6s1',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 9.2255,
+		valence: 11,
+		electronegativity: 2.54,
 	},
 	{
 		number: 80,
@@ -1169,7 +1354,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2',
 		standardState: 'liquid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 10.4375,
+		valence: 12,
+		electronegativity: 2.00,
 	},
 	{
 		number: 81,
@@ -1183,7 +1371,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2 6p1',
 		standardState: 'solid',
 		chemicalFamily: 'metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.1082,
+		valence: 13,
+		electronegativity: 1.62,
 	},
 	{
 		number: 82,
@@ -1197,7 +1388,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2 6p2',
 		standardState: 'solid',
 		chemicalFamily: 'metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.4167,
+		valence: 14,
+		electronegativity: 2.33,
 	},
 	{
 		number: 83,
@@ -1211,7 +1405,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2 6p3',
 		standardState: 'solid',
 		chemicalFamily: 'metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 7.2856,
+		valence: 15,
+		electronegativity: 2.02,
 	},
 	{
 		number: 84,
@@ -1225,7 +1422,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2 6p4',
 		standardState: 'solid',
 		chemicalFamily: 'metalloid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 8.414,
+		valence: 16,
+		electronegativity: 2.0,
 	},
 	{
 		number: 85,
@@ -1239,7 +1439,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2 6p5',
 		standardState: 'solid',
 		chemicalFamily: 'halogen',
-		metallicity: 'metalloid'
+		metallicity: 'metalloid',
+		ionizationEnergy: 9.3,
+		valence: 17,
+		electronegativity: 2.2,
 	},
 	{
 		number: 86,
@@ -1253,7 +1456,10 @@ export const elements = [
 		electronicConfiguration: '[Xe] 4f14 5d10 6s2 6p6',
 		standardState: 'gas',
 		chemicalFamily: 'noble-gas',
-		metallicity: 'nonmetal'
+		metallicity: 'nonmetal',
+		ionizationEnergy: 10.7485,
+		valence: 18,
+		electronegativity: null,
 	},
 	{
 		number: 87,
@@ -1267,7 +1473,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 7s1',
 		standardState: 'solid',
 		chemicalFamily: 'alkali-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 4.0727,
+		valence: 1,
+		electronegativity: 0.7,
 	},
 	{
 		number: 88,
@@ -1281,7 +1490,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'alkaline-earth-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.2784,
+		valence: 2,
+		electronegativity: 0.9,
 	},
 	{
 		number: 89,
@@ -1295,7 +1507,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 6d1 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.17,
+		valence: 3,
+		electronegativity: 1.1,
 	},
 	{
 		number: 90,
@@ -1309,7 +1524,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 6d2 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.3067,
+		valence: 4,
+		electronegativity: 1.3,
 	},
 	{
 		number: 91,
@@ -1323,7 +1541,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f2 6d1 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.89,
+		valence: 5,
+		electronegativity: 1.5,
 	},
 	{
 		number: 92,
@@ -1337,7 +1558,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f3 6d1 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.1941,
+		valence: 6,
+		electronegativity: 1.38,
 	},
 	{
 		number: 93,
@@ -1351,7 +1575,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f4 6d1 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.2657,
+		valence: 7,
+		electronegativity: 1.36,
 	},
 	{
 		number: 94,
@@ -1365,7 +1592,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f6 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.0262,
+		valence: 8,
+		electronegativity: 1.28,
 	},
 	{
 		number: 95,
@@ -1379,7 +1609,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f7 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.9738,
+		valence: 9,
+		electronegativity: 1.3,
 	},
 	{
 		number: 96,
@@ -1393,7 +1626,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f7 6d1 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 5.9915,
+		valence: 10,
+		electronegativity: 1.3,
 	},
 	{
 		number: 97,
@@ -1407,7 +1643,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f9 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.1979,
+		valence: 11,
+		electronegativity: 1.3,
 	},
 	{
 		number: 98,
@@ -1421,7 +1660,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f10 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.2817,
+		valence: 12,
+		electronegativity: 1.3,
 	},
 	{
 		number: 99,
@@ -1435,7 +1677,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f11 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.42,
+		valence: 13,
+		electronegativity: 1.3,
 	},
 	{
 		number: 100,
@@ -1449,7 +1694,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f12 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.5,
+		valence: 14,
+		electronegativity: 1.3,
 	},
 	{
 		number: 101,
@@ -1463,7 +1711,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f13 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.58,
+		valence: 15,
+		electronegativity: 1.3,
 	},
 	{
 		number: 102,
@@ -1477,7 +1728,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.65,
+		valence: 16,
+		electronegativity: 1.3,
 	},
 	{
 		number: 103,
@@ -1491,7 +1745,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 7s2 7p1',
 		standardState: 'solid',
 		chemicalFamily: 'actinoid',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 4.9,
+		valence: 17,
+		electronegativity: 1.3,
 	},
 	{
 		number: 104,
@@ -1505,7 +1762,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 6d2 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.0,
+		valence: 4,
+		electronegativity: 1.3,
 	},
 	{
 		number: 105,
@@ -1519,7 +1779,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 6d3 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.0,
+		valence: 5,
+		electronegativity: 1.3,
 	},
 	{
 		number: 106,
@@ -1533,7 +1796,11 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 6d4 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.1,
+		valence: 6,
+		electronegativity: 1.3,
+
 	},
 	{
 		number: 107,
@@ -1547,7 +1814,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 6d5 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.3,
+		valence: 7,
+		electronegativity: 1.3,
 	},
 	{
 		number: 108,
@@ -1561,7 +1831,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 6d6 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.3,
+		valence: 8,
+		electronegativity: 1.3,
 	},
 	{
 		number: 109,
@@ -1575,7 +1848,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 6d7 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'unspecified'
+		metallicity: 'unspecified',
+		ionizationEnergy: 6.3,
+		valence: 9,
+		electronegativity: 1.3,
 	},
 	{
 		number: 110,
@@ -1589,7 +1865,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 6d9 7s1',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'unspecified'
+		metallicity: 'unspecified',
+		ionizationEnergy: 6.3,
+		valence: 10,
+		electronegativity: 1.3,
 	},
 	{
 		number: 111,
@@ -1603,7 +1882,11 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 6d10 7s1',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'unspecified'
+		metallicity: 'unspecified',
+		ionizationEnergy: 6.3,
+		valence: 11,
+		electronegativity: 1.3,
+
 	},
 	{
 		number: 112,
@@ -1617,7 +1900,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 6d10 7s2',
 		standardState: 'solid',
 		chemicalFamily: 'transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.3,
+		valence: 12,
+		electronegativity: 1.3,
 	},
 	// {
 	// 	number: 113,
@@ -1630,7 +1916,10 @@ export const elements = [
 	// 	electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p1',
 	// 	standardState: 'solid',
 	// 	chemicalFamily: 'post-transition-metal',
-	// 	metallicity: 'metal'
+	// 	metallicity: 'metal',
+	// 	ionizationEnergy: 6.3,
+	// 	valence: 13,
+	// 	electronegativity: 1.3,
 	// },
 	{
 		number: 114,
@@ -1644,7 +1933,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p2',
 		standardState: 'solid',
 		chemicalFamily: 'post-transition-metal',
-		metallicity: 'metal'
+		metallicity: 'metal',
+		ionizationEnergy: 6.3,
+		valence: 14,
+		electronegativity: 1.3,
 	},
 	// {
 	// 	number: 115,
@@ -1657,7 +1949,10 @@ export const elements = [
 	// 	electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p3',
 	// 	standardState: 'solid',
 	// 	chemicalFamily: 'post-transition-metal',
-	// 	metallicity: 'metal'
+	// 	metallicity: 'metal',
+	// 	ionizationEnergy: 6.3,
+	// 	valence: 15,
+	// 	electronegativity: 1.3,
 	// },
 	{
 		number: 116,
@@ -1671,7 +1966,10 @@ export const elements = [
 		electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p4',
 		standardState: 'solid',
 		chemicalFamily: 'post-transition-metal',
-		metallicity: 'unspecified'
+		metallicity: 'unspecified',
+		ionizationEnergy: 6.3,
+		valence: 16,
+		electronegativity: 1.3,
 	}
 	// {
 	// 	number: 117,
@@ -1684,7 +1982,10 @@ export const elements = [
 	// 	electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p5',
 	// 	standardState: 'solid',
 	// 	chemicalFamily: 'post-transition-metal',
-	// 	metallicity: 'metal'
+	// 	metallicity: 'metal',
+	// 	ionizationEnergy: 6.3,
+	// 	valence: 17,
+	// 	electronegativity: 1.3,
 	// },
 	// {
 	// 	number: 118,
@@ -1697,7 +1998,10 @@ export const elements = [
 	// 	electronicConfiguration: '[Rn] 5f14 6d10 7s2 7p6',
 	// 	standardState: 'solid',
 	// 	chemicalFamily: 'noble-gas',
-	// 	metallicity: 'nonmetal'
+	// 	metallicity: 'nonmetal',
+	// 	ionizationEnergy: 6.3,
+	// 	valence: 18,
+	// 	electronegativity: 1.3,
 	// }
 ];
 
