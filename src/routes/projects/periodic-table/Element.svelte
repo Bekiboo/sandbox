@@ -29,6 +29,9 @@
 		case 'Subshell Blocks':
 			color = colorScheme.group[subshellBlock].color;
 			break;
+		case 'Electronegativity':
+			color = `rgb(${element.electronegativity * 255 / 8}, ${element.electronegativity * 255 / 8}, ${element.electronegativity * 255 / 4})`;
+			break;
 
 		default:
 			color = '#333';

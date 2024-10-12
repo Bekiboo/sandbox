@@ -50,10 +50,7 @@
 					<div class="flex items-center justify-between">
 						<span class="text-xl">{selectedElement?.name} ({selectedElement.symbol})</span>
 					</div>
-					<div class="flex items-center justify-between">
-						<span>Atomic Number</span>
-						<span>{selectedElement?.number}</span>
-					</div>
+
 					<div class="flex items-center justify-between">
 						<span>Electron Configuration</span>
 						<span>{selectedElement?.electronicConfiguration}</span>
@@ -65,6 +62,10 @@
 					<div class="flex items-center justify-between">
 						<span>Atomic Mass</span>
 						<span>{selectedElement?.atomicMass}</span>
+					</div>
+					<div class="flex items-center justify-between">
+						<span>Electronegativity</span>
+						<span>{selectedElement?.electronegativity}</span>
 					</div>
 				</div>
 			{/if}

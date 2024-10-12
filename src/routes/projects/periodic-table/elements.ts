@@ -2129,24 +2129,24 @@ export const colorSchemes: ColorSchemes = {
 				color: '#333'
 			}
 		}
-	}
-	// electronegativity: {
-	// 	name: 'Electronegativity',
-	// 	group: {
-	// 		high: {
-	// 			name: 'High Electronegativity',
-	// 			color: '#FF0000'
-	// 		},
-	// 		medium: {
-	// 			name: 'Medium Electronegativity',
-	// 			color: '#FFFF00'
-	// 		},
-	// 		low: {
-	// 			name: 'Low Electronegativity',
-	// 			color: '#00FF00'
-	// 		}
-	// 	}
-	// },
+	},
+	electronegativity: {
+		name: 'Electronegativity',
+		group: {
+			high: {
+				name: 'High',
+				color: 'rgb(125, 125, 255)'
+			},
+			medium: {
+				name: 'Medium',
+				color: 'rgb(62, 62, 125)'
+			},
+			low: {
+				name: 'Null',
+				color: '#000'
+			}
+		}
+	},
 	// blocks: {
 	// 	name: 'Blocks',
 	// 	group: {
