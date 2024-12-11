@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@dimforge/rapier3d-compat':
-        specifier: ^0.14.0
-        version: 0.14.0
       '@fontsource/poppins':
         specifier: ^5.1.0
         version: 5.1.0
@@ -20,9 +17,6 @@ importers:
       '@threlte/extras':
         specifier: 9.0.0-next.13
         version: 9.0.0-next.13(@types/three@0.168.0)(svelte@5.10.1)(three@0.168.0)
-      '@threlte/rapier':
-        specifier: ^2.0.1
-        version: 2.0.1(@dimforge/rapier3d-compat@0.14.0)(svelte@5.10.1)(three@0.168.0)
       lucide-svelte:
         specifier: ^0.441.0
         version: 0.441.0(svelte@5.10.1)
@@ -116,9 +110,6 @@ packages:
   '@babel/runtime@7.26.0':
     resolution: {integrity: sha512-FDSOghenHTiToteC/QRlv2q3DhPZ/oOXTBoirfWNx1Cx3TMVcGWQtMMmQcSvb/JjpNeGzx8Pq/b4fKEJuWm1sw==}
     engines: {node: '>=6.9.0'}
-
-  '@dimforge/rapier3d-compat@0.14.0':
-    resolution: {integrity: sha512-/uHrUzS+CRQ+NQrrJCEDUkhwHlNsAAexbNXgbN9sHY+GwR+SFFAFrxRr8Llf5/AJZzqiLANdQIfJ63Cw4gJVqw==}
 
   '@effect/schema@0.75.5':
     resolution: {integrity: sha512-TQInulTVCuF+9EIbJpyLP6dvxbQJMphrnRqgexm/Ze39rSjfhJuufF7XvU3SxTgg3HnL7B/kpORTJbHhlE6thw==}
@@ -674,13 +665,6 @@ packages:
     peerDependencies:
       svelte: '>=5'
       three: '>=0.155'
-
-  '@threlte/rapier@2.0.1':
-    resolution: {integrity: sha512-fT2bZ+eae0O9jVvkvW4NxryDUhhIO7DJWb7UJfcssX3NmFVwTpf9okzza03Iu2d6p69OPEfVFSe16XrdrohOfA==}
-    peerDependencies:
-      '@dimforge/rapier3d-compat': '>=0.11'
-      svelte: '>=4'
-      three: '>=0.152'
 
   '@tweenjs/tween.js@23.1.3':
     resolution: {integrity: sha512-vJmvvwFxYuGnF2axRtPYocag6Clbb5YS7kLL+SO/TeVFzHqDIWrNKYtcsPMibjDx9O+bu+psAy9NKfWklassUA==}
@@ -1941,8 +1925,6 @@ snapshots:
       regenerator-runtime: 0.14.1
     optional: true
 
-  '@dimforge/rapier3d-compat@0.14.0': {}
-
   '@effect/schema@0.75.5(effect@3.11.5)':
     dependencies:
       effect: 3.11.5
@@ -2355,12 +2337,6 @@ snapshots:
       troika-three-text: 0.49.1(three@0.168.0)
     transitivePeerDependencies:
       - '@types/three'
-
-  '@threlte/rapier@2.0.1(@dimforge/rapier3d-compat@0.14.0)(svelte@5.10.1)(three@0.168.0)':
-    dependencies:
-      '@dimforge/rapier3d-compat': 0.14.0
-      svelte: 5.10.1
-      three: 0.168.0
 
   '@tweenjs/tween.js@23.1.3': {}
 
