@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores'
 
-	$: breadcrumb = $page.route.id?.split('/').slice(1) ?? []
+	let breadcrumb = $derived($page.route.id?.split('/').slice(1) ?? [])
 </script>
 
 <nav class="absolute flex justify-center w-screen text-sm breadcrumbs text-secondary">

@@ -1,27 +1,19 @@
 <script lang="ts">
-	import { superForm } from 'sveltekit-superforms/client'
-	import RadialGradientBorder from './RadialGradientBorder.svelte'
-	import ErrorMessage from './ErrorMessage.svelte'
-	import { ChevronDown, Send } from 'lucide-svelte'
-	import Modal from './Modal.svelte'
-
-	export let formData
-
-	const { form, errors, enhance, delayed, message } = superForm(formData)
+	import RadialGradientBorder from './RadialGradientBorder.svelte';
+	import { ChevronDown, Send } from 'lucide-svelte';
 </script>
 
 <RadialGradientBorder>
-	<form method="POST" use:enhance action="?/submitContactForm" class:unfocus={$message}>
+	<form method="POST">
 		<h5>Contact Us</h5>
 		<div class="form-field">
 			<label for="businessEmail">Business email </label>
-			<input type="text" name="businessEmail" id="businessEmail" bind:value={$form.businessEmail} />
-			<ErrorMessage errors={$errors.businessEmail} />
+			<input type="text" name="businessEmail" id="businessEmail" />
 		</div>
 
 		<div class="form-field">
 			<label class="flex" for="subject">Subject<ChevronDown /></label>
-			<select bind:value={$form.subject} name="subject" id="subject">
+			<select name="subject" id="subject">
 				<option value="" disabled selected>Select a Subject </option>
 				<option value="product-inquiry">Product Inquiry</option>
 				<option value="technical-support">Technical Support Request</option>
@@ -29,28 +21,19 @@
 				<option value="job-application">Job Application</option>
 				<option value="general-feedback">General Feedback</option>
 			</select>
-			<ErrorMessage errors={$errors.subject} />
 		</div>
 
 		<div class="form-field">
 			<label for="message">How can we help you?</label>
-			<textarea name="message" id="message" cols="30" rows="4" bind:value={$form.message}
-			></textarea>
-			<ErrorMessage errors={$errors.message} />
+			<textarea name="message" id="message" cols="30" rows="4"></textarea>
 		</div>
 
-		<button type="submit" disabled={$delayed}>
-			{#if $delayed}
-				<span class="loading-spinner loading"></span>
-			{:else}
-				<Send />
-			{/if}
+		<button type="button">
 			Submit
+			<Send />
 		</button>
 	</form>
 </RadialGradientBorder>
-
-<Modal text={$message} />
 
 <style>
 	h5 {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	let elements = [
+	let elements = $state([
 		{
 			colStart: 1,
 			colEnd: 4,
@@ -94,7 +94,7 @@
 			rowEnd: 9,
 			name: 'Lightning Resistance'
 		}
-	]
+	])
 
 	let grid = {
 		columns: 9,
@@ -102,9 +102,9 @@
 		gridUnitSize: 50
 	}
 
-	let gridRef
+	let gridRef = $state()
 
-	let cells = []
+	let cells = $state([])
 
 	for (let i = 0; i < grid.columns; i++) {
 		for (let j = 0; j < grid.rows; j++) {
@@ -180,7 +180,7 @@
 	bind:this={gridRef}
 >
 	{#each cells as cell, i}
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div
 			class="rounded-lg cursor-pointer truc"
 			class:bg-stone-500={cell.isHovered}
@@ -190,13 +190,13 @@
 		</div>
 	{/each}
 	{#each elements as cell, i}
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div
 			draggable="true"
 			class="cursor-pointer"
 			style="grid-area: {cell.rowStart} / {cell.colStart} / {cell.rowEnd} / {cell.colEnd};"
-			on:drag={(e) => dragCell(e, i)}
-			on:dragend={(e) => dropCell(e, i)}
+			ondrag={(e) => dragCell(e, i)}
+			ondragend={(e) => dropCell(e, i)}
 		>
 			<div class="w-full h-full p-1 rounded-lg bg-stone-700">{cell.name}</div>
 		</div>

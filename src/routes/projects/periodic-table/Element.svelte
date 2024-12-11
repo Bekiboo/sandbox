@@ -2,41 +2,48 @@
 	import { throttle } from '$lib/utils';
 	import { onMount } from 'svelte';
 
-	export let element: any;
+	interface Props {
+		element: any;
+		colorScheme: { name: string; group: any };
+		cursorPosition: { x: number; y: number };
+		selectedElement: string | null;
+	}
+
+	let { element, colorScheme, cursorPosition, selectedElement = $bindable() }: Props = $props();
+
 	const { row, column, metallicity, symbol, number, chemicalFamily, standardState, subshellBlock } =
 		element;
-	export let colorScheme: { name: string; group: any };
-	export let cursorPosition: { x: number; y: number };
-	export let selectedElement: string | null;
 
-	let button: HTMLButtonElement;
+	let button: HTMLButtonElement = $state();
 	let buttonCenter: { x: number; y: number } = { x: 0, y: 0 };
-	let intensity: number = 1000;
+	let intensity: number = $state(1000);
 
-	let color: string;
+	let color: string = $state();
 
-	$: switch (colorScheme.name) {
-		case 'Metallicity':
-			color = colorScheme.group[metallicity].color;
-			break;
+	$effect(() => {
+		switch (colorScheme.name) {
+			case 'Metallicity':
+				color = colorScheme.group[metallicity].color;
+				break;
 
-		case 'Chemical Family':
-			color = colorScheme.group[chemicalFamily].color;
-			break;
-		case 'Standard State':
-			color = colorScheme.group[standardState].color;
-			break;
-		case 'Subshell Blocks':
-			color = colorScheme.group[subshellBlock].color;
-			break;
-		case 'Electronegativity':
-			color = `rgb(${element.electronegativity * 255 / 8}, ${element.electronegativity * 255 / 8}, ${element.electronegativity * 255 / 4})`;
-			break;
+			case 'Chemical Family':
+				color = colorScheme.group[chemicalFamily].color;
+				break;
+			case 'Standard State':
+				color = colorScheme.group[standardState].color;
+				break;
+			case 'Subshell Blocks':
+				color = colorScheme.group[subshellBlock].color;
+				break;
+			case 'Electronegativity':
+				color = `rgb(${(element.electronegativity * 255) / 8}, ${(element.electronegativity * 255) / 8}, ${(element.electronegativity * 255) / 4})`;
+				break;
 
-		default:
-			color = '#333';
-			break;
-	}
+			default:
+				color = '#333';
+				break;
+		}
+	});
 
 	function getButtonCenter() {
 		buttonCenter = {
@@ -51,7 +58,9 @@
 		);
 	}
 
-	$: intensity = getDistFromCursorToButton(cursorPosition);
+	$effect(() => {
+		intensity = getDistFromCursorToButton(cursorPosition);
+	});
 
 	onMount(() => {
 		getButtonCenter();
@@ -67,7 +76,7 @@
             "
 	class="w-12 h-12 opacity-80 hover:opacity-100"
 	bind:this={button}
-	on:click={() => (selectedElement = element)}
+	onclick={() => (selectedElement = element)}
 	class:!bg-white={selectedElement == element}
 	class:!opacity-100={selectedElement == element}
 >
@@ -77,7 +86,7 @@
 	</div>
 </button>
 
-<svelte:window on:resize={throttle(getButtonCenter, 50)} />
+<svelte:window onresize={throttle(getButtonCenter, 50)} />
 
 <style>
 	button {

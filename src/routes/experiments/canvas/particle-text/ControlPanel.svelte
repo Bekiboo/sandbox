@@ -1,54 +1,68 @@
 <script lang="ts">
-	import { onMount } from 'svelte'
+	import { onMount } from 'svelte';
 
-	export let controlPanel: HTMLDivElement
+	interface Props {
+		controlPanel: HTMLDivElement;
+		text?: string;
+		connectParticles?: boolean;
+		connectDistance?: number;
+		connectingLineWidth?: number;
+		particleSize?: number;
+		fontWeight?: string;
+		fontFamily?: string;
+		particleShape?: string;
+		init: () => void;
+	}
 
-	export let text = 'Text'
-	export let connectParticles = false
-	export let connectDistance = 32
-	export let connectingLineWidth = 2
-	export let particleSize = 7
-	export let fontWeight = 'normal'
-	export let fontFamily = 'sans-serif'
-	export let particleShape = 'square'
-	export let init: () => void
+	let {
+		controlPanel = $bindable(),
+		text = $bindable(),
+		connectParticles = $bindable(),
+		connectDistance = $bindable(),
+		connectingLineWidth = $bindable(),
+		particleSize = $bindable(),
+		fontWeight = $bindable(),
+		fontFamily = $bindable(),
+		particleShape = $bindable(),
+		init
+	}: Props = $props();
 
-	let isOpen = true
+	let isOpen = $state(true);
 
 	onMount(() => {
 		if (window.innerWidth > 768) {
-			isOpen = true
-			particleSize = 7
+			isOpen = true;
+			particleSize = 7;
 		} else {
-			isOpen = false
-			particleSize = 3
+			isOpen = false;
+			particleSize = 3;
 		}
-	})
+	});
 
 	const open = () => {
-		isOpen = !isOpen
-	}
+		isOpen = !isOpen;
+	};
 
 	const checkWidth = () => {
 		if (window.innerWidth > 768) {
-			isOpen = true
-			particleSize = 7
+			isOpen = true;
+			particleSize = 7;
 		} else {
-			isOpen = false
-			particleSize = 3
+			isOpen = false;
+			particleSize = 3;
 		}
-	}
+	};
 </script>
 
 <div
-	on:click={open}
-	on:keydown={open}
+	onclick={open}
+	onkeydown={open}
 	role="button"
 	tabindex="0"
 	class="absolute w-4 h-20 -translate-y-10 bg-primary top-1/2 right-64 handle md:hidden"
 	class:isOpen
 	class:isClosed={!isOpen}
-/>
+></div>
 <div
 	class="absolute right-0 flex flex-col w-64 h-full gap-8 p-2 overflow-y-scroll md:overflow-auto md:justify-center md:h-auto md:static md:flex-row md:w-full bg-neutral"
 	bind:this={controlPanel}
@@ -61,17 +75,13 @@
 			<input
 				class="input input-bordered input-primary"
 				bind:value={text}
-				on:input={init}
+				oninput={init}
 				type="text"
 			/>
 		</label>
 		<label class="cursor-pointer label">
 			<span class="label-text">Font Style</span>
-			<select
-				class="w-full max-w-xs select select-primary"
-				bind:value={fontWeight}
-				on:change={init}
-			>
+			<select class="w-full max-w-xs select select-primary" bind:value={fontWeight} onchange={init}>
 				<option selected>normal</option>
 				<option>bold</option>
 				<option>italic</option>
@@ -79,11 +89,7 @@
 		</label>
 		<label class="cursor-pointer label">
 			<span class="label-text">Font Family</span>
-			<select
-				class="w-full max-w-xs select select-primary"
-				bind:value={fontFamily}
-				on:change={init}
-			>
+			<select class="w-full max-w-xs select select-primary" bind:value={fontFamily} onchange={init}>
 				<option selected>sans-serif</option>
 				<option>serif</option>
 			</select>
@@ -128,7 +134,7 @@
 				max="12"
 				class="range range-primary"
 				bind:value={particleSize}
-				on:change={init}
+				onchange={init}
 			/>
 		</label>
 
@@ -141,7 +147,7 @@
 					type="radio"
 					name="radio-10"
 					class="radio radio-primary"
-					on:change={init}
+					onchange={init}
 					checked
 				/>
 			</label>
@@ -155,7 +161,7 @@
 					type="radio"
 					name="radio-10"
 					class="radio radio-primary"
-					on:change={init}
+					onchange={init}
 					checked
 				/>
 			</label>
@@ -163,7 +169,7 @@
 	</div>
 </div>
 
-<svelte:window on:resize={checkWidth} />
+<svelte:window onresize={checkWidth} />
 
 <style>
 	.label {

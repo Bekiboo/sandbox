@@ -1,7 +1,11 @@
 <script lang="ts">
 	import type { Project } from './projects'
 
-	export let project: Project
+	interface Props {
+		project: Project;
+	}
+
+	let { project }: Props = $props();
 </script>
 
 <div class="flex-grow w-64 border shadow-xl card bg-base-100 border-opacity-20">
@@ -12,7 +16,7 @@
 		</figure>
 	{:else}
 		<figure>
-			<div class="w-full h-full" style="background-color: hsl({Math.random() * 360}, 100%, 50%);" />
+			<div class="w-full h-full" style="background-color: hsl({Math.random() * 360}, 100%, 50%);"></div>
 		</figure>
 	{/if}
 

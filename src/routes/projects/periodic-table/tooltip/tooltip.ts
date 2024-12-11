@@ -1,4 +1,5 @@
 import Tooltip from './Tooltip.svelte'
+import { mount } from "svelte";
 
 export function tooltip(element: HTMLElement) {
 	let message: string
@@ -11,14 +12,14 @@ export function tooltip(element: HTMLElement) {
 
 		// Only create a new tooltip if it doesn't exist
 		if (!tooltipComponent) {
-			tooltipComponent = new Tooltip({
-				props: {
-					message: message,
-					x: event.pageX,
-					y: event.pageY
-				},
-				target: document.body
-			})
+			tooltipComponent = mount(Tooltip, {
+            				props: {
+            					message: message,
+            					x: event.pageX,
+            					y: event.pageY
+            				},
+            				target: document.body
+            			})
 		}
 	}
 

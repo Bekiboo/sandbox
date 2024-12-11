@@ -34,8 +34,8 @@
 		if (browser) localStorage.setItem('CharacterSheet', JSON.stringify(val))
 	})
 
-	$: $CS.prime = Math.max($CS.might, $CS.agility, $CS.charisma, $CS.intelligence)
-	$: $CS.combatMastery = Math.round($CS.level / 2)
+	let $CS.prime = $derived(Math.max($CS.might, $CS.agility, $CS.charisma, $CS.intelligence))
+	let $CS.combatMastery = $derived(Math.round($CS.level / 2))
 </script>
 
 <IconDc20 size="12rem" />

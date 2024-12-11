@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { T } from '@threlte/core'
-	import { interactivity, OrbitControls } from '@threlte/extras'
-	import { DEG2RAD } from 'three/src/math/MathUtils'
-	import Piece from './models/Piece.svelte'
-	import { ChessPiece } from './ChessPiece'
+	import { T } from '@threlte/core';
+	import { interactivity, OrbitControls } from '@threlte/extras';
+	import { DEG2RAD } from 'three/src/math/MathUtils';
+	import Piece from './models/Piece.svelte';
+	import { ChessPiece } from './ChessPiece';
 	import {
 		BLACK_TILE,
 		BLACK_TILE_HIGHLIGHT,
@@ -14,95 +14,94 @@
 		BOARD_SIZE,
 		generateChessboard,
 		INITIAL_POSITIONS
-	} from './gameSettings'
+	} from './gameSettings';
 
-	export let FOV: number = 75
-	export let castShadow: boolean = true
+	// Needs to be fixed. Since Svelte 5 Migration, can't move or select pieces anymore.
 
-	interactivity()
+	interface Props {
+		FOV?: number;
+		castShadow?: boolean;
+	}
 
-	let chessboard = generateChessboard(BOARD_SIZE, BOARD_SIZE)
+	let { FOV = $bindable(), castShadow = $bindable() }: Props = $props();
 
-	let pieces = INITIAL_POSITIONS.map((piece) => {
-		return new ChessPiece(
-			piece.type as 'pawn' | 'rook' | 'knight' | 'bishop' | 'queen' | 'king',
-			piece.side as 'white' | 'black',
-			piece.pos
-		)
-	})
+	interactivity();
 
-	// let hoveredPiece: ChessPiece | null = null
+	let chessboard = generateChessboard(BOARD_SIZE, BOARD_SIZE);
+
+	let pieces = $state(
+		INITIAL_POSITIONS.map((piece) => {
+			return new ChessPiece(
+				piece.type as 'pawn' | 'rook' | 'knight' | 'bishop' | 'queen' | 'king',
+				piece.side as 'white' | 'black',
+				piece.pos
+			);
+		})
+	);
 
 	const startHoverPiece = (e: CustomEvent, piece: ChessPiece) => {
-		e.stopPropagation()
-		if (piece.status === 'selected') return
-		piece.setStatus('hovered')
-		pieces = pieces
-	}
+		e.stopPropagation();
+
+		if (piece.status === 'selected') return;
+		piece.setStatus('hovered');
+	};
 
 	const stopHoverPiece = (e: CustomEvent, piece: ChessPiece) => {
-		e.stopPropagation()
-		if (piece.status === 'selected') return
-		piece.setStatus('idle')
-		pieces = pieces
-	}
+		e.stopPropagation();
+		if (piece.status === 'selected') return;
+		piece.setStatus('idle');
+	};
 
-	let selectedPiece: ChessPiece | null = null
+	let selectedPiece: ChessPiece | null = $state(null);
 
-	const selectPiece = (e: CustomEvent, piece: ChessPiece) => {
-		e.stopPropagation()
-		if (selectedPiece === piece) {
-			selectedPiece.setStatus('idle')
-			selectedPiece = null
+	const selectPiece = (e: CustomEvent, index: number) => {
+		e.stopPropagation();
+		if (selectedPiece === pieces[index]) {
+			selectedPiece.setStatus('idle');
+			selectedPiece = null;
 		} else if (selectedPiece) {
-			selectedPiece.setStatus('idle')
-			selectedPiece = piece
-			selectedPiece.setStatus('selected')
+			selectedPiece.setStatus('idle');
+			selectedPiece = pieces[index];
+			selectedPiece.setStatus('selected');
 		} else {
-			selectedPiece = piece
-			selectedPiece.setStatus('selected')
+			selectedPiece = pieces[index];
+			selectedPiece.setStatus('selected');
 		}
+	};
 
-		pieces = pieces
-	}
-
-	let hoveredTile: any = null
+	let hoveredTile: any = $state.raw(null);
 
 	const startHoverTile = (e: CustomEvent, tile: any) => {
-		e.stopPropagation()
-		if (!selectedPiece) return
-		hoveredTile = tile
-	}
+		e.stopPropagation();
+		if (!selectedPiece) return;
+		hoveredTile = tile;
+	};
 
 	const stopHoverTile = (e: CustomEvent) => {
-		e.stopPropagation()
-		hoveredTile = null
-	}
+		e.stopPropagation();
+		hoveredTile = null;
+	};
 
 	const selectTile = (e: CustomEvent, tile: any) => {
-		e.stopPropagation()
-		if (!selectedPiece) return
+		e.stopPropagation();
+		if (!selectedPiece) return;
 
 		// check if tile is occupied
-		const pieceOnTile = pieces.find((piece) => piece.pos === tile.name)
+		const pieceOnTile = pieces.find((piece) => piece.pos === tile.name);
 
 		if (pieceOnTile) {
 			// check if piece on tile is same side
 			if (pieceOnTile.side === selectedPiece.side) {
-				return
+				return;
 			} else {
-				pieceOnTile.pos = 'graveyard'
+				pieceOnTile.pos = 'graveyard';
 			}
 		}
 
-		selectedPiece.move(tile.name)
-		selectedPiece.setStatus('idle')
-		selectedPiece = null
-
-		pieces = pieces
-		console.log(pieces)
-		console.log(tile)
-	}
+		selectedPiece.move(tile.name);
+		selectedPiece.setStatus('idle');
+		selectedPiece = null;
+	};
 </script>
 
 <T.PerspectiveCamera
@@ -112,7 +111,7 @@
 	near={0.1}
 	far={1000}
 	on:create={({ ref }) => {
-		ref.lookAt(0, 0, 0)
+		ref.lookAt(0, 0, 0);
 	}}
 >
 	<OrbitControls maxPolarAngle={85 * DEG2RAD} />
@@ -130,7 +129,7 @@
 />
 
 <!---------------- PIECES ---------------->
-{#each pieces as piece}
+{#each pieces as piece, i}
 	{@const tile = chessboard.find((tile) => tile.name === piece.pos)}
 	<Piece
 		type={piece.type}
@@ -138,24 +137,24 @@
 		scale={0.1}
 		rotation={[-Math.PI / 2, 0, (Math.PI / 2) * (piece.side === 'white' ? 1 : -1)]}
 		color={piece.color}
-		on:pointerenter={(e) => startHoverPiece(e, piece)}
-		on:pointerleave={(e) => stopHoverPiece(e, piece)}
-		on:click={(e) => selectPiece(e, piece)}
+		pointerEntered={(e) => startHoverPiece(e, piece)}
+		pointerleft={(e) => stopHoverPiece(e, piece)}
+		clicked={(e) => selectPiece(e, i)}
 	/>
 {/each}
 
 <!---------------- BOARD ---------------->
-{#each chessboard as tile}
+{#each chessboard as tile, i}
 	<T.Mesh
 		position={tile.pos}
 		rotation.x={-Math.PI / 2}
 		receiveShadow
-		on:pointerenter={(e) => startHoverTile(e, tile)}
-		on:pointerleave={(e) => stopHoverTile(e)}
-		on:click={(e) => selectTile(e, tile)}
+		onpointerenter={(e) => startHoverTile(e, tile)}
+		onpointerleave={(e) => stopHoverTile(e)}
+		onclick={(e) => selectTile(e, tile)}
 	>
 		<T.PlaneGeometry args={[TILE_SIZE, TILE_SIZE]} />
-		{#if hoveredTile === tile}
+		{#if hoveredTile === chessboard[i]}
 			<T.MeshStandardMaterial
 				color={tile.side === 'white'
 					? (tile.color = WHITE_TILE_HIGHLIGHT)

@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition'
 
-	export let errors
+	interface Props {
+		errors: any;
+	}
+
+	let { errors }: Props = $props();
 </script>
 
 {#if errors}

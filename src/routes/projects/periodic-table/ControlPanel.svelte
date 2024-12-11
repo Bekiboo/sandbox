@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { colorSchemes } from './elements';
 
-	export let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups';
-	export let colorScheme: 'chemicalFamily' | 'standardState' | 'metallicity' | 'subshellBlock' = 'subshellBlock';
+	interface Props {
+		labels?: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons';
+		colorScheme?: 'chemicalFamily' | 'standardState' | 'metallicity' | 'subshellBlock';
+	}
+
+	let { labels = $bindable('groups'), colorScheme = $bindable('subshellBlock') }: Props = $props();
 </script>
 
 <div class="flex gap-8">

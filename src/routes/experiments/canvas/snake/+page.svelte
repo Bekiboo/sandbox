@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { handleKeysDown } from './keyboardInputHandler';
 
-	let canvas: HTMLCanvasElement;
+	let canvas: HTMLCanvasElement = $state();
 	let ctx: CanvasRenderingContext2D;
 
 	const CELL_SIZE = 20;
@@ -129,9 +129,9 @@
 <canvas
 	style="width: {CELL_SIZE * GRID_WIDTH}; height: {CELL_SIZE * GRID_HEIGHT}"
 	bind:this={canvas}
-/>
+></canvas>
 
-<svelte:window on:keydown={handleKeyDown} />
+<svelte:window onkeydown={handleKeyDown} />
 
 <style>
 	canvas {

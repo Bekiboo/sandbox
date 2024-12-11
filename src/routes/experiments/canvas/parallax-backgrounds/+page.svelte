@@ -2,12 +2,12 @@
 	import { onMount } from 'svelte';
 	import { loadImage } from '../utils';
 
-	let canvas: HTMLCanvasElement;
+	let canvas: HTMLCanvasElement = $state();
 	let ctx: CanvasRenderingContext2D | null;
 	let canvasWidth: number;
 	let canvasHeight: number;
 
-	let gameSpeed = 3;
+	let gameSpeed = $state(3);
 
 	let backgroundLayer1: HTMLImageElement;
 	let backgroundLayer2: HTMLImageElement;
@@ -101,5 +101,5 @@
 		class="range range-lg range-primary mb-4 w-96"
 	/>
 
-	<canvas class="w-[800px] h-[700px]" bind:this={canvas} />
+	<canvas class="w-[800px] h-[700px]" bind:this={canvas}></canvas>
 </div>

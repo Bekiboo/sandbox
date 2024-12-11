@@ -1,7 +1,11 @@
 <script lang="ts">
-	export let stroke = 'white'
-	export let fill = 'transparent'
-	export let size = '2rem'
+	interface Props {
+		stroke?: string;
+		fill?: string;
+		size?: string;
+	}
+
+	let { stroke = 'white', fill = 'transparent', size = '2rem' }: Props = $props();
 </script>
 
 <svg

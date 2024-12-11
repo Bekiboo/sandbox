@@ -7,11 +7,11 @@
 	import { throttle } from '$lib/utils';
 	import { fly } from 'svelte/transition';
 
-	let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups';
+	let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = $state('groups');
 	let colorScheme: 'metallicity' | 'chemicalFamily' | 'standardState' | 'subshellBlock' =
-		'subshellBlock';
-	let selectedElement: any = null;
-	let cursorPosition = { x: 0, y: 0 };
+		$state('subshellBlock');
+	let selectedElement: any = $state.raw(null);
+	let cursorPosition = $state({ x: 0, y: 0 });
 
 	const handleMouseMove = (e: MouseEvent) => {
 		cursorPosition = { x: e.clientX, y: e.clientY };
@@ -97,7 +97,7 @@
 	</section>
 </main>
 
-<svelte:window on:mousemove={throttle(handleMouseMove, 50)} />
+<svelte:window onmousemove={throttle(handleMouseMove, 50)} />
 
 <style>
 	section {

@@ -1,9 +1,13 @@
 <script lang="ts">
 	import type { DicePool } from './Die'
 
-	export let dicePool: DicePool
+	interface Props {
+		dicePool: DicePool;
+	}
 
-	let selected: unknown | null = null
+	let { dicePool }: Props = $props();
+
+	let selected: unknown | null = $state(null)
 </script>
 
 <div class="flex gap-2 mb-2">
@@ -16,9 +20,9 @@
 			class="flex items-center justify-center w-6 h-6 font-bold text-black rounded cursor-pointer"
 			style="background: {die.color}"
 			draggable="true"
-			on:drag={() => console.log('dragging')}
-			on:focus={() => (selected = die)}
-			on:focusout={() => (selected = null)}
+			ondrag={() => console.log('dragging')}
+			onfocus={() => (selected = die)}
+			onfocusout={() => (selected = null)}
 			class:selected={selected === die}
 		>
 			{die.name}
@@ -28,7 +32,7 @@
 		class="h-6 w-6 rounded text-slate-500 text-2xl border-slate-500
         border flex items-center justify-center cursor-pointer hover:border-slate-300
         hover:text-slate-300 duration-100 pb-[.13rem]"
-		on:click={() => dicePool.addDie(6, 'd6')}
+		onclick={() => dicePool.addDie(6, 'd6')}
 	>
 		&#10010;
 	</button>

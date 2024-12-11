@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
 	const geometry = new BoxGeometry(0.2, 0.2, 0.2);
 	const material = new MeshStandardMaterial();
 	export const muted = writable(true);
@@ -12,8 +12,12 @@
 	import type { Euler, Vector3 } from 'three';
 	import { BoxGeometry, MeshStandardMaterial } from 'three';
 	// import { clamp } from 'three/src/math/MathUtils.js';
-	export let position: Vector3 | undefined = undefined;
-	export let rotation: Euler | undefined = undefined;
+	interface Props {
+		position?: Vector3 | undefined;
+		rotation?: Euler | undefined;
+	}
+
+	let { position = undefined, rotation = undefined }: Props = $props();
 	// const audios: {
 	// 	threshold: number;
 	// 	volume: number;
@@ -36,7 +40,7 @@
 	//     audio?.stop?.()
 	//     audio?.play?.()
 	//   }
-	$: rotationCasted = rotation?.toArray() as [x: number, y: number, z: number];
+	let rotationCasted = $derived(rotation?.toArray() as [x: number, y: number, z: number]);
 </script>
 
 <T.Group position={position?.toArray()} rotation={rotationCasted}>

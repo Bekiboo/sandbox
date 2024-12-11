@@ -2,8 +2,8 @@
 	import { onMount, onDestroy, tick } from 'svelte'
 	import { fly } from 'svelte/transition'
 
-	let reverse: boolean = false
-	$: direction = reverse ? -1 : 1
+	let reverse: boolean = $state(false)
+	let direction = $derived(reverse ? -1 : 1)
 
 	const initialDuration = {
 		days: 1,
@@ -14,12 +14,12 @@
 
 	let currentTime = calculateInitialTime(initialDuration)
 
-	let timeRemaining = {
+	let timeRemaining = $state({
 		days: { tens: 0, ones: 0 },
 		hours: { tens: 0, ones: 0 },
 		minutes: { tens: 0, ones: 0 },
 		seconds: { tens: 0, ones: 0 }
-	}
+	})
 
 	function calculateInitialTime(duration: {
 		days: number

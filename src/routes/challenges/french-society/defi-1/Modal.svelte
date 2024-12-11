@@ -1,14 +1,18 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
 
-	export let text: string
+	interface Props {
+		text: string;
+	}
+
+	let { text }: Props = $props();
 </script>
 
 {#if text}
 	<dialog open>
 		<p>{text}</p>
 		<form method="dialog">
-			<button on:click={() => goto('/')}>Back to Home</button>
+			<button onclick={() => goto('/')}>Back to Home</button>
 		</form>
 	</dialog>
 {/if}

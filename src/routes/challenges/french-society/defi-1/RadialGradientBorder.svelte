@@ -1,11 +1,22 @@
 <script lang="ts">
-	export let borderColor = 'rgba(0,255,255,.66)'
-	export let bgColor = '#212121'
-	export let borderWidth = '0.1rem'
-	export let borderRadius = '2rem'
+	interface Props {
+		borderColor?: string;
+		bgColor?: string;
+		borderWidth?: string;
+		borderRadius?: string;
+		children?: import('svelte').Snippet;
+	}
 
-	let pos = { x: '0', y: '0' }
-	let wrapper: HTMLDivElement
+	let {
+		borderColor = 'rgba(0,255,255,.66)',
+		bgColor = '#212121',
+		borderWidth = '0.1rem',
+		borderRadius = '2rem',
+		children
+	}: Props = $props();
+
+	let pos = $state({ x: '0', y: '0' })
+	let wrapper: HTMLDivElement = $state()
 
 	// This should be in $lib/utils
 	const throttle = (fn: Function, delay: number) => {
@@ -47,11 +58,11 @@
 	style:--borderRadius={borderRadius}
 >
 	<div class="content">
-		<slot />
+		{@render children?.()}
 	</div>
 </div>
 
-<svelte:window on:mouseout={mouseOut} on:mousemove={throttle(handleMouseMove, 50)} />
+<svelte:window onmouseout={mouseOut} onmousemove={throttle(handleMouseMove, 50)} />
 
 <style>
 	.wrapper {

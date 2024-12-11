@@ -2,7 +2,7 @@
 	import { onDestroy, onMount } from 'svelte'
 	import { loadImage } from '../utils'
 
-	let canvas: HTMLCanvasElement
+	let canvas: HTMLCanvasElement = $state()
 	let ctx: CanvasRenderingContext2D | null
 	let canvasWidth: number
 	let canvasHeight: number
@@ -15,9 +15,9 @@
 	let pointerPos: { x: number; y: number } = { x: 0, y: 0 }
 	let firing = false
 
-	let enemyDial = 20
-	$: nbOfEnemies = Math.floor(Math.exp(enemyDial / 14.478))
-	let twitchDial: number = 2
+	let enemyDial = $state(20)
+	let nbOfEnemies = $derived(Math.floor(Math.exp(enemyDial / 14.478)))
+	let twitchDial: number = $state(2)
 
 	class laser {
 		image: HTMLImageElement
@@ -194,11 +194,11 @@
 	</div>
 
 	<canvas
-		on:mousedown={onMouseDown}
-		on:mousemove={onMouseMove}
+		onmousedown={onMouseDown}
+		onmousemove={onMouseMove}
 		class="w-[500px] h-[800px]"
 		bind:this={canvas}
-	/>
+	></canvas>
 </div>
 
-<svelte:window on:mouseup={onMouseUp} />
+<svelte:window onmouseup={onMouseUp} />

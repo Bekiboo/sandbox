@@ -1,9 +1,7 @@
 <script lang="ts">
-	import ContactForm from './ContactForm.svelte'
-
-	export let data
+	import ContactForm from './ContactForm.svelte';
 </script>
 
 <main class="flex items-center justify-center h-screen bg-zinc-800">
-	<ContactForm formData={data.form} />
+	<ContactForm />
 </main>

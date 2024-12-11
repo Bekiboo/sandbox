@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = 'groups'
+	interface Props {
+		labels?: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons';
+	}
+
+	let { labels = 'groups' }: Props = $props();
 </script>
 
 <!-- X-axis -->

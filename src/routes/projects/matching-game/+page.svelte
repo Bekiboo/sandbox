@@ -1,128 +1,136 @@
 <script lang="ts">
-	import { emoji } from './emoji'
-	import { useMachine } from './useMachine'
+	import { emoji } from './emoji';
+	import { useMachine } from './useMachine';
 
-	type State = 'start' | 'playing' | 'won' | 'paused' | 'gameover'
+	type GameState = 'start' | 'playing' | 'won' | 'paused' | 'gameover';
 
-	const { state, send } = useMachine(gameMachine, 'start')
+	const { gameState, send } = useMachine(gameMachine, 'start');
 
-	function gameMachine(state: State, event: { type: string; data?: any }) {
-		switch (state) {
+	function gameMachine(gameState: GameState, event: { type: string; data?: any }) {
+		switch (gameState) {
 			case 'start':
 				if (event.type === 'CLICK') {
-					return 'playing'
+					return 'playing';
 				}
 			case 'playing':
 				if (event.type === 'ESCAPE') {
-					console.log('paused')
+					console.log('paused');
 
-					return 'paused'
+					return 'paused';
 				}
 				if (event.type === 'CLICK') {
-					selectCard(event.data)
-					selected.length == 2 && matchCards()
+					selectCard(event.data);
+					selected.length == 2 && matchCards();
 
 					if (matches.length == emoji.length) {
-						return 'gameover'
+						return 'gameover';
 					}
 
-					return 'playing'
+					return 'playing';
 				}
 			case 'paused':
 				if (event.type === 'ESCAPE') {
-					return 'playing'
+					return 'playing';
 				}
 			case 'gameover':
 				if (event.type === 'CLICK') {
-					resetGame()
-					return 'playing'
+					resetGame();
+					return 'playing';
 				}
 
 			default:
-				return state
+				return gameState;
 		}
 	}
 
-	let size = 20
-	let grid = createGrid()
-	let maxMatches = grid.length / 2
-	let selected: number[] = []
-	let matches: string[] = []
-	let timerId: any | null = null
-	let time = 60
+	let size = 20;
+	let grid = $state(createGrid());
+	let maxMatches = $state(grid.length / 2);
+	let selected: number[] = $state([]);
+	let matches: string[] = $state([]);
+	let timerId: any | null = $state(null);
+	let time = $state(60);
 
 	function startGameTimer() {
 		timerId = setInterval(() => {
-			time--
-		}, 1000)
+			time--;
+		}, 1000);
 	}
 
 	function createGrid() {
-		let cards = new Set<string>()
-		let maxSize = size / 2
+		let cards = new Set<string>();
+		let maxSize = size / 2;
 
 		while (cards.size < maxSize) {
-			const randomIndex = Math.floor(Math.random() * emoji.length)
-			cards.add(emoji[randomIndex])
+			const randomIndex = Math.floor(Math.random() * emoji.length);
+			cards.add(emoji[randomIndex]);
 		}
 
-		return shuffle([...cards, ...cards])
+		return shuffle([...cards, ...cards]);
 	}
 
 	function shuffle<Items>(array: Items[]) {
-		return array.sort(() => Math.random() - 0.5)
+		return array.sort(() => Math.random() - 0.5);
 	}
 
 	function selectCard(cardIndex: number) {
-		selected = selected.concat(cardIndex)
+		selected = selected.concat(cardIndex);
 	}
 
 	function matchCards() {
-		const [first, second] = selected
+		const [first, second] = selected;
 
 		if (grid[first] === grid[second]) {
-			matches = matches.concat(grid[first])
+			matches = matches.concat(grid[first]);
 		}
 
 		setTimeout(() => {
-			selected = []
-		}, 500)
+			selected = [];
+		}, 500);
 	}
 
 	function resetGame() {
-		timerId && clearInterval(timerId)
-		grid = createGrid()
-		maxMatches = grid.length / 2
-		selected = []
-		matches = []
-		timerId = null
-		time = 60
+		timerId && clearInterval(timerId);
+		grid = createGrid();
+		maxMatches = grid.length / 2;
+		selected = [];
+		matches = [];
+		timerId = null;
+		time = 60;
 	}
 
 	function gameWon() {
-		$state = 'won'
-		resetGame()
+		$gameState = 'won';
+		resetGame();
 	}
 
 	function gameLost() {
-		$state = 'gameover'
-		resetGame()
+		$gameState = 'gameover';
+		resetGame();
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {
-		e.key === 'Escape' && send({ type: 'ESCAPE' })
+		e.key === 'Escape' && send({ type: 'ESCAPE' });
 	}
 
-	$: if ($state === 'playing') {
-		!timerId && startGameTimer()
-	}
+	$effect(() => {
+		if ($gameState === 'playing') {
+			!timerId && startGameTimer();
+		}
+	});
 
-	$: selected.length == 2 && matchCards()
-	$: maxMatches == matches.length && gameWon()
-	$: time == 0 && gameLost()
+	$effect(() => {
+		selected.length == 2 && matchCards();
+	});
+	$effect(() => {
+		maxMatches == matches.length && gameWon();
+	});
+	$effect(() => {
+		time == 0 && gameLost();
+	});
 </script>
 
-{#if $state == 'playing'}
+{#if $gameState == 'playing'}
 	<h1 class="timer" class:pulse={time <= 10}>{time}</h1>
 	<div class="grid grid-cols-5 gap-2 m-auto w-fit">
 		{#each grid as card, cardIndex}
@@ -135,44 +143,44 @@
 				class:isSelected
 				class:flip={isSelectedOrMatched}
 				class:disabled={isSelectedOrMatched}
-				on:click={() => selectCard(cardIndex)}
+				onclick={() => selectCard(cardIndex)}
 			>
-				<div class="back" class:isMatched>{card}</div>
+				<div class="absolute inset-0 grid back place-items-center" class:isMatched>{card}</div>
 			</button>
 		{/each}
 	</div>
 {/if}
 
-{#if $state === 'start'}
+{#if $gameState === 'start'}
 	<div class="flex flex-col items-center justify-center w-screen h-screen">
 		<h1 class="text-2xl">Matching Game</h1>
 		<button
-			on:click={() => send({ type: 'CLICK' })}
+			onclick={() => send({ type: 'CLICK' })}
 			class="mt-4 uppercase btn btn-primary btn-lg btn-wide">Play</button
 		>
 	</div>
 {/if}
-{#if $state == 'gameover'}
+{#if $gameState == 'gameover'}
 	<div class="flex flex-col items-center justify-center w-screen h-screen">
 		<h1 class="text-2xl">You lost 💩</h1>
 		<button
-			on:click={() => ($state = 'playing')}
+			onclick={() => ($gameState = 'playing')}
 			class="mt-4 uppercase btn btn-primary btn-lg btn-wide">Play again</button
 		>
 	</div>
 {/if}
 
-{#if $state == 'won'}
+{#if $gameState == 'won'}
 	<div class="flex flex-col items-center justify-center w-screen h-screen">
 		<h1 class="text-2xl">You won!</h1>
 		<button
-			on:click={() => ($state = 'playing')}
+			onclick={() => ($gameState = 'playing')}
 			class="mt-4 uppercase btn btn-primary btn-lg btn-wide">Play again</button
 		>
 	</div>
 {/if}
 
-<svelte:window on:keydown={handleKeyDown} />
+<svelte:window onkeydown={handleKeyDown} />
 
 <style>
 	.card {
@@ -186,7 +194,6 @@
 	}
 
 	.back {
-		@apply absolute inset-0 grid place-items-center;
 		backface-visibility: hidden;
 		rotate: y 180deg;
 	}

@@ -2,7 +2,11 @@
 	import Die from './Die.svelte'
 	import type { DicePool } from './Die'
 
-	export let dicePool: DicePool
+	interface Props {
+		dicePool: DicePool;
+	}
+
+	let { dicePool }: Props = $props();
 
 	async function rollAll() {
 		dicePool.resetAll()
@@ -18,6 +22,6 @@
 	{/each}
 </div>
 <div class="flex justify-center gap-2 mt-4">
-	<button class="btn btn-primary" on:click={rollAll}>Roll</button>
-	<button class="btn btn-error" on:click={() => dicePool.resetAll()}>Reset</button>
+	<button class="btn btn-primary" onclick={rollAll}>Roll</button>
+	<button class="btn btn-error" onclick={() => dicePool.resetAll()}>Reset</button>
 </div>

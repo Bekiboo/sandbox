@@ -1,7 +1,6 @@
 <script lang="ts">
-	import ProjectCard from './ProjectCard.svelte'
-	import { projects } from './projects'
-	import { DateTime } from 'luxon'
+	import ProjectCard from './ProjectCard.svelte';
+	import { projects } from './projects';
 </script>
 
 <main class="max-w-screen-xl px-8 mx-auto lg:px-16">

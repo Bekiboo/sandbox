@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	let canvas: HTMLCanvasElement;
+	let canvas: HTMLCanvasElement = $state();
 	let ctx: CanvasRenderingContext2D | null;
 	let canvasWidth: number;
 	let canvasHeight: number;
 	let playerImage: HTMLImageElement;
 	const SPRITE_WIDTH = 575;
 	const SPRITE_HEIGHT = 523;
-	let playerState: string = 'idle';
+	let playerState: string = $state('idle');
 
 	let gameFrame = 0;
 	const staggerFrames = 5;
@@ -81,7 +81,7 @@
 	<div class="flex gap-2 w-full justify-center">
 		{#each animationStates as { name }}
 			<button
-				on:click={() => {
+				onclick={() => {
 					playerState = name;
 				}}
 				class="btn btn-outline btn-sm hover:btn-primary capitalize"
@@ -91,5 +91,5 @@
 		{/each}
 	</div>
 
-	<canvas class="w-[600px] h-[600px]" bind:this={canvas} />
+	<canvas class="w-[600px] h-[600px]" bind:this={canvas}></canvas>
 </div>

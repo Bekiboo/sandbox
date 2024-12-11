@@ -21,7 +21,7 @@
 		position: Vector3;
 		rotation: Euler;
 	};
-	let bodies: Body[] = [];
+	let bodies: Body[] = $state([]);
 	let lastBodyMounted: number = 0;
 	let bodyEveryMilliseconds = 50;
 	let longevityMilliseconds = 20000;

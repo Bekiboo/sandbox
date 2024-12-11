@@ -4,7 +4,7 @@
 	import { explosionSounds } from './effects';
 	import { Game } from './game';
 
-	let canvas: HTMLCanvasElement;
+	let canvas: HTMLCanvasElement = $state();
 	let ctx: CanvasRenderingContext2D;
 	let bgCtx: CanvasRenderingContext2D;
 	let canvasWidth: number;
@@ -55,5 +55,5 @@
 </svelte:head>
 
 <div class="flex flex-col items-center mt-5">
-	<canvas on:click={handleClick} class="w-[600px] h-[800px]" bind:this={canvas} />
+	<canvas onclick={handleClick} class="w-[600px] h-[800px]" bind:this={canvas}></canvas>
 </div>

@@ -24,7 +24,7 @@
 		points[i] = MathUtils.randFloatSpread(distance * 2);
 	}
 
-	const geometry = new BufferGeometry();
+	const geometry = $state(new BufferGeometry());
 	geometry.setAttribute('position', new Float32BufferAttribute(points, 3));
 
 	// const pointMaterial = new PointsMaterial({

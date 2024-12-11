@@ -21,7 +21,7 @@
 
 	const GRAVITY = 0.02;
 
-	let game: Game;
+	let game: Game = $state();
 
 	let ground = {
 		width: 30,
@@ -35,7 +35,7 @@
 
 	let elapsedTime = 0;
 
-	let player = {
+	let player = $state({
 		pos: {
 			x: 0,
 			y: 1,
@@ -46,7 +46,7 @@
 			y: 0,
 			z: 0
 		}
-	};
+	});
 
 	let keysPressed: string[] = [];
 
@@ -152,4 +152,4 @@
 
 <Emitter />
 
-<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
+<svelte:window onkeydown={handleKeyDown} onkeyup={handleKeyUp} />

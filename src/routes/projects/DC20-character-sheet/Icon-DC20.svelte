@@ -1,11 +1,23 @@
 <script lang="ts">
-	export let size = '40rem'
-	export let stroke = 'white'
-	export let die = 'transparent'
-	export let dieStrokes = 'white'
-	export let flame = 'transparent'
-	export let dragon = 'gray'
-	export let eye = 'transparent'
+	interface Props {
+		size?: string;
+		stroke?: string;
+		die?: string;
+		dieStrokes?: string;
+		flame?: string;
+		dragon?: string;
+		eye?: string;
+	}
+
+	let {
+		size = '40rem',
+		stroke = 'white',
+		die = 'transparent',
+		dieStrokes = 'white',
+		flame = 'transparent',
+		dragon = 'gray',
+		eye = 'transparent'
+	}: Props = $props();
 </script>
 
 <svg

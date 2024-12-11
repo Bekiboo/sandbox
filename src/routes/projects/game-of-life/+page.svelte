@@ -2,12 +2,12 @@
 	const GRID_HEIGHT = 50
 	const GRID_WIDTH = 50
 
-	let generation = 0
+	let generation = $state(0)
 
 	// create random points in this grid, and store them in a 2D array
-	let grid = Array.from({ length: GRID_HEIGHT }, () =>
+	let grid = $state(Array.from({ length: GRID_HEIGHT }, () =>
 		Array.from({ length: GRID_WIDTH }, () => Math.random() > 0.7)
-	)
+	))
 
 	// create a new grid based on the old grid
 	function nextGeneration(grid) {
@@ -66,7 +66,7 @@
 				<div
 					class="w-2 h-2 border border-gray-300"
 					style="background-color: {cell ? 'black' : 'white'}"
-				/>
+				></div>
 			{/each}
 		</div>
 	{/each}

@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { writable } from 'svelte/store'
+import { writable } from 'svelte/store';
 
 export function useMachine(machine: any, initial: any) {
-	const state = writable(initial)
+	const gameState = writable(initial);
 
 	function send(event: any) {
-		console.log('event', event)
-
-		state.update((state) => machine(state, event))
+		gameState.update((gameState) => machine(gameState, event));
 	}
 
-	return { state, send }
+	return { gameState, send };
 }
