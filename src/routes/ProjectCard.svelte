@@ -8,20 +8,18 @@
 	let { project }: Props = $props();
 </script>
 
-<div class="flex-grow w-64 border shadow-xl card bg-base-100 border-opacity-20">
+<div class="w-64 border shadow-xl card bg-base-100 border-opacity-20">
 	<!-- IMAGE -->
-	{#if project.image}
-		<figure>
-			<img class="" src={project.image} alt={project.title} />
-		</figure>
-	{:else}
-		<figure>
+	<div class="h-48">
+		{#if project.image}
+			<img class="object-cover w-full h-full" src={project.image} alt={project.title} />
+		{:else}
 			<div
 				class="w-full h-full"
 				style="background-color: hsl({Math.random() * 360}, 100%, 50%);"
 			></div>
-		</figure>
-	{/if}
+		{/if}
+	</div>
 
 	<!-- BODY -->
 	<div class="card-body">
