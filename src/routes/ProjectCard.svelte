@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Project } from './projects'
+	import type { Project } from './projects';
 
 	interface Props {
 		project: Project;
@@ -16,7 +16,10 @@
 		</figure>
 	{:else}
 		<figure>
-			<div class="w-full h-full" style="background-color: hsl({Math.random() * 360}, 100%, 50%);"></div>
+			<div
+				class="w-full h-full"
+				style="background-color: hsl({Math.random() * 360}, 100%, 50%);"
+			></div>
 		</figure>
 	{/if}
 
@@ -25,11 +28,7 @@
 		<h2 class="card-title">{project.title}</h2>
 		<p>{project.description}</p>
 		<div class="flex justify-end gap-4 card-actions">
-			<a
-				class="btn btn-secondary"
-				target="_blank"
-				href={'https://github.com/Bekiboo/sandbox/tree/master/src/routes' + project.path}>Code</a
-			>
+			<a class="btn btn-secondary" target="_blank" href={project.github}>Code</a>
 			<a class="btn btn-primary" href={project.path}>View</a>
 		</div>
 	</div>

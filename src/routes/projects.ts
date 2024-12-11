@@ -1,15 +1,8 @@
 export type Project = {
 	title: string;
 	description: string;
-	path:
-		| {
-				type: 'internal';
-				url: string;
-		  }
-		| {
-				type: 'external';
-				url: string;
-		  };
+	path: string;
+	github?: string;
 	image: string | null;
 	dateStarted: string;
 	dateUpdated?: string;
@@ -22,10 +15,8 @@ export const projects: Project[] = [
 	{
 		title: 'Cube Runner',
 		description: 'A 3D runner game with a cube.',
-		path: {
-			type: 'external',
-			url: 'https://cube-runner.vercel.app/'
-		},
+		path: 'https://cube-inky.vercel.app/',
+		github: 'https://github.com/Bekiboo/Cube',
 		image: 'images/minis/cube.png',
 		dateStarted: '2024-09',
 		tech: ['svelte', 'threlte', 'three.js'],
@@ -35,10 +26,8 @@ export const projects: Project[] = [
 	{
 		title: 'Periodic Table',
 		description: 'An interactive periodic table with SvelteKit and TailwindCSS.',
-		path: {
-			type: 'internal',
-			url: '/projects/periodic-table'
-		},
+		path: '/projects/periodic-table',
+		github: 'https://github.com/Bekiboo/sandbox/tree/master/src/routes/projects/periodic-table',
 		image: 'images/minis/periodic-table.png',
 		dateStarted: '2024-01',
 		tech: ['svelte', 'sveltekit', 'tailwindcss'],
@@ -48,10 +37,9 @@ export const projects: Project[] = [
 	{
 		title: 'French Society - Defi 2',
 		description: 'A chrono with animation.',
-		path: {
-			type: 'internal',
-			url: '/challenges/french-society/defi-2'
-		},
+		path: '/challenges/french-society/defi-2',
+		github:
+			'https://github.com/Bekiboo/sandbox/tree/master/src/routes/challenges/french-society/defi-2',
 		image: 'images/minis/defi-2.png',
 		dateStarted: '2024-02',
 		tech: ['svelte', 'sveltekit', 'vanilla'],
@@ -61,10 +49,9 @@ export const projects: Project[] = [
 	{
 		title: 'French Society - Defi 1',
 		description: 'A form with validation, feedback, and a sweet animation.',
-		path: {
-			type: 'internal',
-			url: '/challenges/french-society/defi-1'
-		},
+		path: '/challenges/french-society/defi-1',
+		github:
+			'https://github.com/Bekiboo/sandbox/tree/master/src/routes/challenges/french-society/defi-1',
 		image: 'images/minis/defi-1.png',
 		dateStarted: '2024-01',
 		tech: ['svelte', 'sveltekit', 'superforms', 'zod'],
@@ -74,10 +61,9 @@ export const projects: Project[] = [
 	{
 		title: 'Dice Roller',
 		description: 'A dice roller for role-playing games.',
-		path: {
-			type: 'internal',
-			url: '/projects/mulligan'
-		},
+		path: '/projects/mulligan',
+		github:
+			'https://github.com/Bekiboo/sandbox/tree/master/src/routes/projects/mulligan/dice-roller',
 		image: 'images/minis/dice-roller.png',
 		dateStarted: '2023-10',
 		tech: ['svelte', 'sveltekit', 'typescript'],
@@ -87,10 +73,8 @@ export const projects: Project[] = [
 	{
 		title: '3D Chess',
 		description: 'A simple 3D chess board. Not interactive yet.',
-		path: {
-			type: 'internal',
-			url: '/experiments/three-js/chess'
-		},
+		path: '/experiments/three-js/chess',
+		github: 'https://github.com/Bekiboo/sandbox/tree/master/src/routes/experiments/three-js/chess',
 		image: 'images/minis/chess.png',
 		dateStarted: '2023-10',
 		tech: [
@@ -114,41 +98,10 @@ export const projects: Project[] = [
 		type: 'experiment'
 	},
 	{
-		title: 'Particles test',
-		description: 'TODO',
-		path: {
-			type: 'internal',
-			url: '/experiments/three-js/connected-dots'
-		},
-		image: 'images/minis/connected-dots.png',
-		dateStarted: '2023-10',
-		tech: [
-			'three.js',
-			'typescript',
-			'svelte',
-			'sveltekit',
-			'konva',
-			'canvas',
-			'webgl',
-			'glsl',
-			'shaders',
-			'3d',
-			'3d-models',
-			'3d-objects',
-			'3d-graphics',
-			'3d-animation',
-			'3d-visualisation'
-		],
-		status: 'on-hold',
-		type: 'experiment'
-	},
-	{
 		title: 'Matching Game',
 		description: 'A simple matching game based on Joy of Code tutorial',
-		path: {
-			type: 'internal',
-			url: '/projects/matching-game'
-		},
+		path: '/projects/matching-game',
+		github: 'https://github.com/Bekiboo/sandbox/tree/master/src/routes/projects/matching-game',
 		image: 'images/minis/matching-game.png',
 		dateStarted: '2023-10',
 		tech: [
@@ -174,10 +127,9 @@ export const projects: Project[] = [
 	{
 		title: 'Shoot the Bats',
 		description: 'A simple point & shoot with vanilla TS and Canvas',
-		path: {
-			type: 'internal',
-			url: '/experiments/canvas/point-and-shoot'
-		},
+		path: '/experiments/canvas/point-and-shoot',
+		github:
+			'https://github.com/Bekiboo/sandbox/tree/master/src/routes/experiments/canvas/point-and-shoot',
 		image: 'images/minis/point-and-shoot.png',
 		dateStarted: '2023-10',
 		tech: ['typescript', 'svelte', 'sveltekit', 'konva', 'canvas'],
@@ -187,10 +139,9 @@ export const projects: Project[] = [
 	{
 		title: 'Particle Text',
 		description: 'Write text and see it turn into particles',
-		path: {
-			type: 'internal',
-			url: '/experiments/canvas/particle-text'
-		},
+		path: '/experiments/canvas/particle-text',
+		github:
+			'https://github.com/Bekiboo/sandbox/tree/master/src/routes/experiments/canvas/particle-text',
 		image: 'images/minis/particle-text.png',
 		dateStarted: '2023-10',
 		tech: ['typescript', 'svelte', 'sveltekit', 'konva', 'canvas'],
