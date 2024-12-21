@@ -1,100 +1,5 @@
 <script lang="ts">
-	let elements = $state([
-		{
-			colStart: 1,
-			colEnd: 4,
-			rowStart: 1,
-			rowEnd: 12,
-			name: 'Skills'
-		},
-		{
-			colStart: 4,
-			colEnd: 6,
-			rowStart: 1,
-			rowEnd: 3,
-			name: 'Stamina'
-		},
-		{
-			colStart: 6,
-			colEnd: 8,
-			rowStart: 1,
-			rowEnd: 3,
-			name: 'Mana'
-		},
-		{
-			colStart: 8,
-			colEnd: 10,
-			rowStart: 1,
-			rowEnd: 3,
-			name: 'HP'
-		},
-
-		{
-			colStart: 4,
-			colEnd: 6,
-			rowStart: 3,
-			rowEnd: 5,
-			name: 'Strength'
-		},
-		{
-			colStart: 6,
-			colEnd: 8,
-			rowStart: 3,
-			rowEnd: 5,
-			name: 'Dexterity'
-		},
-		{
-			colStart: 8,
-			colEnd: 10,
-			rowStart: 3,
-			rowEnd: 5,
-			name: 'Intelligence'
-		},
-
-		{
-			colStart: 4,
-			colEnd: 6,
-			rowStart: 5,
-			rowEnd: 7,
-			name: 'Agility'
-		},
-		{
-			colStart: 6,
-			colEnd: 8,
-			rowStart: 5,
-			rowEnd: 7,
-			name: 'Constitution'
-		},
-		{
-			colStart: 8,
-			colEnd: 10,
-			rowStart: 5,
-			rowEnd: 7,
-			name: 'Charisma'
-		},
-
-		{
-			colStart: 4,
-			colEnd: 6,
-			rowStart: 7,
-			rowEnd: 9,
-			name: 'Fire Resistance'
-		},
-		{
-			colStart: 6,
-			colEnd: 8,
-			rowStart: 7,
-			rowEnd: 9,
-			name: 'Cold Resistance'
-		},
-		{
-			colStart: 8,
-			colEnd: 10,
-			rowStart: 7,
-			rowEnd: 9,
-			name: 'Lightning Resistance'
-		}
-	])
+	import { elements } from './InitialElements.svelte'
 
 	let grid = {
 		columns: 9,
@@ -102,7 +7,7 @@
 		gridUnitSize: 50
 	}
 
-	let gridRef = $state()
+	let gridRef: HTMLDivElement = $state()
 
 	let cells = $state([])
 
@@ -121,7 +26,7 @@
 	let colStart = [0, 0]
 	let rowStart = [0, 0]
 
-	function dragCell(e, i) {
+	function dragCell(e: MouseEvent, i: number) {
 		const el = elements[i]
 		const elHeight = el.rowEnd - el.rowStart
 		const elWidth = el.colEnd - el.colStart
@@ -163,7 +68,6 @@
 			name: el.name
 		}
 		elements[i] = newPos
-		elements = elements
 
 		cells.forEach((cell) => {
 			cell.isHovered = false
