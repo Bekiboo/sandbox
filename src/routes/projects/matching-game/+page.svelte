@@ -1,133 +1,135 @@
 <script lang="ts">
-	import { emoji } from './emoji';
-	import { useMachine } from './useMachine';
+	import { emoji } from './emoji'
+	import { useMachine } from './useMachine'
 
-	type GameState = 'start' | 'playing' | 'won' | 'paused' | 'gameover';
+	type GameState = 'start' | 'playing' | 'won' | 'paused' | 'gameover'
 
-	const { gameState, send } = useMachine(gameMachine, 'start');
+	const { gameState, send } = useMachine(gameMachine, 'start')
 
 	function gameMachine(gameState: GameState, event: { type: string; data?: any }) {
 		switch (gameState) {
 			case 'start':
 				if (event.type === 'CLICK') {
-					return 'playing';
+					return 'playing'
 				}
 			case 'playing':
 				if (event.type === 'ESCAPE') {
-					console.log('paused');
+					console.log('paused')
 
-					return 'paused';
+					return 'paused'
 				}
 				if (event.type === 'CLICK') {
-					selectCard(event.data);
-					selected.length == 2 && matchCards();
+					selectCard(event.data)
+					selected.length == 2 && matchCards()
 
 					if (matches.length == emoji.length) {
-						return 'gameover';
+						return 'gameover'
 					}
 
-					return 'playing';
+					return 'playing'
 				}
 			case 'paused':
 				if (event.type === 'ESCAPE') {
-					return 'playing';
+					return 'playing'
 				}
 			case 'gameover':
 				if (event.type === 'CLICK') {
-					resetGame();
-					return 'playing';
+					resetGame()
+					return 'playing'
 				}
 
 			default:
-				return gameState;
+				return gameState
 		}
 	}
 
-	let size = 20;
-	let grid = $state(createGrid());
-	let maxMatches = $state(grid.length / 2);
-	let selected: number[] = $state([]);
-	let matches: string[] = $state([]);
-	let timerId: any | null = $state(null);
-	let time = $state(60);
+	let size = 20
+	let grid = $state(createGrid())
+	let maxMatches = 0
+
+	$effect(() => {
+		maxMatches = grid.length / 2
+	})
+	let selected: number[] = $state([])
+	let matches: string[] = $state([])
+	let timerId: any | null = $state(null)
+	let time = $state(60)
 
 	function startGameTimer() {
 		timerId = setInterval(() => {
-			time--;
-		}, 1000);
+			time--
+		}, 1000)
 	}
 
 	function createGrid() {
-		let cards = new Set<string>();
-		let maxSize = size / 2;
+		let cards = new Set<string>()
+		let maxSize = size / 2
 
 		while (cards.size < maxSize) {
-			const randomIndex = Math.floor(Math.random() * emoji.length);
-			cards.add(emoji[randomIndex]);
+			const randomIndex = Math.floor(Math.random() * emoji.length)
+			cards.add(emoji[randomIndex])
 		}
 
-		return shuffle([...cards, ...cards]);
+		return shuffle([...cards, ...cards])
 	}
 
 	function shuffle<Items>(array: Items[]) {
-		return array.sort(() => Math.random() - 0.5);
+		return array.sort(() => Math.random() - 0.5)
 	}
 
 	function selectCard(cardIndex: number) {
-		selected = selected.concat(cardIndex);
+		selected = selected.concat(cardIndex)
+		selected.length == 2 && matchCards()
 	}
 
 	function matchCards() {
-		const [first, second] = selected;
+		const [first, second] = selected
 
 		if (grid[first] === grid[second]) {
-			matches = matches.concat(grid[first]);
+			matches = matches.concat(grid[first])
+			console.log('test')
 		}
 
 		setTimeout(() => {
-			selected = [];
-		}, 500);
+			selected = []
+		}, 500)
 	}
 
 	function resetGame() {
-		timerId && clearInterval(timerId);
-		grid = createGrid();
-		maxMatches = grid.length / 2;
-		selected = [];
-		matches = [];
-		timerId = null;
-		time = 60;
+		timerId && clearInterval(timerId)
+		grid = createGrid()
+		maxMatches = grid.length / 2
+		selected = []
+		matches = []
+		timerId = null
+		time = 60
 	}
 
 	function gameWon() {
-		$gameState = 'won';
-		resetGame();
+		$gameState = 'won'
+		resetGame()
 	}
 
 	function gameLost() {
-		$gameState = 'gameover';
-		resetGame();
+		$gameState = 'gameover'
+		resetGame()
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {
-		e.key === 'Escape' && send({ type: 'ESCAPE' });
+		e.key === 'Escape' && send({ type: 'ESCAPE' })
 	}
 
 	$effect(() => {
 		if ($gameState === 'playing') {
-			!timerId && startGameTimer();
+			!timerId && startGameTimer()
 		}
-	});
-
+	})
 	$effect(() => {
-		selected.length == 2 && matchCards();
-	});
+		maxMatches == matches.length && gameWon()
+	})
 	$effect(() => {
-		maxMatches == matches.length && gameWon();
-	});
-	$effect(() => {
-		time == 0 && gameLost();
-	});
+		time == 0 && gameLost()
+	})
 </script>
 
 {#if $gameState == 'playing'}
