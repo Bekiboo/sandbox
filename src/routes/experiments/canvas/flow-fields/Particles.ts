@@ -44,8 +44,8 @@ export class Particle {
 			const index = x + y * this.effect.cols
 			const angle = this.effect.flowField[index]
 
-			this.speedX = Math.cos(angle)
-			this.speedY = Math.sin(angle)
+			this.speedX = Math.cos(angle) * 5
+			this.speedY = Math.sin(angle) * 5
 			this.x += this.speedX * this.speedModifier
 			this.y += this.speedY * this.speedModifier
 

@@ -18,9 +18,9 @@ export class Effect {
 		this.width = this.canvas.width
 		this.height = this.canvas.height
 		this.particles = []
-		this.cellSize = 20
-		this.curve = 2
-		this.zoom = 0.13
+		this.cellSize = 10
+		this.curve = 1
+		this.zoom = 0.075
 		this.debug = false
 		this.init()
 
@@ -50,10 +50,16 @@ export class Effect {
 
 		// create particles
 		this.particles = []
-		this.numberOfParticles = this.width * this.height * 0.001
+		this.numberOfParticles = this.width * this.height * 0.002
 		for (let i = 0; i < this.numberOfParticles; i++) {
 			this.particles.push(new Particle(this))
 		}
+	}
+
+	update() {
+		this.flowField.forEach((angle, index) => {
+			this.flowField[index] += 0.005
+		})
 	}
 
 	drawGrid(ctx: CanvasRenderingContext2D) {
