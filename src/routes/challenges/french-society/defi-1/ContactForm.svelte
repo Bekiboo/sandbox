@@ -1,6 +1,6 @@
 <script lang="ts">
-	import RadialGradientBorder from './RadialGradientBorder.svelte';
-	import { ChevronDown, Send } from 'lucide-svelte';
+	import RadialGradientBorder from './RadialGradientBorder.svelte'
+	import { ChevronDown, Send } from 'lucide-svelte'
 </script>
 
 <RadialGradientBorder>
@@ -51,11 +51,6 @@
 		border-radius: 2rem;
 		font-family: Poppins;
 		gap: 2rem;
-	}
-
-	.unfocus {
-		pointer-events: none;
-		opacity: 0.5;
 	}
 
 	.form-field {

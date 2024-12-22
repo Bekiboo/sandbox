@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount } from 'svelte'
 
 	interface Props {
-		controlPanel: HTMLDivElement;
-		text?: string;
-		connectParticles?: boolean;
-		connectDistance?: number;
-		connectingLineWidth?: number;
-		particleSize?: number;
-		fontWeight?: string;
-		fontFamily?: string;
-		particleShape?: string;
-		init: () => void;
+		controlPanel: HTMLDivElement
+		text?: string
+		connectParticles?: boolean
+		connectDistance?: number
+		connectingLineWidth?: number
+		particleSize?: number
+		fontWeight?: string
+		fontFamily?: string
+		particleShape?: string
+		init: () => void
 	}
 
 	let {
@@ -25,33 +25,33 @@
 		fontFamily = $bindable(),
 		particleShape = $bindable(),
 		init
-	}: Props = $props();
+	}: Props = $props()
 
-	let isOpen = $state(true);
+	let isOpen = $state(true)
 
 	onMount(() => {
 		if (window.innerWidth > 768) {
-			isOpen = true;
-			particleSize = 7;
+			isOpen = true
+			particleSize = 7
 		} else {
-			isOpen = false;
-			particleSize = 3;
+			isOpen = false
+			particleSize = 3
 		}
-	});
+	})
 
 	const open = () => {
-		isOpen = !isOpen;
-	};
+		isOpen = !isOpen
+	}
 
 	const checkWidth = () => {
 		if (window.innerWidth > 768) {
-			isOpen = true;
-			particleSize = 7;
+			isOpen = true
+			particleSize = 7
 		} else {
-			isOpen = false;
-			particleSize = 3;
+			isOpen = false
+			particleSize = 3
 		}
-	};
+	}
 </script>
 
 <div
@@ -181,7 +181,8 @@
 	.label > span {
 		margin-bottom: 0.25rem;
 		text-align: left;
-		@apply text-base font-bold;
+		font-size: 1rem;
+		font-weight: bold;
 	}
 	.handle {
 		clip-path: polygon(0% 15%, 100% 0%, 100% 0%, 100% 100%, 100% 100%, 0% 85%);

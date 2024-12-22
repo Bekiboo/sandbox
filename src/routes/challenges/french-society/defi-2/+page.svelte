@@ -56,7 +56,7 @@
 		}
 	}
 
-	let intervalId: NodeJS.Timeout | null = null
+	let intervalId: number
 
 	onMount(() => {
 		calculateTimeRemaining()
