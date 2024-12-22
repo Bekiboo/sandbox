@@ -23,7 +23,7 @@ export class Particle {
 		this.maxLength = Math.floor(Math.random() * 200 + 10)
 		this.angle = 0
 		this.timer = this.maxLength * 2
-		this.color = 'hsl(' + Math.floor(Math.random() * 40 + 260) + ', 100%, 50%, 0.3)'
+		this.color = 'hsl(' + Math.floor(Math.random() * 40 + 180) + ', 100%, 50%, 0.3)'
 	}
 
 	draw(ctx: CanvasRenderingContext2D) {

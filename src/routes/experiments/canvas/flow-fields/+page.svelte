@@ -13,24 +13,7 @@
 		init()
 	})
 
-	// const flowField = {
-	// 	rows: 20,
-	// 	cols: 20,
-	// 	field: []
-	// }
-
-	// const resolution = 20
-
-	// const noise = new SimplexNoise()
-
 	function init() {
-		// for (let i = 0; i < flowField.rows; i++) {
-		// 	flowField.field[i] = []
-		// 	for (let j = 0; j < flowField.cols; j++) {
-		// 		flowField.field[i][j] = Math.random() * Math.PI * 2
-		// 	}
-		// }
-
 		const effect = new Effect(canvas)
 
 		function animate() {
@@ -42,7 +25,9 @@
 	}
 </script>
 
-<canvas bind:this={canvas} class="w-screen h-screen"> </canvas>
+<div class="w-screen h-screen overflow-hidden bg-stone-900">
+	<canvas bind:this={canvas} class="w-[110%] h-[110%]"> </canvas>
+</div>
 
 <style>
 	canvas {

@@ -18,7 +18,6 @@ export class Effect {
 		this.width = this.canvas.width
 		this.height = this.canvas.height
 		this.particles = []
-		this.numberOfParticles = 1000
 		this.cellSize = 20
 		this.curve = 2
 		this.zoom = 0.13
@@ -51,6 +50,7 @@ export class Effect {
 
 		// create particles
 		this.particles = []
+		this.numberOfParticles = this.width * this.height * 0.001
 		for (let i = 0; i < this.numberOfParticles; i++) {
 			this.particles.push(new Particle(this))
 		}
