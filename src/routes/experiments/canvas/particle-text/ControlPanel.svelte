@@ -32,25 +32,13 @@
 	onMount(() => {
 		if (window.innerWidth > 768) {
 			isOpen = true
-			particleSize = 7
 		} else {
 			isOpen = false
-			particleSize = 3
 		}
 	})
 
 	const open = () => {
 		isOpen = !isOpen
-	}
-
-	const checkWidth = () => {
-		if (window.innerWidth > 768) {
-			isOpen = true
-			particleSize = 7
-		} else {
-			isOpen = false
-			particleSize = 3
-		}
 	}
 </script>
 
@@ -59,12 +47,12 @@
 	onkeydown={open}
 	role="button"
 	tabindex="0"
-	class="absolute w-4 h-20 -translate-y-10 bg-primary top-1/2 right-64 handle md:hidden"
+	class="absolute z-50 w-4 h-20 -translate-y-10 bg-primary top-1/2 right-48 handle"
 	class:isOpen
 	class:isClosed={!isOpen}
 ></div>
 <div
-	class="absolute right-0 flex flex-col w-64 h-full gap-8 p-2 overflow-y-scroll md:overflow-auto md:justify-center md:h-auto md:static md:flex-row md:w-full bg-neutral"
+	class="absolute right-0 z-50 flex flex-col w-48 h-full gap-8 p-2 overflow-y-scroll bg-neutral"
 	bind:this={controlPanel}
 	class:isOpen
 	class:isClosed={!isOpen}
@@ -73,7 +61,7 @@
 		<label class="cursor-pointer label">
 			<span class="label-text">Text Input</span>
 			<input
-				class="input input-bordered input-primary"
+				class="input input-xs input-bordered input-primary"
 				bind:value={text}
 				oninput={init}
 				type="text"
@@ -81,7 +69,11 @@
 		</label>
 		<label class="cursor-pointer label">
 			<span class="label-text">Font Style</span>
-			<select class="w-full max-w-xs select select-primary" bind:value={fontWeight} onchange={init}>
+			<select
+				class="w-full max-w-xs select select-xs select-primary"
+				bind:value={fontWeight}
+				onchange={init}
+			>
 				<option selected>normal</option>
 				<option>bold</option>
 				<option>italic</option>
@@ -89,7 +81,11 @@
 		</label>
 		<label class="cursor-pointer label">
 			<span class="label-text">Font Family</span>
-			<select class="w-full max-w-xs select select-primary" bind:value={fontFamily} onchange={init}>
+			<select
+				class="w-full max-w-xs select select-xs select-primary"
+				bind:value={fontFamily}
+				onchange={init}
+			>
 				<option selected>sans-serif</option>
 				<option>serif</option>
 			</select>
@@ -162,14 +158,11 @@
 					name="radio-10"
 					class="radio radio-primary"
 					onchange={init}
-					checked
 				/>
 			</label>
 		</div>
 	</div>
 </div>
-
-<svelte:window onresize={checkWidth} />
 
 <style>
 	.label {
@@ -193,6 +186,6 @@
 	}
 	.isClosed {
 		transition: 0.3s ease-in-out;
-		transform: translateX(16rem);
+		transform: translateX(12rem);
 	}
 </style>

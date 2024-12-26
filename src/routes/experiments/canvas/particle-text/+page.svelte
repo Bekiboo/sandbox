@@ -9,17 +9,17 @@
 	let controlPanel: HTMLDivElement = $state()
 	let wrapper: HTMLDivElement = $state()
 
-	const textPos = { x: 1, y: 20 }
+	const textPos = { x: 1, y: 25 }
 
 	// Controls
-	let text: string = $state('Text')
-	let connectParticles: boolean = $state(false)
-	let connectDistance: number = $state(32)
+	let text: string = $state('Hi')
+	let connectParticles: boolean = $state(true)
+	let connectDistance: number = $state(50)
 	let connectingLineWidth: number = $state(2)
-	let particleSize: number = $state(7)
+	let particleSize: number = $state(4)
 	let fontWeight: string = $state('normal')
 	let fontFamily: string = $state('sans-serif')
-	let particleShape: string = $state('square')
+	let particleShape: string = $state('circle')
 
 	// TODO: add color picker to the control panel
 	const colors = {
@@ -43,9 +43,9 @@
 	const animate = () => {
 		canvas.width = wrapper.clientWidth
 
-		if (window.innerWidth > 768) {
-			canvas.height = wrapper.clientHeight - controlPanel.clientHeight
-		}
+		// if (window.innerWidth > 768) {
+		// 	canvas.height = wrapper.clientHeight - controlPanel.clientHeight
+		// }
 		ctx.clearRect(0, 0, canvas.width, canvas.height)
 
 		for (let i = 0; i < particles.length; i++) {
@@ -64,11 +64,11 @@
 		}
 
 		canvas.width = wrapper.clientWidth
-		if (window.innerWidth > 768) {
-			canvas.height = wrapper.clientHeight - controlPanel.clientHeight
-		} else {
-			canvas.height = wrapper.clientHeight
-		}
+		// if (window.innerWidth > 768) {
+		// 	canvas.height = wrapper.clientHeight - controlPanel.clientHeight
+		// } else {
+		canvas.height = wrapper.clientHeight
+		// }
 
 		init()
 		animate()
@@ -90,7 +90,7 @@
 			spaceBetweenLetters = 8
 		}
 
-		ctx.fillText(text, canvas.clientWidth / 2, textPos.y)
+		ctx.fillText(text, canvas.clientWidth / 2, canvas.clientHeight / 22)
 
 		textCoordinates = ctx.getImageData((canvas.clientWidth - textWidth) / 2, 0, 150, 50)
 
@@ -166,6 +166,12 @@
 </script>
 
 <div class="relative overflow-hidden wrapper" bind:this={wrapper}>
+	<canvas
+		onmousemove={mouseMove}
+		ontouchmove={touchMove}
+		onclick={mouseClick}
+		bind:this={canvas}
+	></canvas>
 	<ControlPanel
 		bind:controlPanel
 		bind:text
@@ -178,8 +184,6 @@
 		bind:particleShape
 		{init}
 	/>
-	<canvas onmousemove={mouseMove} ontouchmove={touchMove} onclick={mouseClick} bind:this={canvas}
-	></canvas>
 </div>
 
 <svelte:window onresize={init} />
