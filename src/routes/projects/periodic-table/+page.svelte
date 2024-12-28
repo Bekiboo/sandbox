@@ -1,32 +1,30 @@
 <script lang="ts">
-	import Element from './Element.svelte';
-	import Titles from './Titles.svelte';
-	import Labels from './Labels.svelte';
-	import { elements, colorSchemes } from './elements';
-	import ControlPanel from './ControlPanel.svelte';
-	import { throttle } from '$lib/utils';
-	import { fly } from 'svelte/transition';
+	import Element from './Element.svelte'
+	import Titles from './Titles.svelte'
+	import Labels from './Labels.svelte'
+	import { elements, colorSchemes } from './elements'
+	import ControlPanel from './ControlPanel.svelte'
+	import { throttle } from '$lib/utils'
+	import { fly } from 'svelte/transition'
 
-	let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' = $state('groups');
+	let labels: 'groups' | 'ionizationEnergy' | 'atomicSize' | 'valenceElectrons' =
+		$state('groups')
 	let colorScheme: 'metallicity' | 'chemicalFamily' | 'standardState' | 'subshellBlock' =
-		$state('subshellBlock');
-	let selectedElement: any = $state.raw(null);
-	let cursorPosition = $state({ x: 0, y: 0 });
+		$state('subshellBlock')
+	let selectedElement: any = $state.raw(null)
+	let cursorPosition = $state({ x: 0, y: 0 })
 
 	const handleMouseMove = (e: MouseEvent) => {
-		cursorPosition = { x: e.clientX, y: e.clientY };
-	};
+		cursorPosition = { x: e.clientX, y: e.clientY }
+	}
 </script>
 
-<main class="flex flex-col items-center mx-auto">
+<div class="flex flex-col items-center mx-auto mt-8">
 	<h1
-		class="mb-2 text-4xl font-bold leading-none tracking-widest text-center text-gray-700 uppercase dark:text-gray-300 md:text-5xl md:mb-4 md:leading-none md:tracking-widest"
+		class="my-2 text-2xl font-bold leading-none tracking-widest text-center text-gray-700 uppercase dark:text-gray-300 md:text-3xl md:my-4 md:leading-none md:tracking-widest"
 	>
 		Periodic Table of the Elements
 	</h1>
-	<h2 class="mb-4 text-2xl text-center text-gray-600 dark:text-gray-400">
-		CHEM 101 - BYU-Idaho - Julien Connault
-	</h2>
 
 	<section class="grid items-center w-min">
 		<Titles {labels} />
@@ -48,7 +46,8 @@
 					in:fly
 				>
 					<div class="flex items-center justify-between">
-						<span class="text-xl">{selectedElement?.name} ({selectedElement.symbol})</span>
+						<span class="text-xl">{selectedElement?.name} ({selectedElement.symbol})</span
+						>
 					</div>
 
 					<div class="flex items-center justify-between">
@@ -95,7 +94,7 @@
 			</div>
 		</div>
 	</section>
-</main>
+</div>
 
 <svelte:window onmousemove={throttle(handleMouseMove, 50)} />
 

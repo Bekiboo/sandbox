@@ -1,14 +1,16 @@
 <script lang="ts">
-	import type { Project } from './projects';
+	import type { Project } from './projects'
 
 	interface Props {
-		project: Project;
+		project: Project
 	}
 
-	let { project }: Props = $props();
+	let { project }: Props = $props()
 </script>
 
-<div class="w-64 border shadow-xl card bg-base-100 border-opacity-20">
+<div
+	class="mb-8 overflow-hidden border shadow-xl grow sm:basis-1/3 md:basis-1/4 card bg-base-100 border-opacity-20"
+>
 	<!-- IMAGE -->
 	<div class="h-48">
 		{#if project.image}

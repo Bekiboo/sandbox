@@ -133,7 +133,7 @@
 </script>
 
 {#if $gameState == 'playing'}
-	<h1 class="timer" class:pulse={time <= 10}>{time}</h1>
+	<h1 class="mt-8 timer" class:pulse={time <= 10}>{time}</h1>
 	<div class="grid grid-cols-5 gap-2 m-auto w-fit">
 		{#each grid as card, cardIndex}
 			{@const isSelected = selected.includes(cardIndex)}
@@ -147,7 +147,9 @@
 				class:disabled={isSelectedOrMatched}
 				onclick={() => selectCard(cardIndex)}
 			>
-				<div class="absolute inset-0 grid back place-items-center" class:isMatched>{card}</div>
+				<div class="absolute inset-0 grid back place-items-center" class:isMatched>
+					{card}
+				</div>
 			</button>
 		{/each}
 	</div>

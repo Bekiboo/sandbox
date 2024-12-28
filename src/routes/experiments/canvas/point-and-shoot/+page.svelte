@@ -55,5 +55,6 @@
 </svelte:head>
 
 <div class="flex flex-col items-center mt-5">
-	<canvas onclick={handleClick} class="w-[800px] h-[500px]" bind:this={canvas}></canvas>
+	<canvas onclick={handleClick} class="w-[800px] h-[500px] mt-8" bind:this={canvas}
+	></canvas>
 </div>
