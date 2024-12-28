@@ -59,11 +59,11 @@ export class Particle {
 		} else {
 			if (this.x !== this.basePos.x) {
 				const dx = this.x - this.basePos.x
-				this.x -= dx / 10
+				this.x -= dx / 25
 			}
 			if (this.y !== this.basePos.y) {
 				const dy = this.y - this.basePos.y
-				this.y -= dy / 10
+				this.y -= dy / 25
 			}
 		}
 
