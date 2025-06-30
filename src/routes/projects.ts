@@ -1,21 +1,21 @@
 export type Project = {
-	title: string;
-	description: string;
-	path: string;
-	github?: string;
-	image: string | null;
-	dateStarted: string;
-	dateUpdated?: string;
-	tech: string[];
-	status: 'in-progress' | 'done' | 'abandoned' | 'on-hold' | 'idea' | 'archived';
-	type: 'project' | 'experiment' | 'prototype' | 'design';
-};
+	title: string
+	description: string
+	path: string
+	github?: string
+	image: string | null
+	dateStarted: string
+	dateUpdated?: string
+	tech: string[]
+	status: 'in-progress' | 'done' | 'abandoned' | 'on-hold' | 'idea' | 'archived'
+	type: 'project' | 'experiment' | 'prototype' | 'design'
+}
 
 export const projects: Project[] = [
 	{
 		title: 'Cube Runner',
 		description: 'A 3D runner game with a cube.',
-		path: 'https://cube-inky.vercel.app/',
+		path: '/projects/cubed',
 		github: 'https://github.com/Bekiboo/Cube',
 		image: 'images/minis/cube.png',
 		dateStarted: '2024-09',
@@ -27,7 +27,8 @@ export const projects: Project[] = [
 		title: 'Periodic Table',
 		description: 'An interactive periodic table with SvelteKit and TailwindCSS.',
 		path: '/projects/periodic-table',
-		github: 'https://github.com/Bekiboo/sandbox/tree/master/src/routes/projects/periodic-table',
+		github:
+			'https://github.com/Bekiboo/sandbox/tree/master/src/routes/projects/periodic-table',
 		image: 'images/minis/periodic-table.png',
 		dateStarted: '2024-01',
 		tech: ['svelte', 'sveltekit', 'tailwindcss'],
@@ -74,7 +75,8 @@ export const projects: Project[] = [
 		title: '3D Chess',
 		description: 'A simple 3D chess board. Not interactive yet.',
 		path: '/experiments/three-js/chess',
-		github: 'https://github.com/Bekiboo/sandbox/tree/master/src/routes/experiments/three-js/chess',
+		github:
+			'https://github.com/Bekiboo/sandbox/tree/master/src/routes/experiments/three-js/chess',
 		image: 'images/minis/chess.png',
 		dateStarted: '2023-10',
 		tech: [
@@ -101,7 +103,8 @@ export const projects: Project[] = [
 		title: 'Matching Game',
 		description: 'A simple matching game based on Joy of Code tutorial',
 		path: '/projects/matching-game',
-		github: 'https://github.com/Bekiboo/sandbox/tree/master/src/routes/projects/matching-game',
+		github:
+			'https://github.com/Bekiboo/sandbox/tree/master/src/routes/projects/matching-game',
 		image: 'images/minis/matching-game.png',
 		dateStarted: '2023-10',
 		tech: [
@@ -148,4 +151,4 @@ export const projects: Project[] = [
 		status: 'on-hold',
 		type: 'experiment'
 	}
-];
+]

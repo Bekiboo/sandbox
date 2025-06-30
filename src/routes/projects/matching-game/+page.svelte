@@ -133,7 +133,7 @@
 </script>
 
 {#if $gameState == 'playing'}
-	<h1 class="mt-8 timer" class:pulse={time <= 10}>{time}</h1>
+	<h1 class="mt-8 text-6xl text-center {time <= 10 && " animate-pulse text-accent"}">{time}</h1>
 	<div class="grid grid-cols-5 gap-2 m-auto w-fit">
 		{#each grid as card, cardIndex}
 			{@const isSelected = selected.includes(cardIndex)}
@@ -141,13 +141,16 @@
 			{@const isMatched = matches.includes(card)}
 
 			<button
-				class="flex items-center justify-center w-16 h-16 text-4xl md:w-32 md:h-32 md:text-6xl bg-primary card"
-				class:isSelected
+				class="flex items-center justify-center w-16 h-16 text-4xl md:w-32 md:h-32 md:text-6xl bg-primary card 
+				{isSelected && 'border-4 border-solid border-primary'}
+				"
 				class:flip={isSelectedOrMatched}
 				class:disabled={isSelectedOrMatched}
 				onclick={() => selectCard(cardIndex)}
 			>
-				<div class="absolute inset-0 grid back place-items-center" class:isMatched>
+				<div class="absolute inset-0 grid back place-items-center
+					{isMatched && 'opacity-40 transition-opacity ease-in-out duration-300'}
+				">
 					{card}
 				</div>
 			</button>
@@ -200,25 +203,5 @@
 	.back {
 		backface-visibility: hidden;
 		rotate: y 180deg;
-	}
-
-	.isSelected {
-		@apply border-4 border-solid border-primary;
-	}
-
-	.isMatched {
-		@apply opacity-40 transition-opacity ease-in-out duration-300;
-	}
-
-	/* .matches {
-		@apply flex flex-row flex-wrap justify-center gap-4 text-2xl;
-	} */
-
-	.timer {
-		@apply text-6xl text-center;
-	}
-
-	.pulse {
-		@apply animate-pulse text-accent;
 	}
 </style>

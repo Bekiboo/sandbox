@@ -1,14 +1,12 @@
-import { generateUUID } from '$lib/utils'
-
 type Subscriber = (dicePool: DicePool) => void
 
 export class DicePool {
 	dice: Die[] = []
-	id: string = ''
+	id = ''
 	subscribers: Subscriber[] = []
 
 	constructor(public name: string) {
-		this.id = generateUUID()
+		this.id = crypto.randomUUID()
 	}
 
 	subscribe(runner: Subscriber): () => void {
@@ -20,7 +18,9 @@ export class DicePool {
 	}
 
 	notify(): void {
-		this.subscribers.forEach((runner) => runner(this))
+		for (const runner of this.subscribers) {
+			runner(this)
+		}
 	}
 
 	addDie(sides: number, name: string, color?: string): void {
@@ -34,7 +34,9 @@ export class DicePool {
 	}
 
 	rollAll(): void {
-		this.dice.forEach((die) => die.roll())
+		for (const die of this.dice) {
+			die.roll()
+		}
 		this.notify()
 	}
 
@@ -44,7 +46,9 @@ export class DicePool {
 	}
 
 	resetAll(): void {
-		this.dice.forEach((die) => die.reset())
+		for (const die of this.dice) {
+			die.reset()
+		}
 		this.notify()
 	}
 
@@ -60,7 +64,7 @@ export class Die {
 	constructor(
 		public sides: number,
 		public name: string,
-		color: string = 'white'
+		color = 'white'
 	) {
 		this._color = color
 		this._result = 0

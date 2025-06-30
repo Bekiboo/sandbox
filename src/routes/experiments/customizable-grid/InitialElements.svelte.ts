@@ -15,14 +15,14 @@ export const elements = $state([
 	},
 	{
 		colStart: 6,
-		colEnd: 8,
+		colEnd: 12,
 		rowStart: 1,
 		rowEnd: 3,
 		name: 'Mana'
 	},
 	{
 		colStart: 8,
-		colEnd: 10,
+		colEnd: 18,
 		rowStart: 1,
 		rowEnd: 3,
 		name: 'HP'
@@ -37,14 +37,14 @@ export const elements = $state([
 	},
 	{
 		colStart: 6,
-		colEnd: 8,
+		colEnd: 12,
 		rowStart: 3,
 		rowEnd: 5,
 		name: 'Dexterity'
 	},
 	{
 		colStart: 8,
-		colEnd: 10,
+		colEnd: 18,
 		rowStart: 3,
 		rowEnd: 5,
 		name: 'Intelligence'
@@ -59,14 +59,14 @@ export const elements = $state([
 	},
 	{
 		colStart: 6,
-		colEnd: 8,
+		colEnd: 12,
 		rowStart: 5,
 		rowEnd: 7,
 		name: 'Constitution'
 	},
 	{
 		colStart: 8,
-		colEnd: 10,
+		colEnd: 18,
 		rowStart: 5,
 		rowEnd: 7,
 		name: 'Charisma'
@@ -81,14 +81,14 @@ export const elements = $state([
 	},
 	{
 		colStart: 6,
-		colEnd: 8,
+		colEnd: 12,
 		rowStart: 7,
 		rowEnd: 9,
 		name: 'Cold Resistance'
 	},
 	{
 		colStart: 8,
-		colEnd: 10,
+		colEnd: 18,
 		rowStart: 7,
 		rowEnd: 9,
 		name: 'Lightning Resistance'

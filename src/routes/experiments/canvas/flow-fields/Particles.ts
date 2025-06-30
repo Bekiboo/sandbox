@@ -23,7 +23,7 @@ export class Particle {
 		this.maxLength = Math.floor(Math.random() * 200 + 10)
 		this.angle = 0
 		this.timer = this.maxLength * 2
-		this.color = 'hsl(' + Math.floor(Math.random() * 40 + 180) + ', 100%, 50%, 0.3)'
+		this.color = 'hsl(' + Math.floor(Math.random() * 50 + 165) + ', 100%, 50%, 0.25)'
 	}
 
 	draw(ctx: CanvasRenderingContext2D) {
@@ -66,28 +66,4 @@ export class Particle {
 		this.history = [{ x: this.x, y: this.y }]
 		this.timer = this.maxLength * 2
 	}
-
-	// 	const distanceToBase = this.findDistance(this, this.basePos)
-
-	// 	if (distanceToBase <= 0) {
-	// 		this.currentColor = this.startColor
-	// 	} else if (distanceToBase >= 50) {
-	// 		this.currentColor = this.endColor
-	// 	} else {
-	// 		const ratio = distanceToBase / 50
-
-	// 		this.currentColor = {
-	// 			r: this.startColor.r + ratio * (this.endColor.r - this.startColor.r),
-	// 			g: this.startColor.g + ratio * (this.endColor.g - this.startColor.g),
-	// 			b: this.startColor.b + ratio * (this.endColor.b - this.startColor.b),
-	// 			a: 1
-	// 		}
-	// 	}
-	// }
-
-	// findDistance(a: Point, b: Point) {
-	// 	const dx = a.x - b.x
-	// 	const dy = a.y - b.y
-	// 	return Math.sqrt(dx * dx + dy * dy)
-	// }
 }

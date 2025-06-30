@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { Canvas } from '@threlte/core';
-	import Scene from './Scene.svelte';
-	import ControlPanel from './ControlPanel.svelte';
+	import { Canvas } from '@threlte/core'
+	import Scene from './Scene.svelte'
+	import ControlPanel from './ControlPanel.svelte'
 
-	let FOV: number = $state(75);
-	let castShadow: boolean = $state(true);
+	let FOV: number = $state(75)
+	let castShadow: boolean = $state(true)
 </script>
 
 <div class="relative">
-	<div class="absolute z-50">
+	<div class="absolute z-50 w-full">
 		<ControlPanel bind:FOV bind:castShadow />
 	</div>
 

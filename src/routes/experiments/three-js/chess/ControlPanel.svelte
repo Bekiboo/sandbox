@@ -1,37 +1,47 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount } from 'svelte'
 
 	interface Props {
-		FOV?: number;
-		castShadow?: boolean;
+		FOV?: number
+		castShadow?: boolean
 	}
 
-	let { FOV = $bindable(75), castShadow = $bindable() }: Props = $props();
+	let { FOV = $bindable(75), castShadow = $bindable() }: Props = $props()
 
-	let isOpen = $state(true);
+	let isOpen = $state(true)
 
 	onMount(() => {
 		if (window.innerWidth > 768) {
-			isOpen = true;
+			isOpen = true
 		} else {
-			isOpen = false;
+			isOpen = false
 		}
-	});
+	})
 </script>
 
 <div
-	class="absolute right-0 z-50 flex flex-col w-64 h-full gap-8 p-2 overflow-y-scroll md:overflow-auto md:justify-center md:h-auto md:static md:flex-row md:w-full bg-neutral"
+	class="absolute right-0 z-50 flex flex-col w-64 h-full gap-8 p-2 overflow-y-scroll md:overflow-auto md:justify-center md:h-auto md:flex-row bg-neutral"
 	class:isOpen
 	class:isClosed={!isOpen}
 >
 	<div class="form-control">
 		<label class="cursor-pointer label">
 			<span class="label-text">Field of View</span>
-			<input type="range" min="10" max="125" class="range range-primary" bind:value={FOV} />{FOV}°
+			<input
+				type="range"
+				min="10"
+				max="125"
+				class="range range-primary"
+				bind:value={FOV}
+			/>{FOV}°
 		</label>
 		<label class="cursor-pointer label">
 			<span class="label-text">Shadows</span>
-			<input type="checkbox" class="ml-2 checkbox checkbox-primary" bind:checked={castShadow} />
+			<input
+				type="checkbox"
+				class="ml-2 checkbox checkbox-primary"
+				bind:checked={castShadow}
+			/>
 		</label>
 	</div>
 </div>
