@@ -42,6 +42,7 @@
 		"@tailwindcss/vite": "^4.1.5",
 		"@threlte/core": "8.0.2",
 		"@threlte/extras": "9.1.4",
+		"animejs": "^4.0.2",
 		"lucide-svelte": "^0.507.0",
 		"three": "^0.176.0"
 	}

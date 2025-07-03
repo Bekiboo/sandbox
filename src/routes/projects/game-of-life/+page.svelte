@@ -169,10 +169,10 @@
 <div class="controls">
     <span>Generation n°{generation}</span>
     <br>
-    <button on:click={isRunning ? pauseGame : startGame}>
+    <button onclick={isRunning ? pauseGame : startGame}>
         {isRunning ? 'Pause' : 'Play'}
     </button>
-    <button on:click={resetGame}>Reset</button>
+    <button onclick={resetGame}>Reset</button>
     <label for="speed-slider">Speed: {simulationSpeedMs}ms</label>
     <input
         type="range"
